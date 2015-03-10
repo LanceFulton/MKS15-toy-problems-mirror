@@ -18,8 +18,8 @@
 */
 
 var rockPaperScissors = function () {
-  words = ['rock', 'paper', 'scissors'];
-  results = [];
+  var words = ['rock', 'paper', 'scissors'];
+  var results = [];
   
   for (var i = 0; i<words.length; i++) {
     for (var j = 0; j<words.length; j++) {
@@ -28,6 +28,5 @@ var rockPaperScissors = function () {
       }
     }
   }
-
   return results;
 };
