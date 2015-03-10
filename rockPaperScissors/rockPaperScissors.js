@@ -17,7 +17,23 @@
 *
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+var rockPaperScissors = function () {
+  var rockpapsciss = ['rock', 'paper', 'scissors'];
+  var resultArr = [];
+  var randomizeThrows = function () {
+    for( var i = 0; i < rockpapsciss.length; i++) {
+      for( var k = 0; k < rockpapsciss.length; k++) {
+        for( var j = 0; j < rockpapsciss.length; j++) {
+          var array = [];
+          array.push(rockpapsciss[i]);
+          array.push(rockpapsciss[k]);
+          array.push(rockpapsciss[j]);
+          resultArr.push(array);
+        }
+      }
+    }
+  }
+  randomizeThrows();
+
+  return resultArr;
 };
