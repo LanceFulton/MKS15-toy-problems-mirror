@@ -19,16 +19,15 @@
 
 var rockPaperScissors = function () {
   words = ['rock', 'paper', 'scissors'];
-  output = [];
+  results = [];
   
   for (var i = 0; i<words.length; i++) {
     for (var j = 0; j<words.length; j++) {
       for (var k = 0; k<words.length; k++){
-
-        output.push([words[i], words[(i+j)%3], words[(i+k)%3]])
+        results.push( [words[i], words[j], words[k]] );
       }
     }
   }
 
-  return output;
+  return results;
 };
