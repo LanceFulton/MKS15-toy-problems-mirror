@@ -31,8 +31,7 @@ var rockPaperScissors = function (rounds) {
 
     for (var j = 0; j<rounds; j++){
 
-      var tempNum = stringBase3[j] || 0;
-      oneGame.push(words[tempNum]);
+      oneGame.push(words[stringBase3[j]]);
 
     }
     results.push(oneGame);
