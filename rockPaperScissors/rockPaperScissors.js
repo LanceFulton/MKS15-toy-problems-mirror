@@ -17,7 +17,15 @@
 *
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+var rockPaperScissors = function () {
+  var options = ['rock', 'paper', 'scissors']
+  var used = [];
+
+  var permiate = function (options) {
+    var results = []
+    for (var i = 0; i < options.length; i++) {
+      results.push([options[i], options[i], options[i]]);
+    }
+  return results;
+  };
 };
