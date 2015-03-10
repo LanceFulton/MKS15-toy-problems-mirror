@@ -34,33 +34,38 @@ var rockPaperScissors = function () {
 	var currentResult = [];
 	var finalResult = [];
 
-  	// outer loop
-  	while(thirdCount <= 27){
-  		currentResult.push(possibles[firstCurrent]);
-  		currentResult.push(possibles[secondCurrent]);
-  		currentResult.push(possibles[thirdCurrent]);
-  		thirdCount++
-  		thirdCurrent++
-  		console.log("currentResult: " + currentResult);
+  // loop until all possibilities (27) have been realized
+	while(thirdCount <= 27){
+    // push one answer from each stage (first, second, third)
+		currentResult.push(possibles[firstCurrent]);
+		currentResult.push(possibles[secondCurrent]);
+		currentResult.push(possibles[thirdCurrent]);
+		thirdCount++
+		thirdCurrent++
 
-  		//after third stage has pushed everything once, restart third stage and increment second stage
-  		if (thirdCount % 3 === 0){
-  			finalResult.push(currentResult);
-  			currentResult = [];
-  			secondCount++;
-  			secondCurrent++;
-  			thirdCurrent = 0;
-  		}
+    // push current result to final result and reset current result
+		finalResult.push(currentResult);
+		currentResult = [];
 
-  		//after second stage has pushed everything once, restart second stage and increment third stage
-  		if (secondCount % 3 === 0){
-  			firstCurrent++;
-  			secondCurrent = 0;
-  		}
-  	}
+    //after third stage has pushed everything once, restart third stage and increment second stage
+    if (thirdCount % 3 === 0 && thirdCount !== 0){
+			secondCount++;
+			secondCurrent++;
+			thirdCurrent = 0;
+		}
+
+		//after second stage has pushed everything once, restart second stage and increment third stage
+		if (secondCount % 3 === 0 && secondCount !== 0){
+			firstCurrent++;
+			secondCurrent = 0;
+      secondCount = 0;
+		}
+	}
   	
   	return finalResult;
 
 };
+
+rockPaperScissors();
 
 
