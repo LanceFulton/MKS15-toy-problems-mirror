@@ -23,34 +23,30 @@ var rockPaperScissors = function (rounds) {
 
 
   // Every sequence for X rounds
-  var getEveryPossibility = function(rounds) {
+  var getOneRoundPossibilities = function(rounds) {
     console.log( "getEveryPoss");
     var optionsArray = ["rock", "paper", "scissors"];
     var possibilitiesArray = [];
 
-    for (var g = 1; g<=rounds; g++) {
-        console.log("* ROUND " + g + " *");
-        for (var i = 0; i < optionsArray.length; i++) {
-            for (var j = 0; j < optionsArray.length; j++) {
-                for (var k = 0; k < optionsArray.length; k++) {
-                    console.log( optionsArray[i] + " " + optionsArray[j] + " " + optionsArray[k]);
-                    retArray.push( [optionsArray[i], optionsArray[j], optionsArray[k]]);
-                };
+    for (var i = 0; i < optionsArray.length; i++) {
+        for (var j = 0; j < optionsArray.length; j++) {
+            for (var k = 0; k < optionsArray.length; k++) {
+                possibilitiesArray.push( [optionsArray[i], optionsArray[j], optionsArray[k]]);
             };
         };
     };
-
-    return retArray;
+    return possibilitiesArray;
   };
 
-// Main
-getEveryPossibility(rounds);
-
-
-
-
+  // Main
+  var oneRoundPossibilities = getOneRoundPossibilities();
+  console.log("REQUESTED ROUNDS: " + rounds);
+  for (var r = 1; r <= rounds; r++) {
+    console.log("* ROUND " + r + " *");
+    retArray.push( oneRoundPossibilities );
+  };
 
   return retArray;
 };
 
-rockPaperScissors(5);
+console.log( rockPaperScissors(5) );
