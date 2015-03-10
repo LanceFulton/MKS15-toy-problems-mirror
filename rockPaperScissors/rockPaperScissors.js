@@ -17,7 +17,27 @@
 *
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+var rockPaperScissors = function (numRounds) {
+  if (numRounds === undefined)
+    numRounds = 3;
+  
+  var results = [[]];
+  var lengthenResults = [];
+  var moveThrows = ['rock','paper','scissors'];
+  
+  // lengthen all strings until numRounds = 0
+  while (numRounds > 0){
+    // for each string in results
+    results.forEach(function(hist){
+      moveThrows.forEach(function(move){
+        lengthenResults.push(hist.concat(move));
+      });
+    });
+    results = lengthenResults;
+    lengthenResults = [];
+    numRounds--;
+      // push a string onto lengthenResults with one extra throw
+  }
+  
+  return results;
 };
