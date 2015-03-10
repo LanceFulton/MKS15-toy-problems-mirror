@@ -17,16 +17,25 @@
 *
 */
 
-var rockPaperScissors = function () {
+var rockPaperScissors = function (rounds) {
   var words = ['rock', 'paper', 'scissors'];
   var results = [];
-  
-  for (var i = 0; i<words.length; i++) {
-    for (var j = 0; j<words.length; j++) {
-      for (var k = 0; k<words.length; k++){
-        results.push( [words[i], words[j], words[k]] );
-      }
+  for (var i = 0; i<Math.pow(3, rounds); i++) {
+
+    var oneGame = [];
+    var stringBase3 = i.toString(3);
+
+    while (stringBase3.length<rounds) {
+      stringBase3 = '0' + stringBase3;
     }
+
+    for (var j = 0; j<rounds; j++){
+
+      var tempNum = stringBase3[j] || 0;
+      oneGame.push(words[tempNum]);
+
+    }
+    results.push(oneGame);
   }
   return results;
-};
+}
