@@ -47,6 +47,7 @@ var rockPaperScissors = function (numRounds) {
 console.log(rockPaperScissors());
 
 /*
+value = value*value;
 var play = function(){
 	value--;
 	for(var round = 0; round < 3; round++){
