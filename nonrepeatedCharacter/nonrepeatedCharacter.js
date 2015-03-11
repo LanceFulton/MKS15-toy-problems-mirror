@@ -7,26 +7,25 @@
  */
 
 var firstNonRepeatedCharacter = function(string) {
-  var previousFound = true;
   var duplicates = [];
 
-  for(var i = 0; i < string.length; i++) {
-    if(previousFound) {
-      previousFound = false;
-      debugger;
-      if(duplicates.indexOf(string[i]) < 0) {
-        for(var j = i + 1; j < string.length; j++) {
-          if(string[i] === string[j]) {
-            previousFound = true;
-            duplicates.push(string[i]);
-            break;
-          }
+  var compare = function(index) {
+    // debugger;
+    if( duplicates.indexOf(string[index]) < 0 ) {
+      for( var i = index + 1; i < string.length; i++ ) {
+        if( string[i] === string[index] ) {
+          duplicates.push(string[i]);
+          break;
         }
       }
-    } else {
-      return string[i - 1];
     }
-  }
 
-  return '';
+    if( duplicates.indexOf(string[index]) < 0 ) {
+      return string[index];
+    } else {
+      return compare(index + 1);
+    }
+  };
+
+  return compare(0);
 };
