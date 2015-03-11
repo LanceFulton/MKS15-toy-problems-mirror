@@ -10,7 +10,6 @@ var firstNonRepeatedCharacter = function(string) {
   var duplicates = [];
 
   var compare = function(index) {
-    // debugger;
     if( duplicates.indexOf(string[index]) < 0 ) {
       for( var i = index + 1; i < string.length; i++ ) {
         if( string[i] === string[index] ) {
