@@ -23,5 +23,26 @@
 */
 
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+  var a = ['commit','push'];
+  var isSubset = 0;
+  var index = 0;
+
+  var crossCheck = function(index) {
+    if(!(index < a.length)) {
+      return;
+    }
+    for( var i = 0; i < array.length; i++ ) {
+      if(array[i] === a[index]) {
+        isSubset += 1
+      }
+    }
+    if(isSubset === 0) {
+      return 0;
+    }
+    index++
+    crossCheck(index);
+  }
+  crossCheck(index)
+
+  return isSubset >= 2? isSubset = true : isSubset = false;
 };
