@@ -45,7 +45,7 @@ Array.prototype.isSubsetOf = function(array){
         }
     }
     console.log("foundCount = " + foundCount + "  subsetLen = " + subsetLen);
-    if(foundCount===subsetLen) {
+    if(foundCount>=subsetLen) {
         return true;
     }
 
