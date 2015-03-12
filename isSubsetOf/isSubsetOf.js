@@ -22,6 +22,58 @@
  * including non-strings.
 */
 
+
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+	// loop through context array
+	for (var i = 0 ; i < this.length ; i++){
+		var element = this[i];
+		var found = false;
+		// loop through the input array
+		for (var j = 0 ; j < array.length ; j++){
+			// if the element is found, change found to true
+			if (element = array[j]){
+				found = true;
+			}
+		}
+		// if it isn't found, return false
+		if (found === false){
+			return false;
+		}
+	}
+	// if all are found, return true
+	return true;
 };
+
+
+
+
+// Array.prototype.isSubsetOf = function(array){
+
+// 	// create object to store if checked
+// 	var storage = {};
+
+// 	// loop through context array
+// 	for ( var i = 0 ; i < this.length ; i++){
+// 		var element = this[i];
+// 		console.log(element);
+// 		// for each element, see if previously checked
+// 		if (!storage[element]){
+// 			console.log(storage[element]);
+// 			// if not checked, check to see if it is in input array
+// 			for (var j = 0 ; j < array.length ; j++){
+// 				if (element = array[j]){
+// 					var checked = true;
+// 					// if it is, store checked in storage
+// 					storage[element] = checked;
+// 					console.log(storage[element]);
+// 				} else {
+// 					// if it isn't, return false
+// 					return false;
+// 				}
+// 			}
+// 		}
+// 	}
+// 	// if all are found, return true
+// 	return true;
+
+// };
