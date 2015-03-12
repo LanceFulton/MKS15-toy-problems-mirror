@@ -23,5 +23,24 @@
 */
 
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+
+  var isSubset = true;
+  var possibleSubset = {};
+  var possibleSuperset = {};
+
+  for (var i = 0; i<this.length; i++) {
+    possibleSubset[this[i]] = true;
+  }
+  
+  for (var i = 0; i<array.length; i++) {
+    possibleSuperset[array[i]] = true;
+  }
+
+  for (var key in possibleSubset) {
+    if (!(key in possibleSuperset)) {
+      isSubset = false;
+    }
+  }
+
+  return isSubset;
 };
