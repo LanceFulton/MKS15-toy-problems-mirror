@@ -23,5 +23,13 @@
 */
 
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+  var hashTable = {};
+  for (var i=0; i<array.length; i++) {
+    hashTable[JSON.stringify(array[i])] = true;
+  }
+  for (var i=0; i<this.length; i++) {
+    if (!hashTable[JSON.stringify(this[i])])
+      return false;
+  }
+  return true;
 };
