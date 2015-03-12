@@ -21,7 +21,48 @@
  * Extra credit: Make the method work for arrays that contain any value,
  * including non-strings.
 */
+var array = ['one', 'two', 'three'];
+var subset = ['one', 'two'];
+
+//in python you can just use if subset[i] in array. That would be handy right now. 
+
+// Use indexof?
+
+//count === subset.length
+
+// put them all in an object and keep a count but that wouldn't account for repeated values in the array
+
+
 
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+  var storage = [];
+  var moreStorage = {};
+  var count = 1;
+  var subset = // not sure how to get the subset
+  for ( var i = 0; i < array.length; i++) {
+    storage.push[array[i]]
+  }
+  for ( var i = 0; i < subset.length; i++) {
+    storage.push[subset[i]]
+  }
+  for ( var i = 0; i < storage.length; i++) {
+    if (moreStorage[storage[i]]) {
+      moreStorage[storage[i]] = count++;
+    } else {
+      moreStorage[storage[i]] = count;
+    }
+  for (var key in moreStorage)
 };
+
+// quad for loops. probably not a great idea. 
+
+
+
+
+
+
+
+
+
+
+
