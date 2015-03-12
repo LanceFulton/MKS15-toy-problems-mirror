@@ -22,6 +22,22 @@
  * including non-strings.
 */
 
+
+//MVP achieved with extra credit!!
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+
+  var truthCount = 0;//----------------------Checks how many times our subset value is true within our array
+  for (var i = 0; i < this.length; i++){//---For loop iterates through our sub array
+    for(j = 0; j < array.length; j++){//-----Second for loop iterates through our main array
+      if (this[i] === array[j]) {//----------Conditional check to see if our current subarray index val equals our current main array index value
+        truthCount++;//----------------------If its true, we will add to our truth counter
+        break;//-----------------------------then break the current loop to immediately check the next subarray value
+      }
+    }
+  }
+  
+  if (truthCount === this.length){//---------Our function officially returns true if each value of our subset added to our truth counter
+    return true;
+  }
+  return false;//----------------------------Otherwise the function returns false 
 };
