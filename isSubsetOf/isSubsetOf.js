@@ -23,5 +23,21 @@
 */
 
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+  // loop through items in this
+  for (var item1 = 0; item1 < this.length; item1++) {
+    var inArray = false;
+    // see if it is in items of the comparison array
+    for (var item2 = 0; item2 < array.length; item2++){
+      if (this[item1] === array[item2]){
+        inArray = true;
+        break;
+      }
+    }
+    // if any item not found return false
+    if (inArray === false){
+      return false;
+    }
+  }
+  
+  return true;
 };
