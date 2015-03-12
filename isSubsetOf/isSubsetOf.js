@@ -23,5 +23,15 @@
 */
 
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+  var subset = this;
+  var checkAgainst = {};
+  var result = true;
+  for(var i=0; i<array.length; i++){
+    checkAgainst[array[i]] = array[i];
+  }
+  for(var i = 0; i<subset.length; i++){
+  	result = !!checkAgainst[subset[i]] && result;
+  }
+  return result;
 };
+
