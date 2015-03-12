@@ -29,16 +29,17 @@ Array.prototype.isSubsetOf = function(array){
   var possibleSuperset = {};
 
   for (var i = 0; i<this.length; i++) {
-    possibleSubset[this[i]] = true;
+    possibleSubset[JSON.stringify(this[i])] = true;
   }
-  
+
   for (var i = 0; i<array.length; i++) {
-    possibleSuperset[array[i]] = true;
+    possibleSuperset[JSON.stringify(array[i])] = true;
   }
 
   for (var key in possibleSubset) {
     if (!(key in possibleSuperset)) {
       isSubset = false;
+      break;
     }
   }
 
