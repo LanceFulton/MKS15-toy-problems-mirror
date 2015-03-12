@@ -24,26 +24,38 @@
 
 Array.prototype.isSubsetOf = function(array){
     var subsetArray = this;
-    var isSubset = false;
+    var subsetObj = {};
 
 
-    // Does an element (string) exist in ARRAY?
+    // Gather into object subsetObj...
     var subsetLen = subsetArray.length;
+    var subsetObj = {};
     for (var j = 0; j < subsetLen; j++) {
-        for (var i = 0; i < array.length; i++) {
-            if(array[i]===array[j]) {
-                isSubset = true;
-                break;
-            }
+        var value = subsetArray[j];
+        subsetObj[value] = value;
+    }
+    console.log("Subset obj: ", subsetObj);
+
+    // Check array against subObject
+    var foundCount = 0;
+    for (var i = 0; i < array.length; i++) {
+        console.log("TEST: " + array[i]); 
+        if(subsetObj[array[i]]) {
+            foundCount++;
         }
-    };
+    }
+    console.log("foundCount = " + foundCount + "  subsetLen = " + subsetLen);
+    if(foundCount===subsetLen) {
+        return true;
+    }
+
 
     console.log(array);
 
 
 
 
-    return isSubset;
+    return false;
 };
 
 var a = ['commit','push']
