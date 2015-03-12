@@ -23,5 +23,31 @@
 */
 
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+    var subsetArray = this;
+    var isSubset = false;
+
+
+    // Does an element (string) exist in ARRAY?
+    var subsetLen = subsetArray.length;
+    for (var j = 0; j < subsetLen; j++) {
+        for (var i = 0; i < array.length; i++) {
+            if(array[i]===array[j]) {
+                isSubset = true;
+                break;
+            }
+        }
+    };
+
+    console.log(array);
+
+
+
+
+    return isSubset;
 };
+
+var a = ['commit','push']
+console.log("ANSWER 1: " + a.isSubsetOf(['commit','rebase','push','blame']) ); // true
+
+var b = ['merge','reset','reset']
+console.log("ANSWER 2: " + b.isSubsetOf(['reset','merge','add','commit']) ); // true 
