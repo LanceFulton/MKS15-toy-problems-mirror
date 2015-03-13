@@ -23,6 +23,3 @@ var firstNonRepeatedCharacter = function(string) {
   }
   return string[0];
 };
-
-console.log(firstNonRepeatedCharacter('ABA'));
-console.log(firstNonRepeatedCharacter('AACBDB'));
