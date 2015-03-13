@@ -23,19 +23,21 @@
 var nthFibonacci = function (n) {
 
 	var startValue = [0,1];
+	var result;
   
 	var recurse = function(times, array){
-		console.log(array[array.length-2]);
-		console.log(array[array.length-1]);
 		array.push(array[array.length-2] + array[array.length-1]);
+		console.log("array: " + array);
 		if (times === 0){
-			return array[array.length-1];
+			result = array[array.length-1];
+			return;
 		}
 		recurse (times-1, array);
-		return array;
+		return;
 	}
 
 	recurse(n, startValue);
+	return result;
 };
 
 
