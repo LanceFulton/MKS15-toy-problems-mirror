@@ -21,7 +21,21 @@
  */
 
 var nthFibonacci = function (n) {
-  // TODO: implement me!
+
+	var startValue = [0,1];
+  
+	var recurse = function(times, array){
+		console.log(array[array.length-2]);
+		console.log(array[array.length-1]);
+		array.push(array[array.length-2] + array[array.length-1]);
+		if (times === 0){
+			return array[array.length-1];
+		}
+		recurse (times-1, array);
+		return array;
+	}
+
+	recurse(n, startValue);
 };
 
 
