@@ -26,17 +26,17 @@ var nthFibonacci = function (n) {
 	var result;
   
 	var recurse = function(times, array){
-		array.push(array[array.length-2] + array[array.length-1]);
-		console.log("array: " + array);
 		if (times === 0){
 			result = array[array.length-1];
 			return;
 		}
+		array.push(array[array.length-2] + array[array.length-1]);
+		console.log("array: " + array);
 		recurse (times-1, array);
 		return;
 	}
 
-	recurse(n, startValue);
+	recurse(n-1, startValue);
 	return result;
 };
 
