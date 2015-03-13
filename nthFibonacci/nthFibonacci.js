@@ -20,9 +20,14 @@
  *
  */
 
-var nthFibonacci = function (n) {
-  // TODO: implement me!
+var nthFibonacci = function(n) {
+  // define 0 and 1 base cases
+  if (n === 1)
+    return 1;
+  if (n === 0)
+    return 0;
+  
+  return nthFibonacci(n - 1) + nthFibonacci(n - 2)
 };
-
 
 
