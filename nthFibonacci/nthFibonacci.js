@@ -20,8 +20,13 @@
  *
  */
 
+// I started with an iterative solution before I read the instructions completely. I will read the instructions more carefully next time. 
 var nthFibonacci = function (n) {
-  // TODO: implement me!
+  var sequence = function (n) {
+    
+
+
+  }
 };
 
 
