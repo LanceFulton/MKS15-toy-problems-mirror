@@ -22,6 +22,27 @@
 
 var nthFibonacci = function (n) {
   // TODO: implement me!
+  var recurse = function(accumulator, nextNum){
+    //first two numbers are each 1
+    
+
+    if (nextNum === n){
+      return accumulator;
+    }
+    if (n === 2){
+      accumulator = 1;
+      return recurse(accumulator, nextNum + 1);
+    } else {
+      accumulator = accumulator + nextNum;
+    }
+    
+    if (accumulator === 1){
+      return recurse(accumulator, nextNum);
+    }
+    return recurse(accumulator, nextNum + 1);
+  }
+
+  return recurse(0, 1);
 };
 
 
