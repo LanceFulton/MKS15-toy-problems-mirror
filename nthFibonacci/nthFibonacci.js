@@ -28,4 +28,17 @@ var nthFibonacci = function (n) {
   }
 };
 
+var nthFibonacciIter = function (n) {
+  if (n<=1) {
+    return n;
+  }
+  var fib1 = 0;
+  var fib2 = 1;
+  for (var i = 1; i<n; i++){
+    var next = fib1 + fib2;
+    fib1 = fib2;
+    fib2 = next
+  }
+  return fib2;
+}
 
