@@ -21,8 +21,25 @@
  */
 
 var nthFibonacci = function (n) {
-  // TODO: implement me!
+  var fibonacci = [0, 1];
+  var subFib = function(n) {
+  	if (n < fibonacci.length) {
+  		return fibonacci[n];
+  	} else {
+  		var temp = subFib(n-2) + subFib(n-1);
+  		fibonacci[n] = temp;
+  		return temp;
+  	}
+  }
+  return subFib(n);
 };
 
+var nthFibonacciIterative = function (n) {
+	var fibonacci = [0, 1];
+	for (var i=2; i<=n; i++) {
+		fibonacci[i] = fibonacci[i-2]+fibonacci[i-1];
+	}
+	return fibonacci[n];
+}
 
 
