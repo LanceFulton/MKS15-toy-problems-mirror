@@ -26,3 +26,25 @@ var firstNonRepeatedCharacter = function(string) {
   	}
   }
 };
+
+
+var firstNonRepeatedCharacter = function(string) {
+  var mem = {}, c;
+  for ( var i = 0 ; i < string.length ; i++){
+    c = string[i];
+    if(!mem[c]) {
+      mem[c] = 1;
+    }
+    else {
+      mem[c]++;
+    }
+  }
+  for (i = 0 ; i < string.length ; i++){
+    c = string[i];
+    if(mem[c] === 1){
+      return c;
+    }
+  }
+  return false;
+
+}
