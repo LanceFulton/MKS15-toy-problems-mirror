@@ -22,6 +22,11 @@
 
 var nthFibonacci = function (n) {
   // TODO: implement me!
+  var fibNumbers = [0, 1];//------------------------------------Set beginning of fibonacci sequence.
+  for (var i = 2; i < n; i++){//--------------------------------Create a for loop that will continually add to our fibNumbers array
+    fibNumbers.push(fibNumbers[i - 2] + fibNumbers[i - 1]);//---We are adding the sum of previous two numbers of our fibArray to the end of the array.
+  }
+  return fibNumbers[n];//---------------------------------------Return the value of our nth index.
 };
 
 
