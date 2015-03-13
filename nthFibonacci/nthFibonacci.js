@@ -13,16 +13,29 @@
  * left over, implement an iterative solution.
  *
  * example usage:
- * nthFibonacci(2); // => 1
- * nthFibonacci(3); // => 2
+ * nthFibonacci(2); // => 1  (0 1)
+ * nthFibonacci(3); // => 2  (0 1 1 = 2)
  * nthFibonacci(4); // => 3
  * etc...
  *
  */
 
 var nthFibonacci = function (n) {
-  // TODO: implement me!
+    var retFib = 0;
+    var fib = 0;
+
+    var fibber = function (x) {
+        if (x <= n) {
+            fib += fibber(x+1);
+            console.log("fib = " + fib + " x = " + x);
+        }
+        return fib;
+    }
+
+    retFib += fibber(n);
+
+    return retFib;
 };
 
 
-
+console.log( "nthFibonacci = " + nthFibonacci(2) );
