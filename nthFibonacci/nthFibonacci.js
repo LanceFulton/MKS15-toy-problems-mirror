@@ -21,7 +21,18 @@
  */
 
 var nthFibonacci = function (n) {
-  // TODO: implement me!
+  var numberOfRecursions = 1;
+  var FibonacciNum = [0, 1];
+  var fibRecurse = function(FibonacciNum, numberOfRecursions) {
+    if(numberOfRecursions === n) {
+  debugger;
+      return FibonacciNum[numberOfRecursions] + FibonacciNum[numberOfRecursions-1]
+    }
+
+    FibonacciNum[numberOfRecursions+1] = FibonacciNum[numberOfRecursions] + FibonacciNum[numberOfRecursions-1];
+    fibRecurse(FibonacciNum, numberOfRecursions+1);
+  }
+  return fibRecurse(FibonacciNum, numberOfRecursions);
 };
 
 
