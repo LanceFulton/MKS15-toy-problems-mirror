@@ -22,7 +22,7 @@
  * including non-strings.
 */
 
-
+//array solution
 Array.prototype.isSubsetOf = function(array){  
    var tempArray = [];
     if (this > array){
@@ -45,3 +45,19 @@ Array.prototype.isSubsetOf = function(array){
     //if length doesn't match then its false
     return false;
 };
+
+//object solution
+Array.prototype.isSubsetOf = function(array){  
+    var obj = {};
+    for (var i =0; i<this.length; i++){
+       obj[this[i]]=i;
+    }
+    for (var key in obj){
+       var idx = array.indexOf(key);
+       if (idx === -1){ //if -1 (doesn't exist then return false)
+           return false;
+       }
+    }
+    return true;
+};
+
