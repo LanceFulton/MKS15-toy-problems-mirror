@@ -21,8 +21,13 @@
  */
 
 var nthFibonacci = function (n) {
-  // TODO: implement me!
+	//if its smaller than 3 we always return 1
+    if (n<3){
+        return 1;
+    } else {								
+        return nthFibonacci(n-1) + nthFibonacci(n-2);
+    }
 };
-
+nthFibonacci(8);// 21
 
 
