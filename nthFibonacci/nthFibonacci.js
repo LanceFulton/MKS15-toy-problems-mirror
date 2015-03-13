@@ -15,7 +15,7 @@
  * example usage:
  * nthFibonacci(2); // => 1  (0 1)
  * nthFibonacci(3); // => 2  (0 1 1 = 2)
- * nthFibonacci(4); // => 3
+ * nthFibonacci(4); // => 3   0 1 1 2
  * etc...
  *
  */
@@ -23,16 +23,19 @@
 var nthFibonacci = function (n) {
     var retFib = 0;
     var fib = 0;
+    var s = 0;
+    var arr = [];
 
     var fibber = function (x) {
         if (x <= n) {
-            fib += fibber(x+1);
-            console.log("fib = " + fib + " x = " + x);
+            fib += x;
+            fibber(x+1);
+            console.log("fib = " + fib + "; x = " + x);
         }
         return fib;
     }
 
-    retFib += fibber(n);
+    retFib += fibber(s);
 
     return retFib;
 };
