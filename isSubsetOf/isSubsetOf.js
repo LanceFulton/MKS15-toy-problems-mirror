@@ -23,10 +23,37 @@
 */
 
 Array.prototype.isSubsetOf = function(array){
+  // for( var i = 0; i < this.length; i++ ) {
+  //   if(array.indexOf(this[i]) < 0) {
+  //     return false;
+  //   }
+  // }
+  var counter = 0;
+
   for( var i = 0; i < this.length; i++ ) {
-    if(array.indexOf(this[i]) < 0) {
-      return false;
+
+    // check if this[i] is an array
+    if( Array.isArray(array[i]) ) {
+      for( var j = 0; j < array.length; j++ ) {
+        //look for arrays to compare to
+        if( Array.isArray(array[j]) && array[i].isSubsetOf(array[j]) ) {
+          counter++;
+          return;
+        }
+      }
     }
-  }
-  return true;
+
+    // check other types (strings, numbers & booleans)
+    else {
+      for( var j = 0; j < array.length; j++ ) {
+        if( array[j] === this[i] ) {
+          counter++;
+          break;
+        }
+      }
+    }
+  } 
+
+  debugger;
+  return counter === this.length;
 };
