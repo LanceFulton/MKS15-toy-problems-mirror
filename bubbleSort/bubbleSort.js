@@ -31,11 +31,26 @@
 */
 
 // Introduce i into the global scope so we can test function efficiency
-var i;
+var i=0;
 
 // Feel free to add helper functions if needed.
-
+// Time complexity is O(n^2) for all
 
 var bubbleSort = function(array) {
-  // Your code here.
+  var temp, isFinished;
+  for (var j=0; j<array.length-1; j++) {
+    isFinished = true;
+    for (var k=0; k<array.length-1-j; k++) {
+      if (array[k] > array[k+1]) {
+        temp = array[k];
+        array[k] = array[k+1];
+        array[k+1] = temp;
+        isFinished = false;
+      }
+      i++;
+    }
+    if (isFinished)
+      break;
+  }
+  return array;
 };
