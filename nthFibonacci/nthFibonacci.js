@@ -30,4 +30,24 @@ var nthFibonacci = function (n) {
 };
 
 
+var nFib = function(n) {//--------------------------------------This is 2^n (exponential) time complexity
+  return n < 2 ? 
+    n : nFib(n - 1)+ nFib(n - 2);
+};
 
+//In order to optimize our solution we can memoize it!
+var nFib = function(n) {
+  var mem = [];
+  for (var i = 0; i <= n; i++) {
+    mem[i] = i < 2 ? i : mem[i-1] + mem[i-2];
+  }
+  return mem[n];//----------------------------------------------This has linear time complexity
+}
+
+var nFib = function(n){//---------------------------------------this vastly improves space complexity at the cost of time complexity
+  var mem = [0, 1];
+  for(; n > 1; n--){//------------------------------------------We don't need to declare any variables in the left section of the for loop
+    mem.push(mem.shift() + mem [0]);
+  }
+  return mem[n];
+}
