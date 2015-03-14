@@ -4,7 +4,7 @@
  *
  * For example, the first five Fibonacci numbers are:
  *
- *   0 1 1 2 3
+ *   0 1 1 2 3 5
  *
  * If n were 4, your function should return 3; for 5, it should return 5.
  *
@@ -17,7 +17,7 @@
  * nthFibonacci(3); // => 2
  * nthFibonacci(4); // => 3
  * etc...
- *
+ * 
  */
 
  // really big work in progress! 
@@ -30,25 +30,18 @@ var nthFibonacci = function (n) {
     return 0;
   }
 
-   if (n === 1){
-    return 1;
-  }
-
-  var first = 0;
-  var second = 1;
-  result = 1;
-  counter = 2;
+  counter = 1;
 
   var addUpDigits = function(n, result){
-    if (counter === n) {
-      return newResult;
+    if (counter === n){
+      return result[n];
     }
 
-    newResult += result;
+    result.push(result[counter] + result[counter-1])
     counter++;
-    addUpDigits(n, newResult);
+    return addUpDigits(n, result);
   }
 
-  return addUpDigits(n, result);
+  return addUpDigits(n, [0, 1]);
 };
 
