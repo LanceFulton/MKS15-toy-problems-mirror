@@ -21,24 +21,16 @@
  */
 
 var nthFibonacci = function (n) {
-    var retFib = 0;
-    var fib = 0;
-    var s = 0;
-    var arr = [];
-
-    var fibber = function (x) {
-        if (x <= n) {
-            fib += x;
-            fibber(x+1);
-            console.log("fib = " + fib + "; x = " + x);
-        }
-        return fib;
+    if( n<2 ) {
+        return 1;
+    } else {
+        return nthFibonacci(n-2) + nthFibonacci(n-1);
     }
-
-    retFib += fibber(s);
-
-    return retFib;
 };
 
-
-console.log( "nthFibonacci = " + nthFibonacci(2) );
+console.log( "2nd Fibonacci = " + nthFibonacci(2) );
+console.log( "3rd Fibonacci = " + nthFibonacci(3) );
+console.log( "4th Fibonacci = " + nthFibonacci(4) );
+console.log( "5th Fibonacci = " + nthFibonacci(5) );
+console.log( "6th Fibonacci = " + nthFibonacci(6) );
+console.log( "7th Fibonacci = " + nthFibonacci(7) );
