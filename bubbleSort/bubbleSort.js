@@ -38,4 +38,52 @@ var i;
 
 var bubbleSort = function(array) {
   // Your code here.
+  var swapCount = 0;  //Counter that will increment whenever a value is swapped
+  var stopPoint = array.length;  //variable that will decrement each iteration
+
+  //recurisve function that accepts two values as arguments
+  var sortOnce = function(index){
+  //base case when the next value is outside the bounds of the array
+    if (index === stopPoint){
+      return;
+    }
+  //Set the two numbers to be compared based on the index argument
+    var num1 = array[index];
+    var num2 = array[index + 1];
+
+  //compare those two values and swap them if the first is larger than the second
+    if (num2 < num1){
+      array[index] = num2;
+      array[index + 1] = num1;
+      swapCount++;
+    } 
+
+  //recurse with the next index
+    sortOnce(index + 1);
+  }
+
+  //Iterate through array, sorting i times
+  for (i = 0; i < array.length; i++){
+    swapCount = 0;  //reset the number of swaps on each iteration
+    sortOnce(i);
+    stopPoint--;  //Each time through, we don't need to consider the last element, it will already be the largest
+    if (swapCount === 0){  //if there were no swaps during an iteration, the list is sorted
+      break;
+    }
+  }
+  return array;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
