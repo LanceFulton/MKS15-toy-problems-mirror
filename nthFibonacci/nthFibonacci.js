@@ -20,14 +20,28 @@
  *
  */
 
-// I started with an iterative solution before I read the instructions completely. I will read the instructions more carefully next time. 
+// Iterative Solution
 var nthFibonacci = function (n) {
-  var sequence = function (n) {
-    
+  var a = 0;
+  var b = 1;
+  var result;
 
-
+  for ( i = 1; i < n; i++) {
+    result = a+b;
+    a = b;
+    b = result;
   }
+  return result;
 };
 
+
+var recursiveNthFibonacci = function(n) {
+  if (n >1) {
+    return recursiveNthFibonacci(n-1) + recursiveNthFibonacci(n-2)
+  }
+  if (n <= 1) {
+    return n;
+  }
+};
 
 
