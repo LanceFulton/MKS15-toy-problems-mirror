@@ -36,6 +36,27 @@ var i;
 // Feel free to add helper functions if needed.
 
 
+
 var bubbleSort = function(array) {
   // Your code here.
+  var sorted = [];//-------------------------------Start with a new sorted array
+
+  for (var j = 0; j < array.length; j++){
+    if (array[j] <= array[j+1]){
+      sorted.unshift(array[j]);
+    } else {
+      sorted.push(array[j]);
+    }
+  }
+  return sorted;
 };
+
+
+
+
+
+
+
+
+
+
