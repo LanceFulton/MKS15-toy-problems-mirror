@@ -20,28 +20,15 @@
  *
  */
 
-/*
 
-//Oops didn't read we were supposed to do recursive first.  Sorrysorry.
-//recursive
-var nthFibonacci = function (n) {
-	var prev = 0;
-
-  var recurse = function(value){
-    n--;
-    if(n === 0){
-    	return value;
-    }
-    prev = value;
-    return value + recurse(value + prev);
-  }
-  return recurse(1);
+var recursiveFib = function (n) {
+  if(n === 0){return 0;}
+  if(n === 1){return 1;}
+  return recursiveFib(n-1) + recursiveFib(n-2);
 };
 
-*/
 
-//iterative
-var nthFibonacci = function (n) {
+var iterativeFib = function (n) {
 	var prev  = 0;
 	var temp = 0;
 	var result = 0;
