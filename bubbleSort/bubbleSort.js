@@ -29,13 +29,25 @@
  * bubbleSort([2, 1, 3]); // yields [1, 2, 3]
  *
 */
-
 // Introduce i into the global scope so we can test function efficiency
 var i;
+var swapped = false;
 
-// Feel free to add helper functions if needed.
-
-
+//QUERY:  time complexity is n^2
+//EXTRA CREDIT:  time complexity is somewhere between linear and n^2.
 var bubbleSort = function(array) {
-  // Your code here.
+  for(var i = 0; i<array.length; i++){
+    for(j = 0; j<array.length; j++){
+      if(array[j] > array[j+1]){
+        var temp = array[j];
+        array[j] = array[j+1];
+        array[j+1] = temp;
+        var swapped = true;
+      }
+    }
+    if(swapped === false){
+      break;
+    }
+  }
+  return array;
 };
