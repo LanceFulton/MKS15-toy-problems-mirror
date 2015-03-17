@@ -11,12 +11,12 @@
  */
 
 
-var commonCharacters = function(string1, string2) {
+var commonCharacters = function(string1, string2, string3) {
   var output = "";
 
   for(var i=0; i<string1.length; i++) {
     var ch = string1[i];
-    if(string2.indexOf(ch)>=0) { 
+    if(string2.indexOf(ch)>=0 && string3.indexOf(ch)>=0) { 
       output += ch;
     }
   }
@@ -24,4 +24,4 @@ var commonCharacters = function(string1, string2) {
   return output;
 };
 
-console.log( commonCharacters('acexivou', 'aegihobu') );
+console.log( commonCharacters('acexivou', 'aegihobu', 'abcde') );
