@@ -31,11 +31,27 @@
 */
 
 // Introduce i into the global scope so we can test function efficiency
-var i;
+//var i;
 
 // Feel free to add helper functions if needed.
 
 
 var bubbleSort = function(array) {
-  // Your code here.
+  var holdVal = 0;
+  // for (var i = 0; i < array.length; i++) {
+  var sortArray = function(index) {
+    if (index === array.length) {
+      return;
+    }
+    for (var i = 0; i < array.length; i++) {
+      if (array[index] < array[i]) {
+        holdVal = array[i];
+        array[i] = array[index];
+        array[index] = holdVal;
+      }
+    }
+    sortArray(index+1);
+  }
+  sortArray(0);
+  return array;
 };
