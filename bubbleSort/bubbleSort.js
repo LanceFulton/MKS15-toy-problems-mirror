@@ -50,6 +50,8 @@ var bubbleSort = function(array) {
 };
 
 
+//Problem is that regardless of whether the array is sorted it recurses i times. While loop with a seperate swap function.
+
 
 
 
