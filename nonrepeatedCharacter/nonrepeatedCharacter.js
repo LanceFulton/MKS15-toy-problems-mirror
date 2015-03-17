@@ -27,3 +27,5 @@ var firstNonRepeatedCharacter = function(string) {
   }
   return "all letters repeated";
 };
+
+firstNonRepeatedCharacter("aabbccddkkssjjrrllssmmeeuussywii");
