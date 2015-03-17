@@ -12,5 +12,28 @@
 
 
 var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
+  var args = arguments;
+  var argIndex = 2;
+
+  var compare = function(str1, str2) {
+    var common = '';
+
+    for( var i = 0; i < str1.length; i++ ) {
+      for( var j = 0; j < str2.length; j++ ) {
+        if( str1[i] !== ' ' && common.indexOf(str1[i]) === -1 && str1[i] === str2[j] ) {
+          common+= str1[i];
+          continue;
+        }
+      }
+    }
+
+    if( argIndex < args.length ) {
+      argIndex++;
+      return compare(common, args[argIndex - 1]);
+    } else {
+      return common;
+    }
+  };
+
+  return compare(args[0], args[1]);
 };
