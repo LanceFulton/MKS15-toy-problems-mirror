@@ -11,6 +11,37 @@
  */
 
 
+var addCharactersToCountFromString = function(count, string) {
+  for (var i = 0; i<string.length; i++) {
+    count[string[i]] = count[string[i]] || 0;
+    count[string[i]]++;
+  }
+};
+
 var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
+
+  charCount = {};
+  n = arguments.length
+
+  for (var i = 0; i<n; i++) {
+    addCharactersToCountFromString(charCount, arguments[i]);
+    /*for (var j = 0; j<arguments[i].length; j++){
+      charCount[arguments[i][j]] = charCount[arguments[i][j]] || 0;
+      charCount[arguments[i][j]]++;
+    }*/
+  }
+
+  result = '';
+
+  for (var key in charCount) {
+    if (key === ' ') {
+      continue;
+    }    
+
+    if (charCount[key] >= n) {
+      result += key;
+    }
+  }
+
+  return result;
 };
