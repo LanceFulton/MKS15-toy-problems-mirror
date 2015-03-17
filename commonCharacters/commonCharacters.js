@@ -16,7 +16,7 @@ var commonCharacters = function(string1, string2, string3) {
 
   for(var i=0; i<string1.length; i++) {
     var ch = string1[i];
-    if(string2.indexOf(ch)>=0 && string3.indexOf(ch)>=0) { 
+    if(ch!=' ' && output.indexOf(ch)==-1 && string2.indexOf(ch)>=0 && string3.indexOf(ch)>=0) { 
       output += ch;
     }
   }
@@ -25,3 +25,4 @@ var commonCharacters = function(string1, string2, string3) {
 };
 
 console.log( commonCharacters('acexivou', 'aegihobu', 'abcde') );
+console.log( commonCharacters('ac exivou', 'aeg ihobu', 'ab cde') );
