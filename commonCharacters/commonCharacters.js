@@ -12,5 +12,25 @@
 
 
 var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
+  var hash = {};
+  var results = [];
+  for (var i=1; i<arguments.length; i++) {
+    for (var j=0; j<arguments[i].length; j++) {
+      if (!hash[arguments[i][j]]) {
+        if (i===1) {
+          hash[arguments[i][j]] = [1];
+        }
+      }
+      else if (hash[arguments[i][j]][0]===i-1) {
+        hash[arguments[i][j]][0]=i;
+      }
+    }
+  }
+  for (var i=0; i<string1.length; i++) {
+    if (string1[i] !== ' ' && Array.isArray(hash[string1[i]]) && hash[string1[i]][0] === arguments.length-1) {
+      results.push(string1[i]);
+      hash[string1[i][0]] = undefined;
+    }
+  }
+  return results.join('');
 };
