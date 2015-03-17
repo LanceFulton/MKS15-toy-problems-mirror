@@ -12,5 +12,28 @@
 
 
 var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
+  var result ="";
+  var check = function(stringA, stringB){
+    var temp="";
+    for (var i = 0; i<stringA.length; i++){
+      for(var j = 0; j<stringB.length; j++){
+        if(stringA[i] === stringB[j]){
+          temp +=stringA[i];
+          //remove letter from sting if checked
+          stringB = stringB.slice(j,stringB.length);       
+        }
+      }
+    }
+    result=temp;
+  };
+  //using arguments to check any strings passed inside. 
+  for (var i = 0; i<arguments.length; i++){
+    if(result.length === 0){
+      check(arguments[i],arguments[i+1]); 
+    } else {
+      check(result,arguments[i]);
+    }        
+  }   
+  return result;
 };
+//commonCharacters('acexivou', 'aegihobu', 'aei',"ai"); -> 'ai'
