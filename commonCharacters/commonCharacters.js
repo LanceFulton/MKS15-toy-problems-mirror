@@ -10,38 +10,44 @@
  * Extra credit: Extend your function to handle more than two input strings.
  */
 
-
+// Increment the count for each character found in string
 var addCharactersToCountFromString = function(count, string) {
+  var subCount = {}
   for (var i = 0; i<string.length; i++) {
-    count[string[i]] = count[string[i]] || 0;
-    count[string[i]]++;
+    subCount[string[i]] = true;
+  }
+  for (var key in subCount){
+    if (subCount[key]){
+      count[key] = count[key] || 0;
+      count[key]++;  
+    }
   }
 };
+
+// Create a string of all chars that appear in 
+// count at least n times
+var stringOfCommonCharsFromCount = function(count, n) {
+  string = '';
+  for (var key in count) {
+    if (key === ' ') {
+      continue;
+    }    
+    if (count[key] >= n) {
+      string += key;
+    }
+  }
+  return string;
+}
 
 var commonCharacters = function(string1, string2) {
 
   charCount = {};
   n = arguments.length
 
+  // Add characters in each string to charCount
   for (var i = 0; i<n; i++) {
     addCharactersToCountFromString(charCount, arguments[i]);
-    /*for (var j = 0; j<arguments[i].length; j++){
-      charCount[arguments[i][j]] = charCount[arguments[i][j]] || 0;
-      charCount[arguments[i][j]]++;
-    }*/
   }
 
-  result = '';
-
-  for (var key in charCount) {
-    if (key === ' ') {
-      continue;
-    }    
-
-    if (charCount[key] >= n) {
-      result += key;
-    }
-  }
-
-  return result;
+  return stringOfCommonCharsFromCount(charCount, n);
 };
