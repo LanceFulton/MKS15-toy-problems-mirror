@@ -52,6 +52,51 @@ var bubbleSort = function(array) {
 };
 
 
+//ANSWER*******************//
+//What are we trying to do? SORT
+//What should we ask before we begin?
+  //What are our inputs?
+  //What are the edge cases?
+  //What is an acceptable input?
+
+var bubbleSort = function(array){
+  var len = array.length
+  var i = 0;
+
+  for(var i = 0; i < len - 1; i++){
+    var swaps = false;
+    for (var j = 0; j < len - 1; j++){
+      //Do swap
+      if (array[j] > array[j + 1]){
+        swaps = true;
+        swap(j, j + 1, array);
+      }
+    }
+    if (!swaps) {
+      break;
+    }
+  };
+
+  return array;
+}
+
+//O(n^2) time complexity
+//There are lots of better sorting methods that are faster
+
+var swap = function (i, j, array) {
+  var temp = array [i];
+  array[i] = array[j];
+  array[j] = temp;
+  return array;
+}
+
+//bitwise exclusive or
+//1^1 = 0
+// 1^0=1
+// 0^1=1
+// 0^0=0
+//Note that the but on the left gets flipped ifand only if 
+//the bit on the right is a 1. so i^j
 
 
 
