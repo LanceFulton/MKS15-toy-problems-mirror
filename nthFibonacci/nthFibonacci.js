@@ -20,10 +20,7 @@
  * 
  */
 
- // really big work in progress! 
-
-// realizing at submission that I could have continually built an array and that I reduced on each
-// recursive call... using the length of the array as my base case for when to pull out? 
+ // re-commit
 
 var nthFibonacci = function (n) {
   if (n === 0){
@@ -43,5 +40,5 @@ var nthFibonacci = function (n) {
   }
 
   return addUpDigits(n, [0, 1]);
-};
+xn};
 
