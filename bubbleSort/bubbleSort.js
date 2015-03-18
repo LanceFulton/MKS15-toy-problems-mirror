@@ -13,8 +13,7 @@
  * Don't use JavaScript's built-in sorting function (Array.prototype.sort).
  *
  * QUERY: What's the time complexity of your algorithm? If you don't already
- * know, try to intuit this without consulting the Googles.  
- * ==> n^2, since as many for loops as the indecies any element is form its "sorted" location
+ * know, try to intuit this without consulting the Googles.
  *
  * Extra credit: Optimization time! During any given pass, if no elements are
  * swapped we can assume the list is sorted and can exit the function early.
@@ -36,60 +35,7 @@ var i;
 
 // Feel free to add helper functions if needed.
 
+
 var bubbleSort = function(array) {
-  var finalArray = [];
-  var anySwaps= true;
-
-  
-  var doSwaps = function(array){
-    for (var j =0; j<array.length -1; j++){
-  	  	  if(array[j] > array[j+1]){			// >= creates infinite loops for equal elements of array
-	  	    	swapPositions(array, j, j+1);
-			    var anySwaps = true;
-			    print(array);
-		    }
-		  else{								//Case where the array has been checked and no swaps were required
-		    	var anySwaps= false;		// ==> this array is sorted!
-		    }
-    }
-   
-
-    };
-  
- while(anySwaps===true){
-	  doSwaps(array);
-	  return array;
-     };
-
-//anySwaps ? doSwaps(array) : finalArray = array;
-return finalArray;
-
+  // Your code here.
 };
-
-var swapPositions = function(array, position1, position2){
-	var tempValue = array[position1];
-	array[position1] = array[position2];
-	array[position2] =  tempValue;
-	return array;
-}
-
-
-
-
-var testArr1 = [2, 1, 3];
-var testArr2 = [1, 2, 3, 0, -1, 2];
-var testArr3= ["a", "b", "c", "a", 0, 1, 1, 0];
-
-//print(testArr3);
-//print(swapPositions(testArr1, 0, 1));
-
-//bubbleSort(testArr3);
-
-
-
-
-
-
-
-
-
