@@ -23,5 +23,41 @@
 */
 
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+  var storage = {};
+  var subsetTestArray = this;
+  var foundSubset = false;
+  print(subsetTestArray);
+  print(array);
+
+  for (var i = 0; i<array.length; i++){   //Using an object could be handy, but not necessary
+  	storage[i] = array[i];
+  };
+
+  //print(storage);
+
+
+  for (var i = 0; i< subsetTestArray.length; i++){
+  	var tempString = subsetTestArray[i];
+  	print(tempString);
+  	if ( array.indexOf(tempString) >= 0 ){		
+  		//print("key found");
+  		foundSubset = true;
+  	}
+  	else{
+  		//print("This key is not found.")
+  		return false;
+  	}
+  	
+  }
+//print(foundSubset);
+return foundSubset;
+
 };
+
+
+//test cases
+//var a = ['a', 'b', 'c', 'd', 'e'];
+//var b = ['a', 'e'];
+//var c = ['a', 'z'];
+
+//b.isSubsetOf(a);
