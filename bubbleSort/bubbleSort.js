@@ -35,6 +35,7 @@ var i;
 
 // Feel free to add helper functions if needed.
 
+<<<<<<< HEAD
 var swap(i, j, array) {
   var temp = array[i];
   array[i] = array[j];
@@ -60,4 +61,9 @@ var bubbleSort = function(array) {
     }
   }
 
+=======
+
+var bubbleSort = function(array) {
+  // Your code here.
+>>>>>>> 258de024c9e6e10e5592a94fcc965aa09c103403
 };
