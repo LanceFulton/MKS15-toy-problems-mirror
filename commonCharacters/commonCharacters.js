@@ -12,5 +12,31 @@
 
 
 var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
+
+	var resultString = "";
+
+	// remove duplicates from each array and store results as objects
+	var removeDuplicates = function(string){
+		var result = {};
+		for (var i = 0 ; i < string.length ; i++){
+			if (string.charAt(i) !== " " && !result[string.charAt(i)]){
+				result[string.charAt(i)] = 1;
+			}
+		}
+		return result;
+	};
+
+	obj1 = removeDuplicates(string1);
+	obj2 = removeDuplicates(string2);
+
+	// loop through second object and compare to first object
+	for (var key in obj2){
+		// if character exists in first object, add to string
+		if (obj1[key]){
+			resultString = resultString + key;
+		}
+	}
+
+	return resultString;
+
 };
