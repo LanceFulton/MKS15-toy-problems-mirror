@@ -36,6 +36,22 @@ var Tree = function(value){
 };
 
 Tree.prototype.DFSelect = function(filter) {
+  var results = [];
+
+  var nodeFilter = function(filter, nodes, depth) {
+    for (var i = 0; i<nodes.length; i++) {
+      if (filter(nodes[i].value, depth)) {
+        results.push(nodes[i].value)
+      }
+      if (nodes[i].children) {
+        nodeFilter(filter, nodes[i].children, depth + 1)
+      }
+    }
+  }
+
+  nodeFilter(filter, [this], 0);
+
+  return results;
 };
 
 
@@ -49,7 +65,7 @@ Tree.prototype.DFSelect = function(filter) {
   * (wrap values in Tree nodes if they're not already)
   */
 Tree.prototype.addChild = function(child){
-  if (!child || !(child instanceof Tree)){
+  if (!child || !( instanceof Tree)){
     child = new Tree(child);
   }
 
