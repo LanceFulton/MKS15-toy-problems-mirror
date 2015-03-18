@@ -36,6 +36,27 @@ var Tree = function(value){
 };
 
 Tree.prototype.DFSelect = function(filter) {
+  var result=[];
+  function depthFirstTraversal(filter, node){
+    if (!node){
+      return;
+    }
+    if (filter(node.value)){
+      result.push(node.value);
+    }
+    
+    if (node.children){
+      for (var i=0;i<node.children.length; i++){
+        depthFirstTraversal(filter, node.children[i]);
+      }
+    }
+    else {
+      return; 
+    }
+  }
+
+  depthFirstTraversal(filter, this);
+  return result;
 };
 
 
@@ -93,3 +114,17 @@ Tree.prototype.removeChild = function(child){
     throw new Error("That node is not an immediate child of this tree");
   }
 };
+
+var root1 = new Tree(1);
+var branch2 = root1.addChild(2);
+var branch3 = root1.addChild(3);
+var leaf4 = branch2.addChild(4);
+var leaf5 = branch2.addChild(5);
+var leaf6 = branch3.addChild(6);
+var leaf7 = branch3.addChild(7);
+
+//var test=root1.DFSelect(function(value, depth){return true;});
+var test3=root1.DFSelect(function (value, depth) {
+   return depth===1;
+});
+console.log(test3);
