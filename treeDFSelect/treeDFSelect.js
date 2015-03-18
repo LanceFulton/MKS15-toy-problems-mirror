@@ -36,9 +36,24 @@ var Tree = function(value){
 };
 
 Tree.prototype.DFSelect = function(filter) {
+  var results = [];
+
+  var checkChildren = function(tree, depth) {
+    var result = filter(tree.value, depth);
+    if( result ) {
+      results.push(tree.value);
+    }
+
+    if( tree.children.length ) {
+      for( var i = 0; i < tree.children.length; i++ ) {
+        checkChildren(tree.children[i], depth + 1);
+      }
+    }
+  };
+
+  checkChildren(this, 0);
+  return results;
 };
-
-
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
