@@ -38,11 +38,14 @@ var Tree = function(value){
 Tree.prototype.DFSelect = function(filter) {
   //recurse through all children
   var result = [];
+  var depthCount = 0;
 
   var recurse = function(element){
-    if (filter(element.value)){
+    if (filter(element.value, depthCount)){
       result.push(element.value);
     }
+
+    depthCount++;  //Need to increment in a different place or different manner
 
     for(var i = 0; i < element.children.length; i++){
       recurse(element.children[i]);
