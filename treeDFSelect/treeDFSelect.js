@@ -36,6 +36,17 @@ var Tree = function(value){
 };
 
 Tree.prototype.DFSelect = function(filter) {
+  //apply filter function to first node
+  if(!node.isDescendant(node)){
+    filter(node)
+  }
+
+  //apply filter function to all of the nodes children recursivley 
+  _.each(node.children, function(children){
+    this.DFSelect(children, filter)
+  })
+  //idk ran out of time - not sure how to impliment this.
+  //also would need to add the underscore each
 };
 
 
