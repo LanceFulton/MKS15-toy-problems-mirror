@@ -73,7 +73,7 @@ Tree.prototype.DFSelect = function(filter) {
   * (wrap values in Tree nodes if they're not already)
   */
 Tree.prototype.addChild = function(child){
-  if (!child || !( instanceof Tree)){
+  if (!child || !(child instanceof Tree)){
     child = new Tree(child);
   }
 
