@@ -36,6 +36,29 @@ var Tree = function(value){
 };
 
 Tree.prototype.DFSelect = function(filter) {
+  //search the base of the tree, then the children.
+
+  //get a collection of all the values in the tree?
+
+  //filer function should take value and depth as arguments?
+
+  //I am not sure how to associate the value with the depth of the tree.
+
+  // We have the tree which would be depth = 0, then the children of that tree 
+  //which would be depth = 1, then a child of a child depth=2
+
+  //for each iteration through the tree depth increases by one Tree.value has a depth of 0
+  var depth = 0;
+  var results = []; //not sure I need this.
+
+  for (var i = 0; i < this.children.length; i++) {
+    results.push(this.children[i]); // does not account for childred of children. 
+  }
+    depth++;
+//either double for loops or recursion to travel down the tree. Probably recursion. 
+
+//I will keep working on this. 
+
 };
 
 

@@ -57,4 +57,6 @@ var commonCharacters = function(string1, string2) {
   return results;
 };
 
+//needs to return a string. results should be a string that the characters are added to.
+
 //As I push this I am realizing a better way to do this with less objects and loops etc. I will keep working on it. 
