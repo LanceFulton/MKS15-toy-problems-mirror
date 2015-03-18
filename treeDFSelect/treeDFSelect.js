@@ -36,9 +36,22 @@ var Tree = function(value){
 };
 
 Tree.prototype.DFSelect = function(filter) {
+  var results = [];
+  var depth = 0;
+
+  var recurse = function(tree){
+    depth++;
+    if(filter(tree.value, depth)){
+      results.push(tree.value);
+    }
+    for(var i=0; i < tree.children.length; i++){
+      recurse(tree.children[i]);
+    }
+  }
+  
+  recurse(this);
+  return results;
 };
-
-
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
