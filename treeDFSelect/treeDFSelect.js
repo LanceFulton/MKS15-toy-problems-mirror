@@ -36,6 +36,24 @@ var Tree = function(value){
 };
 
 Tree.prototype.DFSelect = function(filter) {
+  //How will I attack this?
+  //1. I want to check if current node has children.
+  //2. I then want to check to see if the first child has children.
+  //3. If the current child has no children, then we want to take that child from the tree. 
+  //4. Then I want to remove the child from the tree and repeat the function. 
+
+  var results = [];
+  function searchRecurse(node){ //--------------------Creating a recursive function to search through each level of children to reach the lowest point
+    if (node.children){//-----------------------------We want to see if the current node has any children
+      for (var i = 0; i < children.length; i++){//----If it has children, we will iterate through each one
+        searchRecurse(children[i]);//-----------------We will then recurse through the children to go deeper into the tree
+      }  
+    } else {
+      //Here we have reached the lowest point, so the goal would be to remove the node and add it to our results array.
+      //After that our current recursive loop would end and we would move back to the next node.
+    }
+  }
+
 };
 
 
