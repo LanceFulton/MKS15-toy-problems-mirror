@@ -35,7 +35,34 @@ var Tree = function(value){
   this.children = [];
 };
 
-Tree.prototype.DFSelect = function(filter) {
+Tree.prototype.DFSelect = function (filter) {
+  var temp   = [];
+  var result = [];
+
+  //get tree value and depth
+  var each  = function (tree, depth) {
+    //store it in temporary array value and depth
+    temp.push( [ tree.value, depth ]);
+    //recurse and increase depth everytime by 1
+    tree.children.forEach(function (child) {
+      each( child, depth +1);  
+    });
+  };
+    
+//start with depth of 0
+  each(this, 0);
+
+//for every temp array, we want to set value and depth
+  temp.forEach(function (array) {
+    //set value and depth
+    var value = array[0], depth = array[1];
+    //pushing value into result
+    if ( filter.call(null,value, depth) ) {
+     return result.push( value );
+    }
+  });
+
+  return result;
 };
 
 
