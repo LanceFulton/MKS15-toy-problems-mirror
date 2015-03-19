@@ -9,5 +9,37 @@
 
 
 var largestProductOfThree = function(array) {
-  // TODO: everything
+  // Find the 3 largest numbers
+  var choices = 3;
+  var top3Array = [];
+
+  // Find and copy the 1 largest value.
+  var proc = function(largest) {
+    var indexToCopy = -1;
+    for(var i=1; i<array.length; i++ ) {
+      if(largest<array[i]) {
+        largest = array[i];
+        indexToCopy = i;
+      }
+    };
+    if(indexToCopy>=0) { 
+      console.log("indexToCopy = " + indexToCopy);
+      top3Array.push( array[indexToCopy] );
+      delete array[indexToCopy];
+    }
+  }
+  
+  for(var n=0; n<3; n++){
+    proc( top3Array[n] || -1 );
+  }
+
+  
+
+  // Calc the product
+  console.log(top3Array[0]+ " " +top3Array[1] + " " + top3Array[2])
+  return top3Array[0] * top3Array[1] * top3Array[2];
+
 };
+
+console.log( largestProductOfThree([2, 1, 3, 7]) );
+console.log( largestProductOfThree([2, 1, 3, 10, 7, 11]) );
