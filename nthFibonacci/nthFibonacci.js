@@ -37,7 +37,7 @@ var nthFibonacciIter = function (n) {
   for (var i = 1; i<n; i++){
     var next = fib1 + fib2;
     fib1 = fib2;
-    fib2 = next
+    fib2 = next;
   }
   return fib2;
 }
