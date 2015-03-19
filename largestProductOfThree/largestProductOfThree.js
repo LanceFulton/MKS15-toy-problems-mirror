@@ -7,7 +7,11 @@
  * Extra credit: Make your function handle negative numbers.
  */
 
-
+//for each index of array I will multiply every 'other two items' item of the array with every combination.
+//it will also.
+//try sorting and getting the product of the last three numbers.
 var largestProductOfThree = function(array) {
-  // TODO: everything
+  var sortedArray = array.sort();
+  var index = sortedArray.length - 1;
+  return sortedArray[index] * sortedArray[index -1] * sortedArray[index -2];
 };

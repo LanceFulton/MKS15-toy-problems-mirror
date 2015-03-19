@@ -12,7 +12,8 @@ var firstNonRepeatedCharacter = function(string) {
     //   return firstNonRepeatedCharacter;
     // }
     for(var i = 0; i < string.length; i++) {
-      if (string.charAt(i) !== string.charAt(-1) && string.charAt(i) !== string.charAt(i+1) ) {
+      if ()
+      if (string.charAt(i) !== string.charAt(i-1) && string.charAt(i) !== string.charAt(i+1) ) {
         firstNonRepeatedCharacter = string.charAt(i);
         break;
       }
