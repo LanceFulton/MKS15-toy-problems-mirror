@@ -9,5 +9,23 @@
 
 
 var largestProductOfThree = function(array) {
-  // TODO: everything
+  array = array.sort();
+  var largestThree = array.slice(array.length-3, array.length);
+  console.log(largestThree);
+  var result = largestThree[0] * largestThree[1] * largestThree[2];
+  return result;
 };
+
+//or
+
+var largestProductOfThree = function(array) {
+  var result = 1;
+  array = array.sort();
+  var largestThree = array.slice(array.length-3, array.length);
+  for (var i = 0; i < largestThree.length; i++) {
+    result *= largestThree[i];
+  }
+  return result;
+};
+
+//Not sure which way is better. I kind of like the first one. It seems like the second one would be more expensive.
