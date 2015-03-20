@@ -12,7 +12,6 @@
 
 
 var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
   string1 = string1.replace(/ /g, ''); // removes spaces
   var obj = {};
   var results = '';
