@@ -12,4 +12,39 @@
   *
   */
 var deepEquals = function(apple, orange){
+  // check null types of objects
+  if (apple === null && orange === null) {
+    return true;
+  } else if (apple === null || orange === null) {
+    return false;
+  // compare if primitive types
+  } else if (!(typeof apple === 'object' || typeof orange === 'object')) {
+    if (apple === orange)
+      return true;
+    else
+      return false;
+  } else {
+    // do deep comparison of object properties
+    var orangeProps = [];
+    // check prop1 objects
+    for (var prop1 in apple){
+      var found = false;
+      for (var prop2 in orange){
+        if (deepEquals(apple[prop1], orange[prop2])) {
+          found = true;
+          orangeProps.push(prop2);
+          break;
+        }
+      }
+      // if any property
+      if (found === false)
+        return false;
+    }
+    // check that all props in orange were used
+    for (var prop2 in orange){
+      if (orangeProps.indexOf(prop2) === -1)
+        return false;
+    }
+    return true;
+  }
 };
