@@ -9,6 +9,7 @@
 
 
 var largestProductOfThree = function(array) {
+<<<<<<< HEAD
   //hold three largest numbers
   var results = [];
 
@@ -27,4 +28,7 @@ var largestProductOfThree = function(array) {
   return results.reduce(function(a,b){return a*b;});
 
   //not working 
+=======
+  // TODO: everything
+>>>>>>> 33f7642681e7ad989bb4969dc7a37f67f8e8c2f4
 };
