@@ -12,33 +12,50 @@
   *
   */
 var deepEquals = function(apple, orange) {
+  
   var result = true;
 
   var recursive = function(obj1, obj2) {
+    
+    for (var key in obj2) {
+      if (!obj1[key]) {
+        return result = false;
+      }
+    }
+    
     for (var key in obj1) {
+      if (!obj2[key]) {
+        return result = false;
+      }
       if (typeof obj1[key] === "string" || typeof obj1[key] === "number" || typeof obj1[key] === "boolean") {
         if (obj1[key] !== obj2[key]) {
-          result = false;
+          return result = false;
         }
       }
       else if (Array.isArray(obj1[key])) { // checks for arrays
         // iterates through Array
       }
-      else if (typeof obj1[key] === "function") { // checks for functions
+      else if (typeof obj1[key] === "function") { 
+        // checks for functions
+        // but unsure: http://stackoverflow.com/questions/12216540/how-to-test-for-equality-of-functions-in-javascript.
+        continue;
       }
-      else { //if its an object, use recursion
-        recusive (obj1[key], obj2[key])
+      else { // if it's an object, use recursion
+        recursive (obj1[key], obj2[key]);
       }
     }
   };
 
-
   recursive (apple, orange);
-
   return result;
 
 };
 
+
+var obj3 = {a:1, b: {c:5}, d:'hello'};
+var obj4 = {a:1, b: {c:5}, d:'hello'};
+
+console.log(deepEquals(obj3,obj4));
 
 
 // use for-in loop and use recusion(if needed if objects are found), have to check for strings, numbers, arrays, functions, and objects)

@@ -51,6 +51,18 @@ Tree.prototype.DFSelect = function(filter) {
   return results;
 };
 
+/* Optimized solution: 
+
+Tree.prototype.DFSelect = function (filter, depth) {
+  depth = depth || 0;
+  var rootSelection = filter(this.value, depth) ? [this.value] : [];
+  var childSelections = this.children.map(function(child) {
+    return child.DFSelect(filter, depth + 1);
+  };
+  return [].concat.apply(rootSelection, childSelections);                        
+};
+
+*/
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
