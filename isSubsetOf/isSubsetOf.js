@@ -24,56 +24,25 @@
 
 
 Array.prototype.isSubsetOf = function(array){
+	var match = 0;
 	// loop through context array
 	for (var i = 0 ; i < this.length ; i++){
 		var element = this[i];
-		var found = false;
 		// loop through the input array
 		for (var j = 0 ; j < array.length ; j++){
-			// if the element is found, change found to true
-			if (element = array[j]){
-				found = true;
+			console.log("array: " + array[j]);
+			// if the element is found, increment match
+			if (element === array[j]){
+				console.log('match');
+				match++
 			}
 		}
-		// if it isn't found, return false
-		if (found === false){
-			return false;
-		}
 	}
-	// if all are found, return true
-	return true;
+	// if match count is equal to context array length, return true
+	if (match === this.length){
+		return true;
+	} else {
+		return false;
+	}
 };
 
-
-
-
-// Array.prototype.isSubsetOf = function(array){
-
-// 	// create object to store if checked
-// 	var storage = {};
-
-// 	// loop through context array
-// 	for ( var i = 0 ; i < this.length ; i++){
-// 		var element = this[i];
-// 		console.log(element);
-// 		// for each element, see if previously checked
-// 		if (!storage[element]){
-// 			console.log(storage[element]);
-// 			// if not checked, check to see if it is in input array
-// 			for (var j = 0 ; j < array.length ; j++){
-// 				if (element = array[j]){
-// 					var checked = true;
-// 					// if it is, store checked in storage
-// 					storage[element] = checked;
-// 					console.log(storage[element]);
-// 				} else {
-// 					// if it isn't, return false
-// 					return false;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	// if all are found, return true
-// 	return true;
-
-// };

@@ -39,7 +39,7 @@ Tree.prototype.DFSelect = function(filter){
 
   var result = [];
 
-  var recurse = function(node){
+  var recurse = function(node, depth){
     // check if parent node passes filter
     if ( filter(node.value) ){
       // if so, add parent node to array
@@ -47,11 +47,11 @@ Tree.prototype.DFSelect = function(filter){
     }
     // run recurse on each child
     for (var i = 0 ; i < node.children.length ; i++){
-      recurse(node.children[i]);
+      recurse(node.children[i], depth+1);
     }
   }
 
-  recurse(this);
+  recurse(this, 0);
 
   return result;
 

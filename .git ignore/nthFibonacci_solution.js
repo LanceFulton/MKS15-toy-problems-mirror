@@ -20,24 +20,27 @@
  *
  */
 
+// exponential time complexity:
 var nthFibonacci = function (n) {
 
-	var startValue = [0,1];
-	var result;
-  
-	var recurse = function(times, array){
-		if (times === 0){
-			result = array[array.length-1];
-			return;
-		}
-		array.push(array[array.length-2] + array[array.length-1]);
-		recurse (times-1, array);
-		return;
-	}
+	return n < 2 ?
+	n : nFib(n-1) + nFib(n-2);
 
-	recurse(n-1, startValue);
-	return result;
 };
 
+// linear time complexity, linear space complexity:
+var nFib = function(n) {
+	var mem = [];
+	for (var i = 0 ; i <= n ; i++){
+		mem[i] = i < 2 ? i : mem[i-1] + mem[i-2];
+	}
+	return mem[n];
+}
 
-
+var nFib = function(n) {
+	var mem = [0,1];
+	for (; n > 1; n--) {
+		mem.push(mem.shift() + mem[0]);
+	}
+	return mem[n];
+};

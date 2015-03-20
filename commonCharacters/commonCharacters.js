@@ -40,3 +40,29 @@ var commonCharacters = function(string1, string2) {
 	return resultString;
 
 };
+
+
+/*-----MKS Solution-----*/
+
+var commonCharacters = function (str1, str2) {
+	return intersection(str1, str2);
+}
+
+var intersection = function (set1, set2) {
+
+}
+
+var objectify = function (str) {
+
+}
+
+
+/*
+
+• used Object.keys
+• used regex
+
+
+
+
+

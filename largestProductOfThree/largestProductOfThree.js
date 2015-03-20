@@ -16,7 +16,7 @@ var largestProductOfThree = function(array) {
 		return a - b;
 	}
 
-	var sortedArray = array.sort(sortPair);
+	var sortedArray = array.slice().sort(sortPair);
 
 	// multiply largest three numbers (last 3 in sortedArray)
 
@@ -29,5 +29,20 @@ var largestProductOfThree = function(array) {
 	}
 
 	return multLargest(sortedArray);
+
+=======
+  // TODO: everything
+};
+
+var largestProductOfThree = function(array) {
+  
+	array = array.slice().sort()
+	var n = array.length;
+
+	var lastProduct = array[n-1] * array[n-2] * array[n-3];
+
+	var firstProduct = array[n-1] * array[0] * array[1];
+
+	return Math.max(firstProduct, lastProduct);
 
 };
