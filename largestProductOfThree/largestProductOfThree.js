@@ -9,6 +9,7 @@
 
 
 var largestProductOfThree = function(array) {
+<<<<<<< HEAD
   var sorted = array.sort(function(a, b){//-----------Sorting array in descending order so we can pop off the largest values right away
     return b - a;
   });
@@ -32,3 +33,7 @@ var largestProductOfThree = function(array) {
 //are both greater than the second and third largest number. 
 //If this case is true then I will be able to include them in finding my largest product. 
 //If they are lower than the second highest number, then we cannot include them because they will not find the highest product. 
+=======
+  // TODO: everything
+};
+>>>>>>> 33f7642681e7ad989bb4969dc7a37f67f8e8c2f4
