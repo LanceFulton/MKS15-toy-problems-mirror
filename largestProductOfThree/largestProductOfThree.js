@@ -8,6 +8,7 @@
  */
 
 
+
 var min = function(array) {
   var theMin = Infinity;
   for (var i = 0; i<array.length; i++) {
