@@ -38,20 +38,18 @@ var Tree = function(value){
 Tree.prototype.DFSelect = function(filter) {
   var results = [];
 
-  var searchTree = function(node) {
-    if (filter(this.value, this.children)) {
-      results.push(this.value);
+  (function searchTree(node, depth) {
+    if (filter(node.value, depth)) {
+      results.push(node.value);
     }
 
     for (var i = 0; i < node.children.length; i++) {
-      searchTree(node.children[i]);
+      searchTree(node.children[i], depth + 1);
     }
-  };
+  }) (this, 0);
 
-  searchTree(this);
   return results;
 };
-
 
 
 /**
