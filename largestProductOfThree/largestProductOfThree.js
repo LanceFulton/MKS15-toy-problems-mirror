@@ -7,6 +7,7 @@
  * Extra credit: Make your function handle negative numbers.
  */
 
+<<<<<<< HEAD
 //using sort and getting last 3 numbers
 var largestProductOfThree = function(array) {
   array=array.sort();
@@ -14,3 +15,9 @@ var largestProductOfThree = function(array) {
 };
 
 //covering negative numbers
+=======
+
+var largestProductOfThree = function(array) {
+  // TODO: everything
+};
+>>>>>>> 33f7642681e7ad989bb4969dc7a37f67f8e8c2f4
