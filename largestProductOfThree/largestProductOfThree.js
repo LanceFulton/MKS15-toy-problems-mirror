@@ -6,7 +6,16 @@
  *
  * Extra credit: Make your function handle negative numbers.
  */
+/*
+Solution:
 
+array = array.slice().sort();
+var n = 
+var lastProduct = array[n-1] * array[n-2] * array[n-3]
+
+return Math.max(firstProduct, lastProduct;
+
+*/
 
 var largestProductOfThree = function(array) {
   // Find the 3 largest numbers
@@ -43,3 +52,5 @@ var largestProductOfThree = function(array) {
 
 console.log( largestProductOfThree([2, 1, 3, 7]) );
 console.log( largestProductOfThree([2, 1, 3, 10, 7, 11]) );
+
+};
