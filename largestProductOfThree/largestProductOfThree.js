@@ -9,6 +9,7 @@
 
 
 var largestProductOfThree = function(array) {
+<<<<<<< HEAD
   array = array.sort();
   var largestThree = array.slice(array.length-3, array.length);
   console.log(largestThree);
@@ -45,3 +46,7 @@ var largestProductOfThree = function(array) {
 
 
 
+=======
+  // TODO: everything
+};
+>>>>>>> 33f7642681e7ad989bb4969dc7a37f67f8e8c2f4
