@@ -11,5 +11,22 @@
   * don't worry about handling cyclical object structures.
   *
   */
+
+//this may be cheating.
 var deepEquals = function(apple, orange){
+
+  if (JSON.stringify(apple) === JSON.stringify(orange)) {
+    return true;
+  } else {
+    return false
+  }
 };
+// need to use recursion to be able to check objects in the values of other objects.
+// can not compare objects directly
+// can not compare arrays directly (aslo techinacally objects)
+
+// for (var i = 0; i < Object.keys(apple).length; i++ {
+//   if (apple[i] in orange) {
+//     return true;
+//   }
+// }
