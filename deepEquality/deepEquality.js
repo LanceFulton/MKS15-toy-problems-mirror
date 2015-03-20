@@ -11,5 +11,16 @@
   * don't worry about handling cyclical object structures.
   *
   */
+var equality = true;
+
 var deepEquals = function(apple, orange){
+  for (var key in apple){
+    if (typeof apple[key] === 'object'){
+      deepEquals(apple[key], orange[key]);
+    } else if (apple[key] !== orange[key]){
+      equality = false;
+      return;
+    }
+  }
+  return equality;
 };
