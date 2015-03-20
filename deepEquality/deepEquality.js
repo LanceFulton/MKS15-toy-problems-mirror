@@ -12,19 +12,25 @@
   *
   */
 var deepEquals = function(apple, orange){
+
   var equals = true;
+
   if ( (typeof apple === typeof({})) && (typeof apple === typeof orange) ) {
     var keys = Object.keys(apple).concat(Object.keys(orange));
+
     for (var i = 0; i<keys.length; i++) {
-      var key = keys[i]
+      var key = keys[i];
+
       if( !(key in orange) || !(key in apple) ) {
         equals = false;
       } else if ( !(deepEquals(apple[key], orange[key])) ) {
         equals = false;
       }
     }
+
   } else {
     equals = apple === orange;
   }
+
   return equals;
 };
