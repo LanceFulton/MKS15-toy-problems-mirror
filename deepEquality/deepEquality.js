@@ -13,7 +13,6 @@
   */
 var deepEquals = function(apple, orange){
   var equals = true;
-
   if ( (typeof apple === typeof({})) && (typeof apple === typeof orange) ) {
     var keys = Object.keys(apple).concat(Object.keys(orange));
     for (var i = 0; i<keys.length; i++) {
