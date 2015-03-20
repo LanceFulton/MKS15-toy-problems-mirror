@@ -28,4 +28,20 @@ var largestProductOfThree = function(array) {
   return result;
 };
 
-//Not sure which way is better. I kind of like the first one. It seems like the second one would be more expensive.
+var largestProductOfThree = function(array) {
+  array = array.sort(function(a,b) {
+    return a-b;
+  });
+  var largestThree = array.slice(array.length-3, array.length);
+  var result1 = largestThree[0] * largestThree[1] * largestThree[2];
+  var result2 = array[0] * array[1] * array[array.length-1];
+  if (result1 > result2) {
+    return result1;
+  } else {
+    return result2;
+  }
+};
+
+
+
+
