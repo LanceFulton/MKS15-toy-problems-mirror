@@ -23,5 +23,24 @@
 */
 
 Array.prototype.isSubsetOf = function(array){
-  // Your code here
+// check against compareTo array
+// keep count, then coerce result to true / false
+
+var inputArray = this;
+var compareTo = array;
+
+var count = 0;
+
+  for (var i = 0; i < inputArray.length; i++) {
+    for (var j = 0; j < compareTo.length; j++) {
+      if (inputArray[i] === compareTo[j]) {
+        count++;
+      }  
+    }
+  }
+  return count === inputArray.length;
+};
+
+  
+console.log(b.isSubsetOf(['commit','rebase','push','blame']));
 };

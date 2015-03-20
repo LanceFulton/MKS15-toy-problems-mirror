@@ -7,5 +7,15 @@
  */
 
 var firstNonRepeatedCharacter = function(string) {
-  // TODO: your solution here
+  var tally = {};
+  
+  for (var i = 0; i < string.length ; i++) {
+    (!tally[string[i]]) ? (tally[string[i]] = 1) : tally[string[i]]++;
+  }  
+  
+  for (var i = 0; i < string.length; i++) { 
+    if (tally[string[i]] === 1) {
+      return string[i];
+    }
+  }  
 };

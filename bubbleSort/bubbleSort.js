@@ -31,11 +31,32 @@
 */
 
 // Introduce i into the global scope so we can test function efficiency
-var i;
-
 // Feel free to add helper functions if needed.
 
 
 var bubbleSort = function(array) {
   // Your code here.
+var i = 0;
+
+var bubbleSort = function(array) {
+  var recursive = function (array) {
+    i = 0;
+    for (var j = 1; j < array.length; j++) {
+      var temp = array[j];
+      if (array[j-1] > array[j]) {
+        array[j] = array[j-1];
+        array[j-1] = temp;
+        i++;
+      }
+    }
+    if (i > 0) {
+      recursive (array);
+    }
+    else {
+      return array;
+    }
+  };
+
+  recursive(array);
+  return array;
 };
