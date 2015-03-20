@@ -12,4 +12,21 @@
   *
   */
 var deepEquals = function(apple, orange){
+
+  var result = true;
+
+  var recurse = function(obj1, obj2){
+    for(var key in obj1){    
+
+      if( ( typeof obj1[key] === 'object' ) && ( typeof obj2[key] === 'object' ) ){
+        recurse(obj1[key], obj2[key]);
+      }
+
+      if(JSON.stringify( obj1[key] ) !== JSON.stringify( obj2[key] ){
+        result = false;
+      }
+    }
+  }
+  recurse(apple, orange);
+  return result;
 };
