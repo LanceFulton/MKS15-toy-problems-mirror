@@ -10,6 +10,7 @@
 
 var largestProductOfThree = function(array) {
   // TODO: everything
+<<<<<<< HEAD
   if (!array || array.length <3){
     // invalid input or not sufficient element
     return null;
@@ -43,3 +44,6 @@ var largestProductOfThree = function(array) {
 console.log(largestProductOfThree([2,1,3,7]));
 console.log(largestProductOfThree([-1, -6, -9, 9]));
 */
+=======
+};
+>>>>>>> 33f7642681e7ad989bb4969dc7a37f67f8e8c2f4
