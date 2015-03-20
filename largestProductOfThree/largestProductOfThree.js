@@ -7,6 +7,7 @@
  * Extra credit: Make your function handle negative numbers.
  */
 
+
 //for each index of array I will multiply every 'other two items' item of the array with every combination.
 //it will also.
 //try sorting and getting the product of the last three numbers.

@@ -40,7 +40,7 @@ Tree.prototype.DFSelect = function(filter) {
   var depth = 0;
   if ( filter(this.value, depth )) = collection.push(this.value);
   
-  var applyFilterToTree = function(node, depth) {
+  (var applyFilterToTree = function(node, depth) {
     if( filter(node[i].value, depth) ) {
       collection.push(this.value);
     }
@@ -50,9 +50,7 @@ Tree.prototype.DFSelect = function(filter) {
       }
     };
   
-  }
-
-  applyFilterToTree(this, depth+1);
+  })(this, depth+1);
 
   return collection;
 };
