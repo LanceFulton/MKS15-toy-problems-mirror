@@ -11,6 +11,8 @@
   * don't worry about handling cyclical object structures.
   *
   */
+
+
 var deepEquals = function(apple, orange){
 
   var result = true;
@@ -22,7 +24,7 @@ var deepEquals = function(apple, orange){
         recurse(obj1[key], obj2[key]);
       }
 
-      if(JSON.stringify( obj1[key] ) !== JSON.stringify( obj2[key] ){
+      if( JSON.stringify( obj1[key] ) !== JSON.stringify( obj2[key] ) ){
         result = false;
       }
     }
@@ -30,3 +32,4 @@ var deepEquals = function(apple, orange){
   recurse(apple, orange);
   return result;
 };
+

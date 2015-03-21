@@ -7,10 +7,30 @@ $(function(){
 
   // TODO: your code here!
 
+  var words = $("p").text().split(" ");
+  $("p").empty();
+  $.each(words, function(i, v) {
+    $("p").append($("<span>").text(v));
+  });
 
   // --------------STEP 2--------------
   // Next, change spans to random colors, once per second
 
+  //shuffle helper
+  function Shuffle(o) {
+    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+  };
 
+  var colors = ['red', 'blue', 'black', 'yellow', 'green', 'purple'];
+
+  function random(){
+    Shuffle(colors);
+    for( var i = 0; i <= colors.length; i++){
+      $('span').css({'color' : colors[i]});
+    }
+  }
+  
+  window.setInterval( function(){random();}, 1000 )
 
 });
