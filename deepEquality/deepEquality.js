@@ -12,7 +12,8 @@
   *
   */
 
-//this may be cheating.
+//this may be cheating. This does not keep the keys in any order so is not a great idea
+
 var deepEquals = function(apple, orange){
 
   if (JSON.stringify(apple) === JSON.stringify(orange)) {
@@ -30,3 +31,33 @@ var deepEquals = function(apple, orange){
 //     return true;
 //   }
 // }
+
+//_____________________________Solution____________________________________
+
+//check if 2 things are equal
+
+//if not, check if they are objects
+
+//if they are objects, get all their keys
+
+//recurse to check if all key value pairs are th same
+
+
+var deepEquals = function(apple, orange){
+
+  if (apple === orange) {return true;}
+  if (!orange || !apple) {return false;}
+
+  var appleKeys = Object.keys(apple);
+  var orangeKeys = Object.keys(apple);
+
+  if (appleKeys.length !== orangeKeys.length) {return false;}
+
+  if (appleKeys.length === 0) { return true }
+
+  for (var key in apple) {
+    if (!deepEquals(apple[key], orange[key])) {return false}
+  }
+return true; 
+};
+
