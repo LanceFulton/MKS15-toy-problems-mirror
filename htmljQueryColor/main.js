@@ -7,6 +7,21 @@ $(function(){
 
   // TODO: your code here!
 
+  // split paragraph into words
+  var $textArray = $('p').text().split(' ')
+  console.log($textArray);
+
+  // wrap each word in span tags
+  $textArray.each(function(){
+  	$(this).wrap('<span></span>')
+  })
+
+  console.log($textArray);
+
+  // take paragraph out of array
+  $('p').empty()
+
+  .append($textArray);
 
   // --------------STEP 2--------------
   // Next, change spans to random colors, once per second
