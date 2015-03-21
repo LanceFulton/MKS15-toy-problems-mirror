@@ -13,62 +13,47 @@
   */
 
 
+// bad way:
 var deepEquals = function(apple, orange){
 
   // convert both objects to strings
   var stringApple = JSON.stringify(apple);
   var stringOrange = JSON.stringify(orange);
 
-  // check length of each string
-  if (stringApple.length !== stringOrange.length){
+  if (stringApple !== stringOrange){
     return false;
   }
-
-  // loop through stringApple and compare characters to stringOrange
-  for (var i = 0 ; i < stringApple.length ; i++){
-    if (stringApple.charAt(i) !== stringOrange.charAt(i)){
-      return false;
-    }
-  }
-
-  // otherwise return true
-  return true;
+  return true
 
 };
 
-// var deepEquals = function(apple, orange){
+var deepEquals = function(apple, orange){
+  // check if 2 things are equal
+  if (apple === orange){
+    return true;
+  }
+  if (!apple || !orange){
+    return false;
+  }
+  // if not, check if they are objects
+  if(!(apple instanceof Object) || !(orange instanceof Object)){
+    return false;
+  }
+  // if they are objects, get all their keys
+  var appleKeys = Object.keys(apple);
+  var orangeKeys = Object.keys(orange);
 
-//   var recurse = function(obj1, obj2) {
+  if(appleKeys.length !== orangeKeys.length) {
+    return false;
+  }
 
-//     // setup object key count variables to compare # of keys:
-//     var obj1Count = 0;
-//     var obj2Count = 0;
-//     for (var key in obj1){
-//       obj1Count++;
-//     }
-//     for (var key in obj2){
-//       obj2Count++;
-//     }
-//     console.log(obj1Count, obj2Count);
-//     if (obj1Count !== obj2Count){
-//       return false;
-//     }
-
-//     // if first test passes, check if values match
-//     for (var key in obj1){
-//       console.log(obj1[key], obj2[key]);
-//       if (typeof obj1[key] === "object"){
-//         recurse (obj1[key], obj2[key])
-//       }
-//        else if (obj1[key] !== obj2[key]){
-//         return false;
-//       }
-//     }
-
-//     // if all tests pass, return true
-//     return true;
-//   }
-
-//   recurse(apple, orange);
-
-// };
+  if(appleKeys.length === 0){
+    return true;
+  }
+  // recurse to check if all key/values are equal
+  for (var key in apple){
+    if(!deepEquals(apple[key], orange[key])){
+      return false;
+    }
+  }
+};
