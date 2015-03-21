@@ -12,21 +12,27 @@ $(function(){
   // Next, change spans to random colors, once per second
 
   var pTags = $(document).find('p');
-  var el = pTags.first();
-  for (var i = 0; i < pTags.length; i++) {
-    if (i !== 0) {
-      el = el.next();
-    }
-    var text = el.text().split(' ');
-    el.html(text.reduce(function(mem, word){
+  pTags.each(function(i){
+    var text = $(this).text().split(' ');
+    $(this).html(text.reduce(function(mem, word){
       return mem + ' <span>' + word + '<span>';
     }));
   }
+  // var el = pTags.first();
+  // for (var i = 0; i < pTags.length; i++) {
+    // if (i !== 0) {
+      // el = el.next();
+    // }
+    // var text = el.text().split(' ');
+    el.html(text.reduce(function(mem, word){
+      return mem + ' <span>' + word + '<span>';
+    }));
+  // }
   
   $('span').each(function(i){
-    setTimeout(function(){
+    setInterval(function(){
       this.css('color', '#' + Math.floor(Math.random() * 999999));
-    }, $(this), 1000);
+    }.bind($(this)), 1000);
   });
 
 });
