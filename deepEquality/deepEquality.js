@@ -11,18 +11,19 @@
   * don't worry about handling cyclical object structures.
   *
   */
+
 var deepEquals = function(apple, orange) {
-  
+
   var result = true;
 
   var recursive = function(obj1, obj2) {
-    
+
     for (var key in obj2) {
       if (!obj1[key]) {
         return result = false;
       }
     }
-    
+
     for (var key in obj1) {
       if (!obj2[key]) {
         return result = false;
@@ -35,7 +36,7 @@ var deepEquals = function(apple, orange) {
       else if (Array.isArray(obj1[key])) { // checks for arrays
         // iterates through Array
       }
-      else if (typeof obj1[key] === "function") { 
+      else if (typeof obj1[key] === "function") {
         // checks for functions
         // but unsure: http://stackoverflow.com/questions/12216540/how-to-test-for-equality-of-functions-in-javascript.
         continue;
@@ -58,6 +59,19 @@ var obj4 = {a:1, b: {c:5}, d:'hello'};
 console.log(deepEquals(obj3,obj4));
 
 
+var deepEquals = function(apple, orange) {
+  if (apple === orange) {return true;}
+  if(!orange || !apple) {return false;}
+  if((!apple instanceof Object) || !(orange instanceof Object)) {return false;}
+  var appleKeys = Object.keys(apple);
+  var orangeKeys = Object.keys(orange);
+  if(appleKeys.length !== orangeKeys.length) {return false;}
+  if(appleKeys.length === 0) {return true;}
+  for (var key in apple) {
+    if (!deepEquals(apple[key], orange[key])) {return false;}
+  }
+  return true;
+};
 // use for-in loop and use recusion(if needed if objects are found), have to check for strings, numbers, arrays, functions, and objects)
 /*
 
