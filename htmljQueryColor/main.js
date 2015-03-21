@@ -1,16 +1,41 @@
 $(function(){
-  // --------------STEP 1--------------
-  // wrap every word in every `<p>` tag with a `<span>` tag.
-  // for example: <p>Hey there</p>
-  // becomes: <p><span>Hey</span><span>there</span></p>
-  // HINT: the `split` array method is your friend
 
-  // TODO: your code here!
+  var randomColorGen = function() {
 
+    var ranCol = function() {
+      return Math.floor(Math.random() * 256);
+    }
+    
+    var r = ranCol()
+    var g = ranCol()
+    var b = ranCol()
+    return "color:rgb(" + r + "," + g + "," + 3 + ")"
+  }
 
-  // --------------STEP 2--------------
-  // Next, change spans to random colors, once per second
+  var worder = function(words) {
+    return words.split(' ');
+  }
 
+  var ps = $('p');
 
+  for (var i = 0; i<ps.length; i++) {
+
+    var p = $(ps[i]).text();
+    var str = ''
+    var words = worder(p);
+
+    for (var j = 0; j<words.length; j++) {
+      word = words[j]
+      str += "<span> "+words[j]+"</span>"
+      console.log(str);
+    }
+      ps.html(str);
+  }
+
+  var allRandomColors = function() {
+    $('span').attr('style', randomColorGen)
+  }
+
+  setInterval(allRandomColors, 100);
 
 });
