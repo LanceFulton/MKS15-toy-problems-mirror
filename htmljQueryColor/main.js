@@ -37,13 +37,12 @@ $(function(){
   // Next, change spans to random colors, once per second
 
   setInterval(function(){
+    var r = Math.floor(Math.random()*255);
+    var g = Math.floor(Math.random()*255);
+    var b = Math.floor(Math.random()*255);
 
-  var r = Math.floor(Math.random()*255);
-  var g = Math.floor(Math.random()*255);
-  var b = Math.floor(Math.random()*255);
-
-  $('span').css('color', "rgb(" + r + "," + g + "," + b + ")");
-}, 1000);
+    $('span').css('color', "rgb(" + r + "," + g + "," + b + ")");
+  }, 1000);
 
 
 });
