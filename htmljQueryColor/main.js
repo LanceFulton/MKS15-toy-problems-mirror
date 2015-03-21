@@ -5,11 +5,11 @@ $(function(){
     var ranCol = function() {
       return Math.floor(Math.random() * 256);
     }
-    
+
     var r = ranCol()
     var g = ranCol()
     var b = ranCol()
-    return "color:rgb(" + r + "," + g + "," + 3 + ")"
+    return "color:rgb(" + r + "," + g + "," + b + ")"
   }
 
   var worder = function(words) {
