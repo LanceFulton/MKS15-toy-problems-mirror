@@ -12,13 +12,16 @@ $(function(){
 .append() -- add as last child
   */
 
+  // Exract Paragraphs / words
+
   var pArray = $('p').text().match(/\S+/g);
   console.log("1: pArray = '" + pArray + "'");
   
-  // Remove <P>s...
+  //    Remove <P>s...
   $('p').empty();
 
-  // Exract Paragraphs / words
+
+  // Wrap words in <p> & <span>
   console.log("2: pArray len = " + pArray.length); // FIX!
   var paragraphArray = [];
   for (var i = 0; i < pArray.length; i++) {
@@ -27,15 +30,21 @@ $(function(){
     $('p').prepend("<span>" + paragraphArray[i] + "</span> ");
   };
 
-paragraphArray[0] = String(pArray[0]).split(" ").innerHtml;
-  console.log("3: " + paragraphArray[0]);
-  // Wrap words in <p>
-
-
 
   // --------------STEP 2--------------
   // Next, change spans to random colors, once per second
+  var colors = ["Red", "Pink", "Orange", "Brown", "Darkgreen", "Green", "LightBlue", "Blue", "Black"];
 
+  var t = setInterval( (function() {
+
+    var randColor = Math.floor(Math.random()*colors.length-1);
+    var count = 0;
+    $('span').each( function() {
+      console.log(count++);
+      $().attr("style", "color:" + colors[randColor] );
+    });
+
+  }), 1000);
 
 
 });
