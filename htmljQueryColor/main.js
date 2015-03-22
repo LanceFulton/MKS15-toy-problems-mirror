@@ -5,19 +5,30 @@ $(function(){
   // becomes: <p><span>Hey</span><span>there</span></p>
   // HINT: the `split` array method is your friend
 
-  var pArray = $('p').text();
-  console.log("pArray = " + pArray);
-  //$.contains(pArray, ' ');
+  /*
+.before(price); // before the element
+.after(price); // after the element
+.prepend()  -- add as first child
+.append() -- add as last child
+  */
+
+  var pArray = $('p').text().match(/\S+/g);
+  console.log("1: pArray = '" + pArray + "'");
+  
+  // Remove <P>s...
+  $('p').empty();
 
   // Exract Paragraphs / words
+  console.log("2: pArray len = " + pArray.length); // FIX!
   var paragraphArray = [];
   for (var i = 0; i < pArray.length; i++) {
-    paragraphArray = String(pArray[i]).split(" ");
-    console.log("len = " + paragraphArray[i].length + " paragraph = " + paragraphArray[i]);
+    paragraphArray.push( String(pArray[i]).split(" ") );
+    console.log("2.5: len = " + paragraphArray[i].length + "; paragraph = " + paragraphArray[i]);
+    $('p').prepend("<span>" + paragraphArray[i] + "</span> ");
   };
 
 paragraphArray[0] = String(pArray[0]).split(" ").innerHtml;
-  console.log(paragraphArray[0]);
+  console.log("3: " + paragraphArray[0]);
   // Wrap words in <p>
 
 
