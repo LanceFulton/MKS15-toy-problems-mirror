@@ -5,12 +5,6 @@ $(function(){
   // becomes: <p><span>Hey</span><span>there</span></p>
   // HINT: the `split` array method is your friend
 
-  /*
-.before(price); // before the element
-.after(price); // after the element
-.prepend()  -- add as first child
-.append() -- add as last child
-  */
 
   // Exract Paragraphs / words
 
@@ -22,7 +16,6 @@ $(function(){
 
 
   // Wrap words in <p> & <span>
-  console.log("2: pArray len = " + pArray.length); // FIX!
   var paragraphArray = [];
   for (var i = 0; i < pArray.length; i++) {
     paragraphArray.push( String(pArray[i]).split(" ") );
@@ -36,12 +29,10 @@ $(function(){
   var colors = ["Red", "Pink", "Orange", "Brown", "Darkgreen", "Green", "LightBlue", "Blue", "Black"];
 
   var t = setInterval( (function() {
-
-    var randColor = Math.floor(Math.random()*colors.length-1);
-    var count = 0;
-    $('span').each( function() {
-      console.log(count++);
-      $().attr("style", "color:" + colors[randColor] );
+  
+    $('p').children('span').each( function() {
+      var randColor = Math.floor(Math.random()*colors.length-1);
+      $(this).css("color", colors[randColor]);
     });
 
   }), 1000);
