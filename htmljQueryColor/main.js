@@ -6,27 +6,27 @@ $(function(){
   // HINT: the `split` array method is your friend
 
   // TODO: your code here!
-  var pgrab = $('p').text().split(" ");  // gets words from p into array
+  // gets words from p into array
 
-  //  debugger;
+  $('p').each(function(){
 
-//   for (var i = 0; i < pgrab.length; i++) {
-//     $( "p" ).wrap(function() {
-//   return "<div class='" + $( this ).text() + "'></div>";
-// });
-//   }
-    console.log(pgrab);
-  console.log(pgrab[0]);
-  console.log(pgrab[1]);
+    $(this).html($(this).html().replace(/[a-zA-Z,.]+/g, "<span>$&</span>"));
+    // http://stackoverflow.com/questions/10300122/jquery-to-wrap-certain-word-in-strong-tag
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+
+
+  });
 
   // --------------STEP 2--------------
   // Next, change spans to random colors, once per second
 
-function changeColors() {
-  $('p').css('color', 'rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+')')
-};
+  function changeColors() { // https://api.jquery.com/each/
+    $('span').each(function() { // each loops through every element and changes into random color
+      $(this).css('color', 'rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+')')
+    });
+  };
 
-  setInterval(changeColors, 1000)
+  changeColors();
+  setInterval(changeColors, 1000);
+
 });
-
-//couldn't figure out first solution
