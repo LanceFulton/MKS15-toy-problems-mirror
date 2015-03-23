@@ -18,16 +18,6 @@ $(function(){
       return mem + ' <span>' + word + '<span>';
     }));
   }
-  // var el = pTags.first();
-  // for (var i = 0; i < pTags.length; i++) {
-    // if (i !== 0) {
-      // el = el.next();
-    // }
-    // var text = el.text().split(' ');
-    el.html(text.reduce(function(mem, word){
-      return mem + ' <span>' + word + '<span>';
-    }));
-  // }
   
   $('span').each(function(i){
     setInterval(function(){
