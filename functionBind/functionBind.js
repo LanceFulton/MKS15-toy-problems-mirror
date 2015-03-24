@@ -23,9 +23,15 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
+var bind = function(func, arg1, arg2) {
+// have to check to see if the value is reset and change the function accordingly
+//call the function with the new attribute
+//everything contained in a new object?
+//has to do with the context of 'this'
+//I feel like I could solve the problem for one of the examples but not both
+
+//I'll keep working on this problem.
+
 };
 
 /*
@@ -53,7 +59,6 @@ var bind = function(
  *
 */
 
-Function.prototype.bind = function(
-) {
-  // TODO: Your code here
+Function.prototype.bind = function() {
+
 };
