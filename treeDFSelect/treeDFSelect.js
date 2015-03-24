@@ -38,21 +38,31 @@ var Tree = function(value){
 Tree.prototype.DFSelect = function(filter) {
   var results = [];
 
-  var searchTree = function(node) {
-    if (filter(this.value, this.children)) {
-      results.push(this.value);
+  (function searchTree(node, depth) {
+    if (filter(node.value, depth)) {
+      results.push(node.value);
     }
 
     for (var i = 0; i < node.children.length; i++) {
-      searchTree(node.children[i]);
+      searchTree(node.children[i], depth + 1);
     }
-  };
+  }) (this, 0);
 
-  searchTree(this);
   return results;
 };
 
+/* Optimized solution: 
 
+Tree.prototype.DFSelect = function (filter, depth) {
+  depth = depth || 0;
+  var rootSelection = filter(this.value, depth) ? [this.value] : [];
+  var childSelections = this.children.map(function(child) {
+    return child.DFSelect(filter, depth + 1);
+  };
+  return [].concat.apply(rootSelection, childSelections);                        
+};
+
+*/
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
