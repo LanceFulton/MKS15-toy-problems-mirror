@@ -22,15 +22,14 @@
 
 var nthFibonacci = function (n) {
   var numberOfRecursions = 1;
-  var FibonacciNum = [0, 1];
-  var fibRecurse = function(FibonacciNum, numberOfRecursions) {
+  var FibonacciNum = {nthNum: 1};
+  var fibRecurse = function(nthNum, numberOfRecursions) {
     if(numberOfRecursions === n) {
-  debugger;
-      return FibonacciNum[numberOfRecursions] + FibonacciNum[numberOfRecursions-1]
+      return FibonacciNum.nthNum - 1 + FibonacciNum.nthNum;
     }
-
-    FibonacciNum[numberOfRecursions+1] = FibonacciNum[numberOfRecursions] + FibonacciNum[numberOfRecursions-1];
-    fibRecurse(FibonacciNum, numberOfRecursions+1);
+    debugger;
+    FibonacciNum.nthNum = FibonacciNum.nthNum + FibonacciNum.nthNum;
+    fibRecurse(nthNum, numberOfRecursions+1);
   }
   return fibRecurse(FibonacciNum, numberOfRecursions);
 };
