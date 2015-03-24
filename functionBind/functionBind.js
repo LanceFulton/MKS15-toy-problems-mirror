@@ -23,10 +23,34 @@
  *
 */
 
-var bind = function(
-) {
+var bind = function() {
   // TODO: Your code here
+  var args=Array.prototype.slice.call(arguments);
+  var myMethod=args[0];
+  var obj=args[1];
+  var rest=args.slice(2) || null;
+  console.log (rest);
+  //Array.prototype.slice.call(arguments, 2) || null;
+  if (obj ===null) {
+    return function(){
+      myMethod(rest);
+    }
+  }
+  else {
+    return function(){
+    myMethod.apply(obj, rest);
+    }
+  }
 };
+
+ var func = function(a, b){ return a + b };
+ var boundFunc = bind(func, null, 'foo');
+ var result = boundFunc('bar');
+ result === 'foobar'; // true
+ console.log(result);
+
+
+ 
 
 /*
  * Function.prototype.bind:
@@ -53,7 +77,11 @@ var bind = function(
  *
 */
 
-Function.prototype.bind = function(
-) {
+Function.prototype.bind = function() {
   // TODO: Your code here
+  var args=Array.prototype.slice.call(arguments);
+  var obj=args[0];
+  var rest=args.slice(1);
+  return bind(this,obj,rest);
 };
+
