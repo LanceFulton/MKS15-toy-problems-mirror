@@ -11,7 +11,6 @@
  */
 
 
-<<<<<<< HEAD
 var commonCharacters = function(string1, string2, string3) {
   var output = "";
 
@@ -27,8 +26,4 @@ var commonCharacters = function(string1, string2, string3) {
 
 console.log( commonCharacters('acexivou', 'aegihobu', 'abcde') );
 console.log( commonCharacters('ac exivou', 'aeg ihobu', 'ab cde') );
-=======
-var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
-};
->>>>>>> 258de024c9e6e10e5592a94fcc965aa09c103403
+
