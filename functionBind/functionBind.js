@@ -23,9 +23,21 @@
  *
 */
 
-var bind = function(
-) {
+var bind = function(method, object) {
   // TODO: Your code here
+  // check if the object exists is that which has the method, if so return method with original binding
+  if (object && object.method){
+  	console.log('object.method: ', object.method);
+  	var result = function(){
+  		return method.call(this);
+  	}
+  } else {
+  	// if not, bind this to object
+  	var result = function(){
+  		return method.call(object);
+  	}
+  }
+  return result;
 };
 
 /*

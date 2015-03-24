@@ -8,24 +8,25 @@ $(function(){
   // TODO: your code here!
 
   // split paragraph into words
-  var $textArray = $('p').text().split(' ')
-  console.log($textArray);
+  var $textArray = $('p').each(function(index,element){
+    var $el = $(element);
+    var words = $el.text().split(' ');
+    // clear html
+    $el.html('');
 
   // wrap each word in span tags
-  $textArray.each(function(){
-  	$(this).wrap('<span></span>')
-  })
-
-  console.log($textArray);
-
-  // take paragraph out of array
-  $('p').empty()
-
-  .append($textArray);
+  for (var i = 0 ; i < words.length ; i++){
+    var newSpan = $('<span>').text(words[i] + ' ');
+    $el.append(newSpan);
+  }
 
   // --------------STEP 2--------------
   // Next, change spans to random colors, once per second
 
-
+  setInterval(function(){
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+  })
 
 });
