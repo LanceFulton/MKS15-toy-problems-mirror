@@ -23,9 +23,17 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
+var bind = function() {
+
+  var func = arguments[0];
+  var context = arguments[1];
+  var args = Array.prototype.slice.call(arguments, 2);
+
+  return function(){
+    var allArgs = args.concat(Array.prototype.slice.call(arguments, 0));
+    return func.apply(context, allArgs);
+  }
+
 };
 
 /*
@@ -53,7 +61,8 @@ var bind = function(
  *
 */
 
-Function.prototype.bind = function(
-) {
+Function.prototype.bind = function() {
   // TODO: Your code here
-};
+  var args = [this].concat(Array.prototype.slice.call(arguments,0));
+  return bind.apply(null, args);
+}
