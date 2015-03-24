@@ -26,7 +26,34 @@
 var bind = function(
 ) {
   // TODO: Your code here
+  var args = Array.prototype.slice.bind(arguments);
+
+  var newFunc  = args[0];
+  var newScope = args[1];
+  console.log("! " + newFunc + "; " + newScope);
+
+  var func = function(pFunk, xScope) {
+    return xScope;
+  }
+
+  return func(newFunc, newScope);
 };
+
+
+var alice = {
+  name: 'alice',
+  shout: function(){
+    console.log('SHOUTING!');
+    alert(this.name);
+  }
+}
+ 
+var boundShout = bind(alice.shout, alice);
+console.log(boundShout)
+// boundShout(); // alerts 'alice'
+// boundShout = bind(alice.shout, {name: 'bob'});
+// boundShout(); // alerts 'bob'
+
 
 /*
  * Function.prototype.bind:
