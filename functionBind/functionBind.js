@@ -23,9 +23,18 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
+var bind = function(func, context) {
+  //Take in a function and a context as arguments
+  //set the function to a variable with context set to the 'this'
+  //pass in any trailing arguments as arguments of the passed function
+  var args = Array.prototype.slice.call(arguments, 2);
+
+  callfunc = function(){
+    func = func.apply(context, args);
+  }
+
+  return callfunc;
+
 };
 
 /*
@@ -53,7 +62,15 @@ var bind = function(
  *
 */
 
-Function.prototype.bind = function(
-) {
+Function.prototype.bind = function(context) {
   // TODO: Your code here
+  var args = Array.prototype.slice.call(arguments, 2);
+
+  var CallFunc = function(){
+
+  }
+
+  var callfunc = new CallFunc();
+
+  return callfunc;
 };
