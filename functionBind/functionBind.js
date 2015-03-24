@@ -28,12 +28,16 @@ var bind = function(fn, context) {
   if(arguments.length > 2) {
     args = arguments.slice(2);
   }
-  var that = context;
-  that.fn = fn;
 
-  return function() {
-    that.fn(args);
-  };
+  if( context ) {
+    return function() {
+      fn.apply(context, args);
+    };
+  } else {
+    return function() {
+      fn(args);
+    };
+  }
 };
 
 /*
