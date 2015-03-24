@@ -23,9 +23,17 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
+var bind = function(fn, context) {
+  var args;
+  if(arguments.length > 2) {
+    args = arguments.slice(2);
+  }
+  var that = context;
+  that.fn = fn;
+
+  return function() {
+    that.fn(args);
+  };
 };
 
 /*
