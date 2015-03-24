@@ -23,9 +23,11 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
+var bind = function (func, context) {
+  return function () {
+    func.call(context);
+  };
+
 };
 
 /*
@@ -53,7 +55,9 @@ var bind = function(
  *
 */
 
-Function.prototype.bind = function(
-) {
-  // TODO: Your code here
+Function.prototype.bind = function(context) {
+  var func = this;
+  return function () {
+    func.call(context);
+  };
 };
