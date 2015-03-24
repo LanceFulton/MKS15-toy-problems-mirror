@@ -59,6 +59,8 @@ Tree.prototype.DFSelect = function(filter) {
 
 //I will keep working on this. 
 
+//_.map or _.each might come in handy
+
 };
 
 
