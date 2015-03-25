@@ -26,19 +26,31 @@
 var bind = function(fn, context) {
   var args;
   if(arguments.length > 2) {
-    args = arguments.slice(2);
+    args = Array.prototype.slice.call(arguments, 2);
   }
 
-  if( context ) {
+  if( args ) {
     return function() {
-      fn.apply(context, args);
+      return fn.apply(context, args);
     };
   } else {
     return function() {
-      fn(args);
+      return fn(context);
     };
   }
 };
+
+// solution
+// var bind = function(func, context) {
+//   var prevArgs = Array.prototype.slice.call(arguments, 2);
+
+//   return function() {
+//     var args = Array.prototype.slice.call(arguments);
+//     args = prevArgs.concat(args);
+
+//     return func.apply(context, args);
+//   };
+// };
 
 /*
  * Function.prototype.bind:
@@ -65,7 +77,14 @@ var bind = function(fn, context) {
  *
 */
 
-Function.prototype.bind = function(
-) {
-  // TODO: Your code here
+Function.prototype.bind = function(context) {
+  var prevArgs = Array.prototype.slice.call(arguments, 1);
+  var func = this;
+
+  return function() {
+    var args = Array.prototype.slice.call(arguments);
+    args = prevArgs.concat(args);
+
+    return func.apply(context, args);
+  }
 };
