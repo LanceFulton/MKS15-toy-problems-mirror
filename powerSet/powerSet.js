@@ -18,4 +18,27 @@
  */
 
 var powerSet = function(str){
+  var result = [''];
+  strSet = {};
+  for (var i = 0; i<str.length; i++) {
+    strSet[str[i]] = true;
+  }
+  
+  var recursivePower = function(arr) {
+    if (arr.length === 0) {
+      return;
+    }
+
+    var next = arr[0];
+    var l = result.length
+    for (var i = 0; i< l; i++) {
+      result = result.concat([result[i] + next] );
+    }
+
+    recursivePower(arr.slice(1));
+  }
+
+  recursivePower(Object.keys(strSet).sort());
+  return result;
+
 }
