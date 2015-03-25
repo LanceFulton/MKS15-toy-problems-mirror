@@ -18,4 +18,36 @@
  */
 
 var powerSet = function(str){
+	var result = [];
+
+  var subroutine = function(subStr){
+
+    result.push(subStr);
+
+    for(var i = 0; i < subStr.length; i++){ 
+      subroutine(subStr.substring(1));
+    }
+  }
+
+  subroutine(str);
+  return result;
 }
+
+
+console.log(powerSet('abc'));
+
+
+//  abc
+
+//  a, ab, abc, ac
+//  b, bc,
+//  c
+
+//  jump
+
+//  j, ju, jum, jump, jup, jm, jmp, jp
+//  u, um, ump, 
+//  m, mp
+//  p
+
+//like a binary tree?
