@@ -17,5 +17,28 @@
  * -> ["", "j", "ju", "jm", "jp", "jmu", "jmp", "jpu", "jmpu", "u", "m", "p", "mu", "mp", "pu", "mpu"]
  */
 
+
+
+
 var powerSet = function(str){
-}
+
+  results = [];
+  
+  strArray = str.split('');
+
+  for (var i = 0; i < strArray.length; i++) {
+    //need base case.
+    var permutation = strArray[i] + strArray[i+1]; //pretty sure this doesn't work
+
+    if (permutation) {
+      results.push(permutation);
+
+    powerSet(str);
+    }
+  }
+  powerSet(str);
+  return results;
+};
+
+//to prevent sets of the same characters .sort() them before you compare them to what is already in the array.
+// a helper function might be a good idea.
