@@ -23,11 +23,18 @@
  *
 */
 
-var bind = function (fn, info) {
-  return function(){
-   var getArg = Array.prototype.slice.call(arguments);
-    return fn.apply(info, gerArg);
-  };
+var bind = function() {
+	//convert arrguments into array
+	var args = Array.prototype.slice.call(arguments);
+	//save arguments 0 
+	var self = args[0];
+	//slice arguments 0
+	args = args.splice(1,args.length);
+	//return annon. function
+	return function (){
+		 //return function with a given this value and arguments provided as an array
+		 return self.apply(args[0], args.splice(1, args.length));
+	};
 };
 
 /*
@@ -55,12 +62,24 @@ var bind = function (fn, info) {
  *
 */
 
-Function.prototype.bind = function(info) {
-  var prevArgs = Array.prototype.slice.call(arguments);
-  var func = this;
 
-  return function(){
-    getArg = prevArgs.concat(getArg);
-    return func.apply(info, getArg);
-  };
+//edge case, if there is no null, then ill have to use first argument
+//if null then it will do this, else will be arguments[0]
+
+
+Function.prototype.bind = function() {
+	//convert arrguments into array
+	var args = Array.prototype.slice.call(arguments); 
+	//slice arguments 0
+	args = args.splice(1,args.length);
+	//return annon. function
+	var self = arguments[0] || this;
+	return function (){
+		//getting arguments from anno function
+		var temp = Array.prototype.slice.call(arguments);
+		//join arguments with bind args
+		var params = args.concat(temp);
+		//return function with a given this value and arguments provided as an array
+		return self.apply(self, params);
+	};
 };
