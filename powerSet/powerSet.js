@@ -17,5 +17,27 @@
  * -> ["", "j", "ju", "jm", "jp", "jmu", "jmp", "jpu", "jmpu", "u", "m", "p", "mu", "mp", "pu", "mpu"]
  */
 
+
+//2^3 power for 'abc'
+//2^4 power for 'jump'
+//2^n n = str.length;
+
 var powerSet = function(str){
+  var powerSet = [];
+  var obj = {};
+
+  var iterateString = function (???) {
+    for (var i = 0; i < str.length; i++) {
+      var newString = (obj[str[i] + str[i+1]).sort();
+      if ( obj[newString] ) === undefined ) {
+        powerSet.push(newString);
+        obj[newString] = true;
+
+      }
+
+    };
+  };
+
+  iterateString(???);
+  return powerSet;
 }
