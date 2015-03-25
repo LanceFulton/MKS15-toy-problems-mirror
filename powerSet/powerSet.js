@@ -18,4 +18,15 @@
  */
 
 var powerSet = function(str){
-}
+  var strArr=str.split("").sort();
+  var myPowerSet=[""];
+  for (var i=0; i<strArr.length; i++){
+    var myPowerSetLength=myPowerSet.length;
+    for (var j=0; j<myPowerSetLength; j++){
+      myPowerSet.push(myPowerSet[j].concat(strArr[i]));
+    }
+  }
+
+  return myPowerSet;
+};
+
