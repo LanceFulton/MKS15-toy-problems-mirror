@@ -23,6 +23,18 @@
  *
 */
 
+var bind = function(func, context) {
+  var prevArgs = Array.prototype.slice.call(arguments, 2);
+
+  return function(){
+    var args = Array.prototype.slice.call(arguments);
+    args = prevArgs.concat(args);
+  }
+
+  return func.apply(context, args);
+
+}
+
 var bind = function(method, object) {
   // TODO: Your code here
   // check if the object exists is that which has the method, if so return method with original binding
@@ -65,7 +77,7 @@ var bind = function(method, object) {
  *
 */
 
-Function.prototype.bind = function(
-) {
+Function.prototype.bind = function() {
+  
   // TODO: Your code here
 };
