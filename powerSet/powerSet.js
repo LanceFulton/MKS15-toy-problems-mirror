@@ -18,4 +18,17 @@
  */
 
 var powerSet = function(str){
+
+  var recurse = function(active, rest, array) {
+      if (!active && !rest)
+          return;
+      if (!rest) {
+          array.push(active);
+      } else {
+          recurse(active + rest[0], rest.slice(1), array);
+          recurse(active, rest.slice(1), array);
+      }
+      return array;
+  }
+  return recurse("", str, [""]);
 }
