@@ -38,6 +38,31 @@ var Tree = function(value){
 
 
 Tree.prototype.BFSelect = function(filter) {
+  results = []; 
+  depth = 0;
+
+  var useFilter = function (tree) {
+    if ( filter(tree.value, tree.depth ) {
+        results.push(tree.value);
+    }
+  }
+
+  var recurse = function(nextBreadth) {
+    var nextDepth = [];
+    depth++;
+    for (var i = 0; i < nextBreadth.children.length; i++) {
+      currentTree = nextBreadth.children[i];
+      currentTree.depth = depth;
+      useFilter(currentTree)
+      if ( currentTree.children[0] !== undefined ) {
+        nextDepth.concat(currentTree.children)
+      }
+    }; 
+    recurse(nextDepth);
+  }
+  useFilter(this);
+  recurse(this.children);
+  return results;
   // return an array of values for which the function filter(value, depth) returns true
 };
 
