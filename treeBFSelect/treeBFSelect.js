@@ -38,8 +38,33 @@ var Tree = function(value){
 
 
 Tree.prototype.BFSelect = function(filter) {
-  // return an array of values for which the function filter(value, depth) returns true
+
+  var results = [];
+  if(filter(this.value, 0)){
+    results.push(this.value);
+  }
+
+  var subroutine = function(tree, depth){
+    depth++;
+
+    //loop through children and record values
+    for(var i = 0; i < tree.children.length; i++){
+      if(filter(tree.children[i].value, depth)){
+        results.push(tree.children[i].value);
+      }
+    }
+
+    //loop through children again to start the next depth
+    for(var i = 0 ; i < tree.children.length; i++){
+      subroutine(tree.children[i], depth);
+    }
+  }
+
+  subroutine(this, 0);
+  return results;
+
 };
+
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
