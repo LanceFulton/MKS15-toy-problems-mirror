@@ -42,6 +42,7 @@ Tree.prototype.BFSelect = function(filter) {
   var results = [];
 
   var checkSiblings = function(tree, depth) {
+    // check if root tree
     if( depth === 0 ) {
       var result = filter(tree.value, depth);
       if( result ) {
@@ -50,6 +51,7 @@ Tree.prototype.BFSelect = function(filter) {
     }
 
     if( tree.children.length ) {
+      // run filter on each sibling
       for( var i = 0; i < tree.children.length; i++ ) {
         var value = tree.children[i].value;
         result = filter(value, depth + 1);
@@ -57,7 +59,7 @@ Tree.prototype.BFSelect = function(filter) {
           results.push(value);
         }
       }
-
+      // recurse to check siblings on next level
       for( var j = 0; j < tree.children.length; j++ ) {
         checkSiblings(tree.children[j], depth + 1);
       }
