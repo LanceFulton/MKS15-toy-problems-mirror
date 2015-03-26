@@ -36,9 +36,22 @@ var Tree = function(value){
 };
 
 
-
+//some sort of recursion needs to be implimented
 Tree.prototype.BFSelect = function(filter) {
+  var results = [];
+  var depth = depth || 0;
   // return an array of values for which the function filter(value, depth) returns true
+  var recurse = function() {
+    for (var i = 0; i < this.children.length; i++) {
+      if (filter(this.children[i], depth)) {
+        results.push(this.value);
+        return true;
+      }
+    recurse(this.children);
+    }
+  };
+  recurse(this);
+  return results; //this doesn't even come close to working.
 };
 
 /**
