@@ -17,20 +17,38 @@
  * -> ["", "j", "ju", "jm", "jp", "jmu", "jmp", "jpu", "jmpu", "u", "m", "p", "mu", "mp", "pu", "mpu"]
  */
 
-var powerSet = function(str){ // use recursive functionality
-  var results = [""];
 
-  var recursive = function (str) {
-//     if (str.length <== 3) {
-//       results.push(str[i]);
-//     }
+// 1) Get all unique letters
+// str = 'mississippi'
 
-    for (var i = 0; i < str.length; i++) {
-      results.push(str[i]);
-      results.push(str[i].concat(recursive(str.slice(1))));
+var powerSet = function(str) {
+
+  str = str || ''; // edge case
+
+  var letter = {}; // tracks all unique values
+
+  for (var i = 0; i < str.length; i++) {
+    letters[str[i]] = true;
+  }
+
+  str = Object.keys(letters).join('');
+
+// 2) Recursively find all solutions
+// Loop through the children and splice out one letter
+
+  var solutions = {};
+
+  var recurse = function(strSet) {
+    for (var i = 0; i < strSet.length; i++) {
+      var subSet = strSet.substr(0, i) + strSet.substr(i + 1, str.length);
+      // check if we have visted this combo...
+      if (!solutions[subSet]) {
+        solutions[subSet] = true;
+        recurse(subSet);
+      }
     }
-  };
+  }
 
-  recursive(str);
-  return results;
+  recurse(str);
+
 };
