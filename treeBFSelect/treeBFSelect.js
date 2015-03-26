@@ -39,7 +39,30 @@ var Tree = function(value){
 
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
+  //I need a counter to check how deep I am
+  //I need a loop to check through each child
+  //I need the function to recurse into the next level of children.
+  //I also need to be careful and check all childnodes for equality before moving on to the next set of children
+  var results = [];//Results will be stored here
+  var depth = 0;//This variable keeps track of our depth as we go
+
+  function search(node){
+    if (node.hasChildNodes){//Conditional to check if the current node has any child nodes
+      depth++;
+      var childList = node.childNodes;  
+      for (var i = 0; i < childList.length; i++) {
+        if (filter(childList[i])){
+          results.push(childList[i]);
+        }
+      }
+      for (var j = 0; j < childList.length; j++){
+      }
+    }
+  }
+  search(document.body);
 };
+
+BFSelect(function(value, depth));
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
