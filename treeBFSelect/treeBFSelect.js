@@ -26,6 +26,7 @@
   *
   */
 
+
 /*
  * Basic tree that stores a value.
  */
@@ -39,6 +40,27 @@ var Tree = function(value){
 
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
+  filter = filter || function(tree) { return tree; };
+  currentSearch = [this];
+  var results = [];
+  var depth = 0;
+
+  while (currentSearch.length > 0) {
+    var nextSearch = [];
+
+    for (var i = 0; i < currentSearch.length; i++) {
+      var current = currentSearch[i];
+      if (filter(current.value, depth)) {
+        results.push(current.value);
+      }
+      nextSearch = nextSearch.concat(current.children);
+    }
+
+    currentSearch = nextSearch;
+    depth += 1;
+  }
+
+  return results;
 };
 
 /**
