@@ -38,7 +38,35 @@ var Tree = function(value){
 
 
 Tree.prototype.BFSelect = function(filter) {
+  var results = [];
+
+  //Recursive function that runs filter on every element and keeps track of depth
+  var walkTree = function(element, depth){
+
+    //lop through each child of element
+    for( var i = 0; i < element.children.length; i++ ){
+      //run filter on each child before moving to next level (run filter on every sibling)
+      if(filter(element.children[i].value, depth)){
+        results.push(element.children[i].value);
+      }
+    }
+
+    //move on to next depth level
+    for ( var j = 0; j < element.children.length; j++ ){
+      //recurse with each child and increment depth
+      walkTree(element.children[j], depth + 1);
+    }
+  }
+
+  //run filter on first value with depth at 0
+  if (filter(this.value, 0)){
+    results.push(this.value);
+  }
+  //call recursive function at first tree value passing depth 1 because
+  //walkTree will filter values on children
+  walkTree(this, 1);
   // return an array of values for which the function filter(value, depth) returns true
+  return results;
 };
 
 /**
