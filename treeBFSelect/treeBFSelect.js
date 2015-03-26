@@ -50,16 +50,17 @@ Tree.prototype.BFSelect = function(filter) {
     if (node.hasChildNodes){//Conditional to check if the current node has any child nodes
       depth++;
       var childList = node.childNodes;  
-      for (var i = 0; i < childList.length; i++) {
-        if (filter(childList[i])){
-          results.push(childList[i]);
+      for (var i = 0; i < childList.length; i++) {//iterating through our children
+        if (filter(childList[i])){//Checking if our child can be filtered
+          results.push(childList[i]);//Pushing the successful children into the results array
         }
       }
-      for (var j = 0; j < childList.length; j++){
+      //Need to recurse here .
       }
     }
   }
   search(document.body);
+  return results;
 };
 
 BFSelect(function(value, depth));
