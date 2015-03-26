@@ -38,7 +38,34 @@ var Tree = function(value){
 
 
 Tree.prototype.BFSelect = function(filter) {
-  // return an array of values for which the function filter(value, depth) returns true
+  var results = [];
+
+
+  var recursive = function (node, depth) {
+    if (filter(node.value, depth)) { // checks current node
+      results.push(node.value);
+    }
+
+    var storage = {};
+
+    for (var i = 0; i < node.children.length; i++) { // iterate across through current children
+      if (filter(node.children[i].value), depth + 1) {
+        results.push(node.value);
+      }
+
+      if(node.children[i].children.length) { // if the children have children, put it into storage
+        storage[node.children[i].value] = node.children[i].value;
+        storage[node.children[i].children] = node.children[i].children;
+      }
+    }
+    for (var key in storage) {
+      recursive (storage);
+    }
+  };
+
+  recursive (this, 0);
+  return results;
+
 };
 
 /**
