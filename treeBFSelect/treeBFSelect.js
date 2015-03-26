@@ -46,12 +46,17 @@ Tree.prototype.BFSelect = function(filter) {
   queue.push(this);
 
   while (queue.length > 0) {
-    if ( filter(queue[0].value, queue[0].depth) ) {
-      solution.push(queue[0].value);
+    var currentNode = queue[0]
+    var children = currentNode.children
+    var value = currentNode.value
+    var depth = currentNode.depth
+
+    if ( filter(value, depth) ) {
+      solution.push(value);
     }
-    for (var i = 0; i<queue[0].children.length; i++) {
-      queue[0].children[i].depth = queue[0].depth + 1
-      queue.push(queue[0].children[i])
+    for (var i = 0; i<children.length; i++) {
+      children[i].depth = depth + 1
+      queue.push(children[i])
     }
     queue.shift();
   }
