@@ -39,6 +39,33 @@ var Tree = function(value){
 
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
+  var results = [];
+
+  var checkSiblings = function(tree, depth) {
+    if( depth === 0 ) {
+      var result = filter(tree.value, depth);
+      if( result ) {
+        results.push(result);
+      }
+    }
+
+    if( tree.children.length ) {
+      for( var i = 0; i < tree.children.length; i++ ) {
+        var value = tree.children[i].value;
+        result = filter(value, depth + 1);
+        if( result ) {
+          results.push(value);
+        }
+      }
+
+      for( var j = 0; j < tree.children.length; j++ ) {
+        checkSiblings(tree.children[j], depth + 1);
+      }
+    }
+  };
+
+  checkSiblings(this, 0);
+  return results;
 };
 
 /**

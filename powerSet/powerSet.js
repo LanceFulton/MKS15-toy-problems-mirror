@@ -25,10 +25,15 @@ var powerSet = function(str){
   var recurse = function(chars, index) {
     for( var i = index; i < arr.length; i++ ) {
       var subset = chars + arr[i];
-      if(subset.length <= arr.length) {
-        results[subset] = true;
-        recurse(subset, index + 1);
-      }
+
+      results[subset] = true;
+
+      // if(subset.length <= arr.length) {
+      //   results[subset] = true;
+      //   if( i + 1 < arr.length ) {
+      //     recurse(subset, index + 1);
+      //   }
+      // }
     }
   };
 
@@ -38,5 +43,35 @@ var powerSet = function(str){
     pSet.push(key);
   }
 
-  return pSet;
+  return pSet.sort();
 };
+
+
+// solution
+/*var powerSet = function(str) {
+  str = str || '';
+  var letters = {};
+  var solutions = {};
+
+  for( var i = 0; i < str.length; i++ ) {
+    letters[str[i]] = true;
+  }
+
+  str = Object.keys(letters).sort().join('');
+
+  var recurse = function(strSet) {
+    for( var i = 0; i < strSet.length; i++ ) {
+      var subSet = strSet.substr(0, i) + strSet.substr(i + 1, strSet.length);
+      // check if we have visited this combo
+      if( !solutions[subSet] ) {
+        solutions[subSet] = true;
+        recurse(subSet);
+      }
+    }
+  };
+
+  recurse(str);
+  var arr = Object.keys(solutions);
+  return arr.sort();
+};*/
+
