@@ -1,4 +1,4 @@
-/**
+/*
   *
   * Implement a `BFSelect` method on this Tree class.
   *
@@ -7,13 +7,13 @@
   * for which the filter returns true.
   *
   * Example:
-  *   var root1 = new Tree(1);
-  *   var branch2 = root1.addChild(2);
-  *   var branch3 = root1.addChild(3);
-  *   var leaf4 = branch2.addChild(4);
-  *   var leaf5 = branch2.addChild(5);
-  *   var leaf6 = branch3.addChild(6);
-  *   var leaf7 = branch3.addChild(7);
+  * var root1 = new Tree(1);
+  * var branch2 = root1.addChild(2);
+  * var branch3 = root1.addChild(3);
+  * var leaf4 = branch2.addChild(4);
+  * var leaf5 = branch2.addChild(5);
+  * var leaf6 = branch3.addChild(6);
+  * var leaf7 = branch3.addChild(7);
   *   root1.BFSelect(function (value, depth) {
   *     return value % 2;
   *   })
@@ -24,21 +24,39 @@
   *   })
   *   // [2, 3]
   *
-  */
+  
 
 /*
  * Basic tree that stores a value.
  */
 
 var Tree = function(value){
+
   this.value = value;
   this.children = [];
+
 };
 
 
 
 Tree.prototype.BFSelect = function(filter) {
-  // return an array of values for which the function filter(value, depth) returns true
+  solution = [];
+  this.depth = 0;
+  var queue = [];
+  queue.push(this);
+
+  while (queue.length > 0) {
+    if ( filter(queue[0].value, queue[0].depth) ) {
+      solution.push(queue[0].value);
+    }
+    for (var i = 0; i<queue[0].children.length; i++) {
+      queue[0].children[i].depth = queue[0].depth + 1
+      queue.push(queue[0].children[i])
+    }
+    queue.shift();
+  }
+  return solution;
+
 };
 
 /**
