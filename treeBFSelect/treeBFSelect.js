@@ -39,6 +39,22 @@ var Tree = function(value){
 
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
+  var results = [];
+  var queue = [];
+  var BFRecurse = function(node, depth) {
+    if (filter(node.value, depth)) {
+      results.push(node.value);
+    }
+    for (var i=0; i<node.children.length; i++) {
+      queue.push([node.children[i], depth+1]);
+    }
+    if (queue.length > 0) {
+      var nextNode = queue.shift();
+      BFRecurse(nextNode[0], nextNode[1]);
+    }
+  };
+  BFRecurse(this, 0);
+  return results;
 };
 
 /**
