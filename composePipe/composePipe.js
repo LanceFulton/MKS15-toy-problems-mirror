@@ -33,30 +33,25 @@
 
 'use strict';
 
-var compose = function() {
-  var funcs = Array.prototype.slice.call(arguments);
-
-  var compose2 = function(f1, f2) {
-    return function(arg) {
-      return f1(f2(arg));
-    };
+var generalFunctionCombine = function(func) {
+  return function() {
+    var funcs = Array.prototype.slice.call(arguments); 
+    return funcs.reduce(func);
   };
-
-  return function(arg) {
-    return funcs.reduce(compose2)(arg);
-  }
 };
 
-var pipe = function(){
-  var funcs = Array.prototype.slice.call(arguments);
-
-  var pipe2 = function(f1, f2) {
-    return function(arg) {
-      return f2(f1(arg));
-    }
-  }
-
+var compose2 = function(f1, f2) {
   return function(arg) {
-    return funcs.reduce(pipe2)(arg);
-  }
+    return f1(f2(arg));
+  };
 };
+
+var compose = generalFunctionCombine(compose2);
+
+var pipe2 = function(f1, f2) {
+  return function(arg) {
+    return f2(f1(arg));
+  };
+};
+
+var pipe = generalFunctionCombine(pipe2);
