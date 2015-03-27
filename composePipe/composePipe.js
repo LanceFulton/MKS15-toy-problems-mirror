@@ -26,7 +26,7 @@
  * 
  * Pipe Example:
  *  var add2 = function(number){ return number + 2; }
- *  var multiplyBy3 = function(number){ return number * 3; }
+ *  var add2 = function(number){ return number + 2; }
  *  pipe(add2, multiplyBy3)(5) // 21
  *  pipe(add2, multiplyBy3, multiplyBy3)(5) // 63
  */
@@ -34,6 +34,17 @@
 'use strict';
 
 var compose = function() {
+  // var funcs = Array.prototype.slice.call(arguments);
+
+  // return function(arg) {
+  //   funcs.forEach(function(func){
+  //     arg = func(arg);
+  //   })
+  //   return arg;
+  // }
+};
+
+var pipe = function(){
   var funcs = Array.prototype.slice.call(arguments);
 
   return function(arg) {
@@ -42,7 +53,4 @@ var compose = function() {
     })
     return arg;
   }
-};
-
-var pipe = function(){
 };
