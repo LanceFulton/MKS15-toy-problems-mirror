@@ -11,9 +11,9 @@
  * You can view compose as moving right to left through its arguments.
  *
  * Compose Example:
- *   var greet = function(name){ return 'hi: ' + name;}
- *   var exclaim = function(statement) { return statement.toUpperCase() + '!';}
- *   var welcome = compose(greet, exclaim);
+    var greet = function(name){ return 'hi: ' + name;}
+    var exclaim = function(statement) { return statement.toUpperCase() + '!';}
+    var welcome = compose(greet, exclaim);
  *   welcome('phillip'); // 'hi: PHILLIP!'
  *
  * Step 2: Implement the function Pipe:
@@ -25,16 +25,26 @@
  * You can view pipe as moving left to right through its arguments.
  * 
  * Pipe Example:
- *  var add2 = function(number){ return number + 2; }
- *  var multiplyBy3 = function(number){ return number * 3; }
- *  pipe(add2, multiplyBy3)(5) // 21
- *  pipe(add2, multiplyBy3, multiplyBy3)(5) // 63
+ var add2 = function(number){ return number + 2; }
+ var multiplyBy3 = function(number){ return number * 3; }
+ pipe(add2, multiplyBy3)(5) // 21
+ pipe(add2, multiplyBy3, multiplyBy3)(5) // 63
  */
 
 'use strict';
-
-var compose = function(){
+//The goal here was to iterate through the arguments from right to left and execute the left-hand function with the right-had one as an argument.
+var compose = function(arg){
+  //The storage variable will store the value of current right hand argument
+  var storage = null;
+  for (var i = arguments.length - 1; i >= 0; i--){
+    storage = arguments[i+1](arg);
+    arguments[i](storage);
+  }
+  return storage;
 };
 
 var pipe = function(){
+  for (var i = 0; i < arguments.length; i++){
+    arguments[i](arguments[i+1]);
+  }
 };
