@@ -35,6 +35,24 @@ function powerSet(chars) {
   return result;
 }
 
+
+
+
+var solutions = {};
+var recurse = function(strSet){
+  for (var i = 0; i < strSet.length; i++) {
+    var subSet = strSet.subStr(0, i) + strSet.substr(i+1, strSet.length);
+    // check if we have visited this combo..
+    if (!solution[subset]) {
+      // if not, store current set and recurse
+      solutions[strSet] = true;
+      recurse(subSet);
+    }
+  }
+}
+recurse(str);
+return Object.keys(solutions);
+
   // var results =[];
   //   results.push('');
   //   for(var i=0; i<str.length; i++){
