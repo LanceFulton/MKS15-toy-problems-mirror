@@ -34,7 +34,29 @@
 'use strict';
 
 var compose = function(){
+  var args = Array.prototype.slice.call(arguments);
+
+  var output = "";
+  for(var i=0; i<args.length; i++) {
+
+    var value = args[i];
+    var output = function( value ) {
+      return value;
+    }
+
+  }
+
+  return output;
 };
 
+
 var pipe = function(){
+  
 };
+
+var greet = function(name){ return 'hi: ' + name;}
+var exclaim = function(statement) { return statement.toUpperCase() + '!';}
+var welcome = compose(greet, exclaim);
+console.log(welcome);
+welcome('phillip'); // 'hi: PHILLIP!'
+
