@@ -34,7 +34,34 @@
 'use strict';
 
 var compose = function(){
+  //save the arguments
+  var funcs = Array.prototype.slice.call(arguments);
+  var currFunc;
+
+  return function() {
+    var result = Array.prototype.slice.call(arguments);
+    //pop through the list of arguments
+    while (currFunc = funcs.pop()) {
+      //run current function on next args, save result
+      //apply if multiple arguments are needed, otherwise could use call
+      result = currFunc.apply(null, [result]);
+    }
+
+    return result;
+  }
 };
 
 var pipe = function(){
+  var funcs = Array.prototype.slice.call(arguments);
+  funcs.reverse();
+  var currFunc;
+
+  return function() {
+    var result = Array.prototype.slice.call(arguments);
+    while (currFunc = funcs.pop()) {
+      result = currFunc.apply(null, [result]);
+    }
+  }
+
+  return result;
 };

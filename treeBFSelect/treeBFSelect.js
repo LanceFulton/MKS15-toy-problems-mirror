@@ -41,23 +41,21 @@ var Tree = function(value){
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
   filter = filter || function(tree) { return tree; };
-  currentSearch = [this];
+  var currentSearch = [this];
   var results = [];
-  var depth = 0;
+  var current;
+  
+  currentSearch.push({tree:this, depth:0});
 
-  while (currentSearch.length > 0) {
-    var nextSearch = [];
+  while (current = currentSearch.shift()) {
 
-    for (var i = 0; i < currentSearch.length; i++) {
-      var current = currentSearch[i];
-      if (filter(current.value, depth)) {
-        results.push(current.value);
-      }
-      nextSearch = nextSearch.concat(current.children);
+    if (filter(current.tree.value, depth)) {
+      results.push(current.tree.value);
     }
 
-    currentSearch = nextSearch;
-    depth += 1;
+    current.children.forEach(function(child) {
+      currentSearch.push({tree:child, depth:current.depth + 1});
+    });
   }
 
   return results;
