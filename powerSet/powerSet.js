@@ -24,20 +24,21 @@
 
 var powerSet = function(str){
   var powerSet = [];
-  var obj = {};
+  var solutions = {};
 
-  var iterateString = function (???) {
-    for (var i = 0; i < str.length; i++) {
-      var newString = (obj[str[i] + str[i+1]).sort();
-      if ( obj[newString] ) === undefined ) {
-        powerSet.push(newString);
-        obj[newString] = true;
-
+  for (var i = 0; i < str.length; i++) {
+    letters[str[i]] = true;
+  };
+  str = Object.keys(letters).join('');
+  var iterateString = function (strSet) {
+    for (var i = 0; i < strSet.length; i++) {
+      var subSet = strSet.substr(0,i) + strSet.subsr(i+1, strSet.length);
+      if(!solutions[subSet]) {
+        solutions[subSet] = true;
+        recurse(subSet);
       }
-
     };
   };
-
-  iterateString(???);
-  return powerSet;
+  recurse(str);
+  return Object.keys(solutions)
 }
