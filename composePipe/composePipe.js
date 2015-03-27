@@ -34,7 +34,33 @@
 'use strict';
 
 var compose = function(){
+  var funcs = [];
+  for(var key in arguments){
+    funcs[key] = arguments[key];
+  }
+
+  return function(){
+    var tempFuncs = funcs.slice();
+    var arg = arguments[0];
+    while(tempFuncs.length > 0){
+      arg = tempFuncs.pop().call(this, arg);
+    }
+    return arg;
+  }
 };
 
 var pipe = function(){
+  var funcs = [];
+  for(var key in arguments){
+    funcs[key] = arguments[key];
+  }
+
+  return function(){
+    var tempFuncs = funcs.slice();
+    var arg = arguments[0];
+    while(tempFuncs.length > 0){
+      arg = tempFuncs.shift().call(this, arg);
+    }
+    return arg;
+  }
 };
