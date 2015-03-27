@@ -68,6 +68,26 @@ Tree.prototype.BFSelect = function(filter) {
 
 };
 
+// don't use shift or unshift because it greatly increases time complexity
+
+Tree.prototype.BFSelect = function(filter) {
+  var queue = new Queue();
+  var results = [];
+  var current;
+  queue.enqueue({tree: this, depth: 0});
+
+  while (current = queue.dequeue()) {
+    if (filter(current.tree.value, current.depth)) {
+      results.push(current.tree.value);
+    }
+    current.tree.children.forEach(function(child) {
+      queue.enqueue ({tree: child, depth: current.depth + 1});
+    });
+  }
+
+  return results;
+};
+
 /**
  * You shouldn't need to change anything below here, but feel free to look.
   */
