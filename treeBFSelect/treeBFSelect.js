@@ -6,17 +6,17 @@
   * in Breadth First order, and returns a flat array of node values of the tree
   * for which the filter returns true.
   *
-  * Example:
-  *   var root1 = new Tree(1);
-  *   var branch2 = root1.addChild(2);
-  *   var branch3 = root1.addChild(3);
-  *   var leaf4 = branch2.addChild(4);
-  *   var leaf5 = branch2.addChild(5);
-  *   var leaf6 = branch3.addChild(6);
-  *   var leaf7 = branch3.addChild(7);
-  *   root1.BFSelect(function (value, depth) {
-  *     return value % 2;
-  *   })
+   Example:
+     var root1 = new Tree(1);
+     var branch2 = root1.addChild(2);
+     var branch3 = root1.addChild(3);
+     var leaf4 = branch2.addChild(4);
+     var leaf5 = branch2.addChild(5);
+     var leaf6 = branch3.addChild(6);
+     var leaf7 = branch3.addChild(7);
+     root1.BFSelect(function (value, depth) {
+       return value % 2;
+     })
   *   // [1, 3, 5, 7]
   *
   *   root1.BFSelect(function (value, depth) {
@@ -35,11 +35,53 @@ var Tree = function(value){
   this.children = [];
 };
 
-
-
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
+  var queue = new Queue();
+  var result = [];
+
+  queue.enqueue( {tree: this, depth: 0} );
+
+  while (current = queue.dequeue()){
+    if(filter(current.tree.value, current.depth)){
+      results.push(current.tree.value);
+    }
+  }
+
+  current.tree.children.forEach(function(child){
+    queue.enqueue( { tree: child, depth: current.depth + 1 })
+  })
+
+  return result;
 };
+
+// Tree.prototype.BFSelect = function(filter) {
+//   // return an array of values for which the function filter(value, depth) returns true
+//   var result = [];
+
+//   var recurse = function(layer){
+//     console.log('IN RECURSE');
+//     console.log('LAYER: ', layer);
+//     // for this layer, for each element, run filter and push if true
+//     for (var i = 0 ; i < layer.length ; i++){
+//       console.log('layer[i]: ', layer[i]);
+//       console.log('layer[i].value: ', layer[i].value);
+//       if ( filter(layer[i].value) ){
+//         console.log('MATCH');
+//         result.push(layer[i].value);
+//       }
+//     }
+//     // then, for each element, recurse next sublayer
+//     for (var j = 0 ; j < layer.length ; j++){
+//       recurse(layer[j]);
+//     }
+//   }
+
+//   recurse(this);
+
+//   return result;
+
+// };
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.

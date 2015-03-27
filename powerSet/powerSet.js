@@ -17,18 +17,32 @@
  * -> ["", "j", "ju", "jm", "jp", "jmu", "jmp", "jpu", "jmpu", "u", "m", "p", "mu", "mp", "pu", "mpu"]
  */
 
- // create results array
+var powerSet = function(str){
+	str = str || '';
 
- // add empty set to results array
+	var letters = {};
+	var solutions = {};
 
- // store charcters in object
+	for (var i = 0 ; i < str.length ; i++){
+		letters[str[i]] = true;
+	}
 
- // loop through object
+	str = Object.keys(letters).join('');
 
- 	// for each character, generate sets including just that character and it with all following characters
- 	// add each set to results array
+	var recurse = function(strSet){
+		for (var i = 0 ; i < strSet.length ; i++){
+			var subSet = strSet.substr(0,i) + strSet.substr(i+1, strSet.length);
+			if (!solutions[subSet]){
+				solutions[subSet] = true;
+				recurse(subSet);
+			}
+		}
+	}
 
- // return results array
+	recurse(str);
+	return Object.keys(solutions);
+
+}
 
 var powerSet = function(str){
 
@@ -64,7 +78,9 @@ var powerSet = function(str){
 		results.push(x);
 		// if there are more letters, generate combinations with other letters and recurse on them
 		if (strAry.length > strAry.indexOf(x)+1){
-			
+			for (var i = 0 ; i < strAry.length-(strAry.indexOf(x)-1) ; i++){
+
+			}
 		}
 	}
 
