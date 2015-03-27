@@ -33,8 +33,30 @@
 
 'use strict';
 
+//right to left
 var compose = function(){
+   //args = array of functions
+  var args = Array.prototype.slice.call(arguments);
+  return args.reduce(function(a,b) {
+    return function() {
+        //this: hi + arguemnts Philip
+      return a(b.apply(this, arguments));
+
+    };
+  });
 };
 
+//same as compose, just have to swap a and b in return
+
+
 var pipe = function(){
+   //args = array of functions
+  var args = Array.prototype.slice.call(arguments);
+  // value is name 
+  return args.reduce(function(a,b) {
+    return function() {
+      return b(a.apply(this, arguments));
+
+    };
+  });
 };
