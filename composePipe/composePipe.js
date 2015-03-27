@@ -43,21 +43,20 @@ var compose = function() {
   };
 
   return function(arg) {
-    var f = funcs[0];
-    for (var i = 0; i<funcs.length-1; i++) {
-      f = compose2(f, funcs[i+1]);
-    }
-    return f(arg);
+    return funcs.reduce(compose2)(arg);
   }
 };
 
 var pipe = function(){
   var funcs = Array.prototype.slice.call(arguments);
 
+  var pipe2 = function(f1, f2) {
+    return function(arg) {
+      return f2(f1(arg));
+    }
+  }
+
   return function(arg) {
-    funcs.forEach(function(func){
-      arg = func(arg);
-    })
-    return arg;
+    return funcs.reduce(pipe2)(arg);
   }
 };
