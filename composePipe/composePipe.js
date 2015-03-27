@@ -34,14 +34,21 @@
 'use strict';
 
 var compose = function() {
-  // var funcs = Array.prototype.slice.call(arguments);
+  var funcs = Array.prototype.slice.call(arguments);
 
-  // return function(arg) {
-  //   funcs.forEach(function(func){
-  //     arg = func(arg);
-  //   })
-  //   return arg;
-  // }
+  var compose2 = function(f1, f2) {
+    return function(arg) {
+      return f1(f2(arg));
+    };
+  };
+
+  return function(arg) {
+    var f = funcs[0];
+    for (var i = 0; i<funcs.length-1; i++) {
+      f = compose2(f, funcs[i+1]);
+    }
+    return f(arg);
+  }
 };
 
 var pipe = function(){
