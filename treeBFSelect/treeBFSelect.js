@@ -36,40 +36,66 @@ var Tree = function(value){
 };
 
 
-
-Tree.prototype.BFSelect = function(filter) {
-  // return an array of values for which the function filter(value, depth) returns true
+Tree.prototype.BFSelect = function(filter){
   var results = [];
-  var searchDepth = 0;
-  var hasValue = function (node, filter){
-    if (filter(node.value) === true){
-      result.push(node.value);
+  var bucketOfDepths = [];
+
+  var searchDepth = function(node, filter){
+    if (filter(node.value) == true){
+      results.push(node.value);
+      console.log('yes');
     }
-  }
-
-  hasValue(node, filter);
-
-  var BFsearch = function(node, filter){
 
     if (node.children){
-      for (var i = 0; i<node.children.length; i++){
-        hasValue(node.children[i], filter);
+      for (var i = 0; i < node.children.length; i++){
+        bucketOfDepths.push(node.children[i]);
       }
-       // TODO: implement condition that will not proceed to the next step
-       // if the  immediate ancestor has other children to check.
-    }
-    if (i = node.children.length - 1) {
-      for (var i = 0; i<node.children.length;i++){
-      BFsearch(node, filter);
     }
 
-
-  }
-
-  BFsearch(this, filter);
-
-
+    while (bucketOfDepths.length > 0){
+      var nextNode = bucketOfDepths.shift();
+      console.log(nextNode);
+      searchDepth(nextNode, filter);
+    }
+  };
+  searchDepth(this, filter);
+  return results;
 };
+
+
+// Tree.prototype.BFSelect = function(filter) {
+//   // return an array of values for which the function filter(value, depth) returns true
+//   var results = [];
+//   var searchDepth = 0;
+//   var hasValue = function (node, filter){
+//     if (filter(node.value) === true){
+//       result.push(node.value);
+//     }
+//   }
+
+//   hasValue(node, filter);
+
+//   var BFsearch = function(node, filter){
+
+//     if (node.children){
+//       for (var i = 0; i<node.children.length; i++){
+//         hasValue(node.children[i], filter);
+//       }
+//        // TODO: implement condition that will not proceed to the next step
+//        // if the  immediate ancestor has other children to check.
+//     }
+//     if (i = node.children.length - 1) {
+//       for (var i = 0; i<node.children.length;i++){
+//       BFsearch(node, filter);
+//     }
+
+
+//   }
+
+//   BFsearch(this, filter);
+
+
+// };
 
 
 /**
