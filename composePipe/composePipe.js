@@ -33,7 +33,15 @@
 
 'use strict';
 
-var compose = function(){
+var compose = function() {
+  var funcs = Array.prototype.slice.call(arguments);
+
+  return function(arg) {
+    funcs.forEach(function(func){
+      arg = func(arg);
+    })
+    return arg;
+  }
 };
 
 var pipe = function(){
