@@ -33,8 +33,29 @@
 
 'use strict';
 
-var compose = function(){
+var compose = function(args){
+
+  args = Array.prototype.slice.call(arguments);
+
+  return function () {
+
+    for (var i = args.length; i > 1; i--) {
+
+      args[i](args[i-1]);
+    }
+  };
+
+
+
 };
 
-var pipe = function(){
+var pipe = function(args){
+
+  args = Array.prototype.slice.call(arguments);
+
+  return function () {
+    for (var i = 0; i < args.length -1; i++) {
+      args[i](args[i+1]);
+    }
+  };
 };
