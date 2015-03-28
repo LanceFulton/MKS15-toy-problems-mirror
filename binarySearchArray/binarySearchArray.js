@@ -9,5 +9,16 @@
  */
 
 var binarySearch = function (array, target) {
+  var recursiveBinarySearch = function(start, end) {
+    if (start >= end) {
+      return array[start] === target ? start : -1;
+    } else {
+      var middle = Math.floor((start + end)/2);
+      return array[middle] === target ? middle : array[middle] > target 
+                                      ? recursiveBinarySearch(start, middle-1) : 
+                                        recursiveBinarySearch(middle+1, end);
+    }
+  };
+  return recursiveBinarySearch(0, array.length);
 };
 
