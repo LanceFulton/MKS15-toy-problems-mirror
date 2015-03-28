@@ -40,5 +40,26 @@ var compose = function(func1, func2){
 };
 
 var pipe = function(func1, func2){
+  return function () {
     return func2(func1.call(null,arguments));
+  }
 };
+
+var compse = function () {
+  var args = Array.prototype.slice.call(arguments);
+  return function (val) {
+    return args.reduceRight(function(memo, fn) {
+      return fb(memo);
+    }, val);
+  };
+};
+
+var pipe = function () {
+  var args = Array.prototype.slice.call(arguments);
+  return function (val) {
+    return args.reduce(function(memo, fn) {
+      return fb(memo);
+    }, val);
+  };
+};
+
