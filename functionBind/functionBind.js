@@ -79,3 +79,8 @@ Function.prototype.bind = function(context) {
     return fn.apply(context, aa);
   }
 };
+
+
+
+var arr = [1,2,3,4];
+console.log("SLICE TEST:  " + arr.slice(0,4))

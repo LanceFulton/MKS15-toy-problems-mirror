@@ -33,8 +33,46 @@
 var Tree = function(value){
   this.value = value;
   this.children = [];
+
 };
 
+Tree.prototype.contains = function(valueToFind){
+  var results = false;
+  var searchChildren = function(tree) {
+    if(tree.value === valueToFind) {
+      result = true;
+      console.log(tree.value + " ");
+    }
+  }
+  var children = tree.children;
+  for (var i=0; i<children.length; i++) {
+    searchChildren(children[i]);
+  }
+  return results;
+};
+
+
+Tree.prototype.findAll = function(tree){
+  if(!tree) { return; }
+
+  var allValues = [];
+  console.log("Value:  " + tree.value)
+
+  var recurse = function() {
+    if(tree.children){
+      for(var k=0; k<tree.children.length; k++) {
+        // display/collect the child
+        console.log( tree.children[k] );
+        if(tree.children[k].value) {
+          allValues.push(tree.children[k].value);
+        }
+      }
+    }
+    return; // allValues?
+  }
+
+  return recurse(tree);
+};
 
 
 Tree.prototype.BFSelect = function(filter) {
@@ -94,3 +132,20 @@ Tree.prototype.removeChild = function(child){
     throw new Error("That node is not an immediate child of this tree");
   }
 };
+
+
+
+var root1 = new Tree(1);
+var branch2 = root1.addChild(2);
+var branch3 = root1.addChild(3);
+var leaf4 = branch2.addChild(4);
+var leaf5 = branch2.addChild(5);
+var leaf6 = branch3.addChild(6);
+var leaf7 = branch3.addChild(7);
+// root1.BFSelect(function (value, depth) {
+//   return value % 2;
+// })
+// [1, 3, 5, 7]
+
+root1.findAll(root1); // root1.children[0]
+
