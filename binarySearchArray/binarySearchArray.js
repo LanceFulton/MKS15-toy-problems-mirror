@@ -14,9 +14,9 @@ var binarySearch = function (array, target) {
       return array[start] === target ? start : -1;
     } else {
       var middle = Math.floor((start + end)/2);
-      return array[middle] === target ? middle : array[middle] > target 
-                                      ? recursiveBinarySearch(start, middle-1) : 
-                                        recursiveBinarySearch(middle+1, end);
+      return array[middle] ===  target ? middle : 
+                array[middle] > target ? recursiveBinarySearch(start, middle-1) : 
+                array[middle] < target ? recursiveBinarySearch(middle+1, end) : null;
     }
   };
   return recursiveBinarySearch(0, array.length);
