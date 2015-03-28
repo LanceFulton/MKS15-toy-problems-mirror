@@ -9,5 +9,7 @@
  */
 
 var binarySearch = function (array, target) {
+  var index = array.indexOf(target);
+  return index;
 };
 
