@@ -18,9 +18,13 @@
  */
 
 var powerSet = function(str){
-  var sortedStr = Array.slice(str.split('')).sort().join('');
+  var hash = {};
+  for (var i=0; i<str.length; i++) {
+    hash[str[i]] = true;
+  }
+  var sortedStr = Object.keys(hash).sort().join('');
   var strLen = sortedStr.length;
-  var results = {};
+  var results = [];
   for (var i=0; i<Math.pow(2,strLen); i++) {
     var subset = [];
     for (var j=0; j<strLen; j++) {
@@ -28,7 +32,9 @@ var powerSet = function(str){
         subset.push(sortedStr[j]);
       }
     }
-    results[subset.join('')] = true;
+    results.push(subset.join(''));
   }
-  return Object.keys(results);
+  return results;
 };
+
+// console.log(powerSet('jump'));

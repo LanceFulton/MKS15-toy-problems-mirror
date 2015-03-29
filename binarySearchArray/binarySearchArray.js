@@ -10,7 +10,7 @@
 
 var binarySearch = function (array, target) {
   var binarySearchRecurse = function(low, high) {
-    if (low < high) {
+    if (low <= high) {
       var med = Math.floor((low + high)/2);
       if (array[med] === target) {
         return med;
