@@ -34,6 +34,25 @@ var binarySearch = function (array, target) {
 
 };
 
+var binarySearch = function (array, target) {
+
+  var sub = function (low, high) {
+    var mid = Math.floor((high - low) / 2) + low;
+    if (array[mid] === target) {
+      return mid;
+    } else if (high === low) {
+      return null;
+    } else if (array[mid] > target) {
+      return sub(low,mid);
+    } else {
+      return sub (mid, high);
+    }
+  };
+
+  return sub(0, array.length - 1);
+
+};
+
 
 var index = binarySearch([1, 2, 3, 4, 5], 3);
 console.log(index); // 2
