@@ -38,15 +38,44 @@
 
 
 var Range = function(start, end, step) {
+  this.start = start;
+  this.end = end || this.start;
+  this.step = step;
+
+  if (this.step === null) {
+    if (this.start > this.end) {
+      this.step = -1;
+    } else {
+      this.step = 1;
+    }
+  } else if ((this.end - this.start) * this.step < 0) {
+    throw 'Error: invalid step';
+  }
 };
 
 Range.prototype.size = function () {
+  return Math.abs((this.end - this.start)/this.step) + 1;
 };
 
 Range.prototype.each = function (callback) {
+  var idx = this.start;
+  var low = Math.min(this.start, this.end);
+  var high = Math.max(this.start, this.end);
+
+  while (low <= idx && high >= idx) {
+    callback(idx);
+    idx += this.step;
+  }
 };
 
 Range.prototype.includes = function (val) {
+  if (Math.min(this.start, this.end) <= val &&
+      Math.max(this.start, this.end) >= val &&
+      (val - this.start) % this.step === 0 ) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 var range = new Range(1);
