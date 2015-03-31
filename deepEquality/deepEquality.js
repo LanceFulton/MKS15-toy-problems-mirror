@@ -12,23 +12,10 @@
   *
   */
 var deepEquals = function(apple, orange){
-  if (Array.isArray(apple) && Array.isArray(orange)) {
-    if (apple.length === orange.length) {
-      for (var i=0; i<apple.length; i++) {
-        if (!deepEquals(apple[i], orange[i])) {
-          return false;
-        }
-      }
-      return true;
-    }
-  }
-  if (typeof apple==="object" && !Array.isArray(apple) && typeof orange==="object" && !Array.isArray(orange)) {
+  if (typeof apple === "object" && typeof orange === "object" && apple.constructor === orange.constructor) {
+    if (Object.keys(apple).length !== Object.keys(orange).length)
+      return false;
     for (var key in apple) {
-      if (!deepEquals(apple[key], orange[key])) {
-        return false;
-      }
-    }
-    for (var key in orange) {
       if (!deepEquals(apple[key], orange[key])) {
         return false;
       }
@@ -37,3 +24,6 @@ var deepEquals = function(apple, orange){
   }
   return apple === orange;
 };
+
+console.log(deepEquals({a:1, b: {c:3}},{a:1, b: {c:3}})); // true
+console.log(deepEquals({a:1, b: {c:5}},{a:1, b: {c:6}})); // false
