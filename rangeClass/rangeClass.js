@@ -38,16 +38,30 @@
 
 
 var Range = function(start, end, step) {
+	this.start = start;
+	this.end = end;
+	this.step = step;
 };
 
 Range.prototype.size = function () {
+	return (this.end - this.start)/this.step + 1;
 };
 
 Range.prototype.each = function (callback) {
+	for(var i = 0; i < this.size(); i++){
+      callback(this.start + (this.step * i));
+	}
 };
 
 Range.prototype.includes = function (val) {
+	for(var i = 0; i < this.size(); i++){
+      if(this.start + (this.step * i) === val){
+      	return true;
+      }
+	}
+	return false;
 };
 
 var range = new Range(1);
+
 
