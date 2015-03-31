@@ -38,15 +38,77 @@
 
 
 var Range = function(start, end, step) {
+  if( !start ) {
+    return null;
+  }
+  this.start = start;
+  this.end = end;
+  this.step = step;
+  if( !step ) {
+    this.step = 1;
+  }
+
+  /*
+  if start is null, return null
+  if end is undefined, range returns start only
+  if step is undefined,
+    if end < start, step is -1
+    else, step is 1
+
+  */
+
 };
 
 Range.prototype.size = function () {
+  if( !this.start ) {
+    return null;
+  } else if( !this.end ) {
+    return 1;
+  }
+  var counter = 0;
+  var i = this.start;
+
+  if( this.step > 0 ) {
+    while( i <= this.end ) {
+      i += this.step;
+      counter++;
+    }
+  } else {
+    while( i >= this.end ) {
+      i += this.step;
+      counter++;
+    }
+  }
+
+  return counter;
 };
 
 Range.prototype.each = function (callback) {
 };
 
 Range.prototype.includes = function (val) {
+  if( !this.start ) {
+    return false;
+  }
+  var i = this.start;
+
+  if( this.step > 0 ) {
+    while( i <= this.end ) {
+      if( val === i ) {
+        return true;
+      }
+      i += this.step;
+    }
+  } else {
+    while( i >= this.end ) {
+      if( val === i ) {
+        return true;
+      }
+      i += this.step;
+    }
+  }
+
+  return false;
 };
 
 var range = new Range(1);
