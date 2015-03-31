@@ -38,16 +38,57 @@
 
 
 var Range = function(start, end, step) {
+  this.start = start || null;
+  this.end = end || start;
+
+    if (this.step === undefined) {
+      if (this.start <=this.end) {
+        this.step=1;
+      }
+      else {
+        this.step=-1;
+      }
+    }
+    else {
+      this.step=step;
+    }   
+
 };
 
 Range.prototype.size = function () {
+  return Math.floor((this.end-this.start)/this.step)+1;
 };
 
 Range.prototype.each = function (callback) {
+  if (this.step >=0) {
+    for (var i= this.start; i<= this.end; i=i+this.step) {
+    callback(i);
+    }
+  } else {
+    for (var i= this.start; i>= this.end; i=i+this.step) {
+    callback(i);
+    }
+  }
+  
 };
 
 Range.prototype.includes = function (val) {
+  for (var i= ((this.start<=this.end)? this.start: this.end); i<=((this.start<=this.end)? this.end: this.start); i=i+Math.abs(this.step)) {
+    if (val === i){
+      return true;
+    }
+  }
+  return false;
 };
+/*
+var evenNumbers = new Range(2, -1);
+console.log(evenNumbers.size() );
+console.log(evenNumbers.includes(2));
+evenNumbers.each(function(val){
+ console.log(val+"!");
+});
+console.log(evenNumbers.end);
+console.log(evenNumbers.step);
+*/
 
-var range = new Range(1);
 
