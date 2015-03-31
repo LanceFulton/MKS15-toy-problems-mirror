@@ -23,36 +23,27 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
-  var args = Array.prototype.slice.bind(arguments);
-
-  var newFunc  = args[0];
-  var newScope = args[1];
-  console.log("! " + newFunc + "; " + newScope);
-
-  var func = function(pFunk, xScope) {
-    return xScope;
+var bind = function(func, context) {
+  var args = Array.prototype.slice.call(arguments, 2);
+  return function() {
+    var aa = args.concat(Array.prototype.slice.call(arguments));
+    return func.apply(context, aa);
   }
-
-  return func(newFunc, newScope);
 };
 
 
 var alice = {
   name: 'alice',
   shout: function(){
-    console.log('SHOUTING!');
-    alert(this.name);
+    console.log('SHOUTING!!!  this.name = ' + this.name);
   }
 }
- 
+
+console.log("OUTPUT:") 
 var boundShout = bind(alice.shout, alice);
-console.log(boundShout)
-// boundShout(); // alerts 'alice'
-// boundShout = bind(alice.shout, {name: 'bob'});
-// boundShout(); // alerts 'bob'
+boundShout(); // alerts 'alice'
+boundShout = bind(alice.shout, {name: 'bob'});
+boundShout(); // alerts 'bob'
 
 
 /*
@@ -80,7 +71,16 @@ console.log(boundShout)
  *
 */
 
-Function.prototype.bind = function(
-) {
-  // TODO: Your code here
+Function.prototype.bind = function(context) {
+  var fn = this;
+  var args = Array.prototype.slice.call(arguments, 2);
+  return function() {
+    var aa = args.concat(Array.prototype.slice.call(arguments));
+    return fn.apply(context, aa);
+  }
 };
+
+
+
+var arr = [1,2,3,4];
+console.log("SLICE TEST:  " + arr.slice(0,4))

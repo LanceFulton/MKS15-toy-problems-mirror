@@ -5,6 +5,20 @@ $(function(){
   // becomes: <p><span>Hey</span><span>there</span></p>
   // HINT: the `split` array method is your friend
 
+/*
+MKS Solution:
+$('p').each( function(index, element) {
+  var $el = $(element);
+  var words = $el.text().split(' ');
+  $el.html('');
+  for (var i =0; words.length; i++) {
+    var newSpan = $('span').text(words[i] + ' ');
+    $el.append(newSpan);
+  }
+})
+
+*/
+
 
   // Exract Paragraphs / words
 
