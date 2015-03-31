@@ -10,12 +10,6 @@
 
 var binarySearch = function (array, target) {
 
-	// recursive function
-	// find midpoint, check against target
-	// if target is lower, recurse with lower half
-	// else, recurse with upper half
-
-	var indexAdd = 0;
 	var indexStorage = {};
 
 	// loop through array and store values in indexStorage
@@ -29,11 +23,12 @@ var binarySearch = function (array, target) {
 
 	var recurse = function(){
 
+		// find midpoint
 		midpoint = (array.length/2);
 		if (midpoint % 2){
 			midpoint += .5;
 		}
-
+		// check midpoint against target
 		if (array[midpoint] === target){
 			match = array[midpoint];
 		} else if (target < array[midpoint]){
@@ -46,9 +41,52 @@ var binarySearch = function (array, target) {
 	}
 
 	recurse(array, target);
-	return indexStorage[match];
+
+	if (match){
+		return indexStorage[match];
+	} else {
+		return null;
+	}
 
 };
+
+
+var binarySearch = function (array, target){
+	var sub = function(low, high){
+		if (high === low) {
+			return null;
+		}
+		var mid = Math.floor((high - low) / 2) + low;
+		if (array[mid] === target){
+			return mid;
+		} else if (array[mid] > target){
+			return sub(low, mid);
+		} else {
+			return sub(mid, high)
+		}
+	};
+
+	return sub(0, array.length - 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
