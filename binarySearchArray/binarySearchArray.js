@@ -19,9 +19,9 @@ var binarySearch = function (array, target) {
     midIndex = Math.floor((binarySearchField[1] - binarySearchField[0])/2);
     mid = binField[midIndex]
     if ( target === mid) {
-      return newArr.push(mid);
-    } else if ( ???? ) {
-      return undefined;
+      return midIndex;
+    } else if ( high === low ) {
+      return null;
     }
     if ( binField[mid] > target ) {
       minArr = mid++;

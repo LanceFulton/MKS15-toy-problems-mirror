@@ -38,15 +38,47 @@
 
 
 var Range = function(start, end, step) {
+  var initialize = function (){
+    if(!step && start > end) {
+      this.step = -1;
+    } else if (!step) {
+      this.step = 1;
+    } else {
+      this.step = step;
+    }
+
+    if(!start) {
+      this.start = null;
+    } else { 
+      this.start = start,
+    }
+    this.end = end,
+  }
 };
 
 Range.prototype.size = function () {
+  return Math.abs(Math.floor( ( this.end - this.start )/this.step ) );
 };
 
 Range.prototype.each = function (callback) {
+  var end = this.end;
+  var step = this.step;
+  var recurse = function(currentVal) {
+    if( currentVal >= end ) {
+      return;
+    }
+    callback(currentVal);
+    recurse(currentVal + step)
+  }
+  recurse(this.start)
 };
 
 Range.prototype.includes = function (val) {
+  return this.each(function(currentVal) {
+    if ( currentVal === val ) {
+      return true;
+    }
+  }
 };
 
 var range = new Range(1);
