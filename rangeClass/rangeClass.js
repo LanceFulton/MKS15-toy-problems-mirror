@@ -38,15 +38,35 @@
 
 
 var Range = function(start, end, step) {
+  step = step || 1;
+  if (!end) {return start;}
+  if (!start) {return null;}
 };
 
-Range.prototype.size = function () {
+Range.prototype.size = function (start, end) {
+  var count = 0;
+  for (var i = start; i < end; i += step) { 
+    count++;
+    return count;
+  }
+
 };
 
 Range.prototype.each = function (callback) {
+
+  for (var i = start; i < end; i += step) { 
+    callback(i);
+  }
 };
 
 Range.prototype.includes = function (val) {
+ this.each(function(item) {
+  if (item === val) {
+    return true;
+  } else {
+    return false;
+  }
+ });
 };
 
 var range = new Range(1);
