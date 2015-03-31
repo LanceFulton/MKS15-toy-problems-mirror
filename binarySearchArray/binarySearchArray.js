@@ -40,3 +40,21 @@ var binarySearch = function (array, target) {
 
 var index = binarySearch([1, 2, 3, 4, 5], 4);
 console.log(index); // [3
+
+
+/* A SOLUTION
+var binarySearch = function(array, target) {
+  if (high === low) { return null; }
+  var sub = function(low, high) {
+    var mid = Math.floor((high - low) / 2) + low;
+    if (array[mid] === target) {
+      return mid;
+    }
+  };
+
+  return sub(0, array.length - 1);
+}
+
+Time Complexity:  Logorythmic! (VERY fast array search) - o(log(n))
+
+ */

@@ -38,16 +38,34 @@
 
 
 var Range = function(start, end, step) {
+  this.start = start;
+  if(!end) { end = 100; } // Default on empty
+  this.end = end;
+  if(!step) { step = 1; } // Default on empty
+  this.step = step;
 };
 
 Range.prototype.size = function () {
+  // Size = Start to End (divided by step)
+  return Math.round( (this.end - this.start) / this.step );
 };
 
 Range.prototype.each = function (callback) {
+  if( this.start>this.end && this.step>0 ) { this.step = -this.step; }
+  if( this.start<this.end && this.step<0 ) { this.step = -this.step; }
+  for(var i=this.start; i<=this.end; i += this.step) {
+    callback(i);
+  }
 };
 
 Range.prototype.includes = function (val) {
 };
 
-var range = new Range(1);
+//var range = new Range(1);
+var range = new Range(1, 10, 2);
+console.log( "SIZE: " + range.size() );
+console.log( "EACH: ");
+range.each( function(index){ 
+  console.log("LOG EACH = " + index); 
+});
 
