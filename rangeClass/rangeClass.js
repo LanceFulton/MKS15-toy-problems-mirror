@@ -53,7 +53,7 @@ Range.prototype.size = function () {
 
 Range.prototype.each = function (callback) {
   var tempNum = this.start;
-  while (tempNum <= this.end) {
+  while ( (this.step > 0 && tempNum <= this.end) || (this.step < 0 && tempNum >= this.end) ) {
     callback(tempNum);
     tempNum += this.step;
   }
