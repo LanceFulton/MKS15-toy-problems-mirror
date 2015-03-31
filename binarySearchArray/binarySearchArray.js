@@ -16,65 +16,39 @@ var binarySearch = function (array, target) {
 	// else, recurse with upper half
 
 	var indexAdd = 0;
+	var indexStorage = {};
+
+	// loop through array and store values in indexStorage
+	for (var i = 0 ; i < array.length ; i++){
+		var value = array[i];
+		indexStorage[value] = i;
+	}
+
+	var midpoint;
+	var match;
 
 	var recurse = function(){
 
-		console.log('RECURSE');
-
-		var midpoint = (array.length/2);
-		console.log('MIDPOINT: ', midpoint);
-
-		indexAdd += midpoint-1;
-		console.log('ORIGINAL INDEX: ', midpoint + indexAdd);
+		midpoint = (array.length/2);
+		if (midpoint % 2){
+			midpoint += .5;
+		}
 
 		if (array[midpoint] === target){
-			console.log('MATCH');
-			return midpoint + indexAdd;
+			match = array[midpoint];
 		} else if (target < array[midpoint]){
 			array.splice(midpoint, array.length-midpoint);
+			recurse(array);
 		} else {
 			array.splice(0, array.length-midpoint);
+			recurse(array);
 		}
 	}
 
 	recurse(array, target);
+	return indexStorage[match];
 
 };
 
 
-// var binarySearch = function (array, target) {
-
-// 	// recursive function
-// 	// find midpoint, check against target
-// 	// if target is lower, recurse with lower half
-// 	// else, recurse with upper half
-
-// 	// find midpoint
-// 	console.log('RECURSE');
-
-// 	var midpoint = (array.length-1)/2;
-// 	if (midpoint%1){
-// 		midpoint += .5;
-// 	}
-// 	console.log('midpoint index: ', midpoint);
-// 	console.log('midpoint value: ', array[midpoint]);
-// 	console.log('target: ', target);
-
-// 	// check midpoint against target
-// 	if (array[midpoint] === target){
-// 		console.log('MATCH');
-// 		console.log('MIDPOINT ', midpoint);
-// 		return midpoint;
-// 	} else if (target < array[midpoint]){
-// 		array.splice(midpoint, array.length-midpoint);
-// 		console.log('less than');
-// 		console.log('array: ', array);
-// 	} else {
-// 		array.splice(0, array.length-midpoint);
-// 		console.log('greater than');
-// 		console.log('array: ', array);
-// 	}
-// 	binarySearch(array, target);
-
-// };
 
