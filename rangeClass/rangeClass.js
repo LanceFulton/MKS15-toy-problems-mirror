@@ -38,15 +38,67 @@
 
 
 var Range = function(start, end, step) {
+  this.storage = {};
+
+  if (arguments.length === 0) { // when nothing is passed in
+    return null;
+  }
+
+  if (arguments.length === 1 || start === end) { // when start is only passed in.
+    this.storage[start] === true;
+    return;
+  }
+
+  if (start < end && step < 0) {
+    return null;
+  }
+
+  if (end < start && step > 0) {
+    return null;
+  }
+
+  if (!step) { // if no step is presented
+    if (start < end) {
+      step === 1;
+    } else {
+      step === -1;
+    }
+  };
+
+  if (start < end) {
+    for (var i = start; i <= end; i += step) {
+      this.storage[i] = true;
+    }
+  }
+  if (start > end) {
+    for (var i = start; i >= end; i -= step) {
+      this.storage[i] = true;
+    }
+  }
 };
 
 Range.prototype.size = function () {
+  var size = 0;
+  for (var index in this.storage) {
+    size++;
+  }
+  return size;
 };
 
 Range.prototype.each = function (callback) {
+  for (var index in this.storage) {
+    callback(index);
+  }
 };
 
 Range.prototype.includes = function (val) {
+  var found = false;
+  for (var index in this.storage) {
+    if (val === index)
+    found = true;
+    break;
+  }
+  return found;
 };
 
 var range = new Range(1);
