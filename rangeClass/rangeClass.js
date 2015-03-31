@@ -38,15 +38,36 @@
 
 
 var Range = function(start, end, step) {
+  this.start = (typeof start) === typeof (0) ? start: null;
+  this.end = typeof end === typeof start ? end: start;
+  this.step = step || (end >= start ? 1:-1);  //don't want 0 step
+  if (start === null)  {
+    return null;
+  }
+
 };
 
 Range.prototype.size = function () {
+  return Math.floor( ( Math.abs(this.end - this.start)  ) / Math.abs(this.step) + 1);
 };
 
 Range.prototype.each = function (callback) {
+  var tempNum = this.start;
+  while (tempNum <= this.end) {
+    callback(tempNum);
+    tempNum += this.step;
+  }
 };
 
 Range.prototype.includes = function (val) {
+  var steps = (val - this.start)/this.step;
+  if (steps !== Math.floor(steps)) {
+    return false;
+  } else if (steps >= this.size() || steps < 0) {
+    return false;
+  } else {
+    return true;
+  }
 };
 
 var range = new Range(1);
