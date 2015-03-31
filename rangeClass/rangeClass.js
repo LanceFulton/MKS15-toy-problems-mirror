@@ -38,15 +38,30 @@
 
 
 var Range = function(start, end, step) {
+  if (!end) { return start; };
+  if (start === end){ return start; }; 
+  step = step || 1; //Setting the increments if no case is passed in.
+
+  console.log(start);
+  while (start < end) {
+    start += step;
+    console.log(start);
+  };
 };
 
 Range.prototype.size = function () {
+  console.log("Range: " + (end - start) / step);
 };
 
 Range.prototype.each = function (callback) {
+  start = callback(start);
+  console.log(start);
 };
 
 Range.prototype.includes = function (val) {
+  if (start === val) {
+    console.log(true);
+  }
 };
 
 var range = new Range(1);
