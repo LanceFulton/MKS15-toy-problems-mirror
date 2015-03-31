@@ -5,10 +5,10 @@ var binarySearch = function (array, target) {
 
   var recursive = function (array, target) {
 
-    var midpoint = Math.floor(array.length/2);
+    var midpoint = Math.floor(array.length / 2);
 
     if (target === array[midpoint]) {  // if target is found
-      indextracker += Math.floor(array.length/2);
+      indextracker += Math.floor(array.length / 2);
       found = true;
     }
 
@@ -18,8 +18,7 @@ var binarySearch = function (array, target) {
 
     else if (array[midpoint] < target) { // if target is higher than midpoint
       var newArray = array.slice(midpoint, array.length + 1);
-      indextracker += Math.floor(array.length/2);
-     // console.log("ARRAY LENGTH: ", indextracker);
+      indextracker += Math.floor(array.length / 2);
       recursive(newArray, target);
     }
 
