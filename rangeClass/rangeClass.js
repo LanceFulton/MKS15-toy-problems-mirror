@@ -42,7 +42,7 @@ var Range = function(start, end, step) {
   this.end = end || this.start;
   this.step = step;
 
-  if (this.step === null) {
+  if (this.step === undefined) {
     if (this.start > this.end) {
       this.step = -1;
     } else {
