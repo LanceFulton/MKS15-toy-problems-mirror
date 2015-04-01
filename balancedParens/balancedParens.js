@@ -24,6 +24,18 @@
  *
  */
 var balancedParens = function(input){
+  input = input.match(/[{}[\]()]+/g).join('');
+
+  if (input.length % 2 === 1) {
+    return false;
+  };
+
+  for (var i = 0 ; i < input.length / 2; i++) {
+    if (input.length - 1 - i !== '(')
+      return false;
+
+  }  // ran out of time
+  return true;
 };
 
 
