@@ -24,6 +24,37 @@
  *
  */
 var balancedParens = function(input){
+  var containers = '';
+  var closeString = '';
+  for (var i = 0; i < input.length; i++) {
+    if ( checkChars(input[i]) ) {
+      containers += input[i];
+    }
+  };
+
+  //check to make sure they all close and also in proper nesting order
+
+  for (var i = 0; i < containers.length; i++) {
+    containers[i] 
+  };
 };
+
+var checkChars = function (char) {
+    if( char === '(') {
+      return 'openparen';
+    } else if ( char === ')') {
+      return 'closeparen';
+    } else if ( char === '[') {
+      return 'openbracket';
+    } else if ( char === ']') {
+      return 'closebracket';
+    } else if ( char === '{') {
+      return 'openbrace';
+    } else if ( char === '}') {
+      return 'closebrace';
+    } else {
+      false;
+    }
+}
 
 
