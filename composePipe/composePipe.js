@@ -39,7 +39,7 @@ var compose = function(func1, func2){
   }
 };
 
-var pipe = function(func1, func2){
+var pipe = function(func1, func2){ //compose(func2, func1)
   return function(number){
     return func2(func1(number));
   }
