@@ -23,7 +23,32 @@
  *
  *
  */
-var balancedParens = function(input){
+var balancedParens = function(input) {
+  var parens   = 0;
+  var brackets = 0;
+  var braces   = 0;
+
+  for(var i = 0; i < input.length; i++){
+    (input[i] === '(') && parens++;
+    (input[i] === '[') && brackets++;
+    (input[i] === '{') && braces++;
+
+    (input[i] === ')') && parens--;
+    (input[i] === ']') && brackets--;
+    (input[i] === '}') && braces--;
+
+    if( (parens < 0) || (brackets < 0) || (braces < 0) ) {
+      return false;
+    }
+
+  }
+
+  if( (parens !== 0) || (brackets !== 0) || (braces !== 0) ) {
+    return false;
+  }
+
+  return true;
 };
 
 
+console.log(balancedParens('[(]{)}'));  // false
