@@ -23,7 +23,30 @@
  *
  *
  */
+var findLastParen = function(input) {
+  for (var i = 1; i<= input.length; i++) {
+    if (input[input.length - i] === ')');
+    return input.length - i;
+  }
+  return -1;
+}
+
 var balancedParens = function(input){
+  for (var i = 0; i<input.length; i++) {
+    if (input[i]==='(') {
+      var l = findLastParen(input);
+      if (l < 0) {
+        return false;
+      } else {
+        return balancedParens(input.slice(i+1, l));
+      }
+
+      break
+    } else if (input[i]===')') {
+      return false;
+    }
+  }
+  return true;
 };
 
 
