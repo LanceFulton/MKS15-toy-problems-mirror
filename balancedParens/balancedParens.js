@@ -24,6 +24,49 @@
  *
  */
 var balancedParens = function(input){
+  var idx = 0;
+  var end = input.length;
+
+  var search = function(char) {
+    var check;
+    while (input[idx] !== char && idx !== end) {
+
+      //call itself if an open is found
+      if (input[idx] === '(') {
+        idx++;
+        check = search(')');
+        if (!check) {
+          return false;
+        }
+      } else if (input[idx] === '[') {
+        idx++;
+        check = search(']');
+        if (!check) {
+          return false;
+        }
+      } else if (input[idx] === '{') {
+        idx++;
+        check = search('}');
+        if (!check) {
+          return false;
+        }
+      } else if (
+          input[idx] !== char &&
+          ( input[idx] === ')' ||
+            input[idx] === ']' ||
+            input[idx] === '}' )) {
+        return false;
+      }
+      //return false if a close is found that is not what it is looking for
+      idx++;
+    }
+    if (idx === end && char === '' ||
+        input[idx] === char) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  return search('');
 };
-
-
