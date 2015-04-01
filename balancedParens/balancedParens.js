@@ -24,6 +24,36 @@
  *
  */
 var balancedParens = function(input){
+  // use stack
+  var unbalancedParens = [];
+  for (var i=0; i<input.length; i++) {
+    var current = input.charAt(i);
+    if (current === '[' || current === '{' || current === '(') {
+      unbalancedParens.push(current);
+    } else if (current === ']' || current === '}' || current === ')') {
+      var lastChar = unbalancedParens.pop();
+      //String.fromCharCode('('.charCodeAt(0)+1)
+      if (current === ')') {
+        if (lastChar !== String.fromCharCode(current.charCodeAt(0)-1)) {
+          return false;
+        }
+      } else if (lastChar !== String.fromCharCode(current.charCodeAt(0)-2)) { // '}' and ']' are 2 away
+        return false;
+      }
+    }
+  }
+  return !unbalancedParens.length;
 };
 
+// console.log(balancedParens('('));  // false
+// console.log(balancedParens('()')); // true
+// console.log(balancedParens(')('));  // false
+// console.log(balancedParens('(())'));  // true
 
+// console.log(balancedParens('[](){}')); // true
+// console.log(balancedParens('[({})]'));   // true
+// console.log(balancedParens('[(]{)}')); // false
+
+
+// console.log(balancedParens(' var wow  = { yo: thisIsAwesome() }')); // true
+// console.log(balancedParens(' var hubble = function() { telescopes.awesome();')); // false
