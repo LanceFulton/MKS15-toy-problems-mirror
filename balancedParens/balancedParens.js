@@ -23,7 +23,29 @@
  *
  *
  */
+
+ //I could set up a conditional to at least count all of the parenthesese to make sure we have an even count. 
+ //If ) is followed by a ( it is false! Otherwise we're good to go kinda
 var balancedParens = function(input){
+  var lintArr = input.split('');
+  console.log(lintArr);
+  var currentChar;
+  var balanced = true;
+
+  for (var i = 0; i < lintArr.length; i++){
+  // debugger;
+    if (lintArr[i] === '(') {
+      currentChar = '(';
+    }
+    if (lintArr === ')') {
+      currentChar = ')';
+    }
+    if (lintArr = '(' && currentChar === ')') {
+      balanced = false;
+      break;
+    } 
+  }
+  return balanced;
 };
 
 
