@@ -24,6 +24,57 @@
  *
  */
 var balancedParens = function(input){
+  if (input === undefined) {
+    return true;
+  } else {
+    var input_arr = input.split('');
+    var parensStack = [];
+    if (input_arr[0] === ')' || input_arr[0] === ']'  || input_arr[0] === '}') {
+      return false;
+    }
+    else if (input_arr[0] === '(' || input_arr[0] === '[' || input_arr[0] === '{')
+    parensStack.push(input_arr[0]);
+    for (var i = 1; i < input_arr.length; i++) {
+      switch (input_arr[i]) {
+
+        case ')':
+          if (parensStack[parensStack.length-1] === '(') {
+            parensStack.pop();
+          } else {
+            parensStack.push(input_arr[i]);
+          }
+        break;
+
+        case ']' :
+          if (parensStack[parensStack.length-1] === '[') {
+            parensStack.pop();
+          } else {
+            parensStack.push(input_arr[i]);
+          }
+        break;
+
+        case '}' :
+        if (parensStack[parensStack.length-1] === '{') {
+            parensStack.pop();
+          } else {
+            parensStack.push(input_arr[i]);
+          }
+        break;
+
+        case '(':
+        case '[':
+        case '{':
+          parensStack.push(input_arr[i]);
+          break;
+        default: 
+          break; 
+      } // end switch
+    } // end for loop
+    console.log(parensStack);
+    return (parensStack.length > 0 ? false: true);
+  }
 };
 
-
+/*
+console.log(balancedParens('[({})]'));
+*/
