@@ -24,6 +24,15 @@
  *
  */
 var balancedParens = function(input){
+  var openParens = "({[";
+  var closedParens = ")}]";
+  var storage = {};
+
+  for (var i = 0; i < input.length; i++) {
+      
+
+  }
+
 };
 
 
