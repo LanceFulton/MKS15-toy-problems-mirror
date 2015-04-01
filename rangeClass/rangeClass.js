@@ -39,26 +39,46 @@
 
 var Range = function(start, end, step) {
   this.start = start;
-  if(!end) { end = 100; } // Default on empty
+  if(!end) { end = start; } // Default on empty
   this.end = end;
-  if(!step) { step = 1; } // Default on empty
+  if(step === undefined) { 
+    step = (end > start) ? 1 : -1;
+  }
   this.step = step;
 };
 
 Range.prototype.size = function () {
   // Size = Start to End (divided by step)
-  return Math.round( (this.end - this.start) / this.step );
+  return Math.floor( (this.end - this.start) / this.step ) + 1;
 };
 
 Range.prototype.each = function (callback) {
-  if( this.start>this.end && this.step>0 ) { this.step = -this.step; }
-  if( this.start<this.end && this.step<0 ) { this.step = -this.step; }
-  for(var i=this.start; i<=this.end; i += this.step) {
-    callback(i);
+  if ( this.start < this.end ) {
+    for(var i=this.start; i<=this.end; i += this.step) {
+      callback(i);
+    }
+
+  } else if ( this.start > this.end ) {
+    for(var i=this.start; i<=this.end; i += this.step) {
+      callback(i);
+    }
+
   }
+
 };
 
 Range.prototype.includes = function (val) {
+  // (aka Contains) Return whether or not the range includes the passed value.
+
+  var bool = (this.end - this.start) % this.step;
+  return "Range includes " + val + ": " + bool;
+
+
+  if( this.start < this.end ) {
+    return (value > this.start) && (value < this.end) && (((this.start - value)%this.step) === 0);
+  } else {
+    return (value > this.end) && (value < this.start) && (((this.start - value)%this.step) === 0);
+  }
 };
 
 //var range = new Range(1);
@@ -68,4 +88,6 @@ console.log( "EACH: ");
 range.each( function(index){ 
   console.log("LOG EACH = " + index); 
 });
+range.includes(6);
+
 

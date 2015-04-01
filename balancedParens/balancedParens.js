@@ -24,6 +24,58 @@
  *
  */
 var balancedParens = function(input){
+  // Count the parens pairs, like with a stack.
+  var len = input.length;
+
+  if( len<=1 ) {
+    return false;
+  }
+
+  var pairs = 0; 
+  var parensCountA = 0;
+  var parensCountB = 0;
+  var parensCountC = 0;
+
+  // Walk thru string chars...
+  for(var i=0; i<len; i++) {
+    var ch = input.charAt(i);
+    if(ch==='(') { parensCountA++; }
+    if(ch===')') { parensCountA--; }
+
+    if(ch==='[') { parensCountB++; }
+    if(ch===']') { parensCountB--; }
+
+    if(ch==='}') { parensCountC++; }
+    if(ch==='}') { parensCountC--; }
+
+    if(parensCountA<0) { return false; }
+    if(parensCountB<0) { return false; }
+    if(parensCountC<0) { return false; }
+
+    if(parensCountA>0) { wasSetA = true; }
+    if(parensCountB>0) { wasSetB = true; }
+    if(parensCountC>0) { wasSetC = true; }
+
+    if(parensCountA==0 && parensCountB!=0 && wasSetB) {
+      return false;
+    }
+
+  }
+
+  return true;
 };
 
+console.log( "STEP 1" );
+console.log( balancedParens('(') );  // false
+console.log( balancedParens('()') ); // true
+console.log( balancedParens(')(') );  // false
+console.log( balancedParens('(())') );  // true
 
+console.log( "STEP 2" ); // NOT WORKING YET
+console.log( balancedParens('[](){}') ); // true
+console.log( balancedParens('[({})]') );   // true
+console.log( balancedParens('[(]{)}') ); // false
+
+console.log( "STEP 3" ); // NOT WORKING YET
+
+ 
