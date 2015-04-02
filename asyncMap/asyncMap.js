@@ -35,9 +35,53 @@
  *    console.log(results); // ['one', 'two']
  * });
  *
- *
  */
 
 
+//call arguments[0](cb)
+//store that result in an array
+//call arguments[1](cb)
+//store result in array
+//log results array
+
 var asyncMap = function(tasks, callback){
+  var results = [];
+  var i = 0;
+  console.log(tasks);
+
+  //trying to run the function and then call my callback
+  //when it's done so it waits to call the next function until
+  //the previous one has completed
+
+  var func = function(task, cb){
+    i++;
+    //undefined is not a function error, don't know why
+    // console.log(typeof cb);
+    cb(task);
+  }
+
+
+  var myCallback = function(result){
+    results.push(result);
+    func(tasks[i]);
+  }
+
+  func(tasks[i], myCallback);
+  callback(results);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
