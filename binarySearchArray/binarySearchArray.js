@@ -15,31 +15,26 @@
  */
 
 var binarySearch = function (array, target) {
-	var result = 0;
 
-  var subroutine = function(arrayLength, index, target){  
-	  
-	  var middle = Math.floor((arrayLength+1)/2);
+  var subroutine = function(bot, top){  
 
-	  if(index === target){
+  	if(top === bot){return null;}
 
-	  	return index + result;
+  	var mid = Math.floor((top + bot)/2 + bot);
 
-	  }else if(target > index){
-      result = result + (arrayLength/4) * 3;
+	if(target === array[mid]){
+	  return mid;
+	}else if(array[mid] > target){
+	  return subroutine(mid + 1, top - 1);
+	}else{
+	  return subroutine(0, mid - 1);
+	}
 
-	  	return binarySearch(index + (arrayLength, target);
-
-	  }else if(target < index){
-      result = result + (arrayLength/4);
-
-	  	return binarySearch(index,  target);
-
-	  }
+	
   }
 
-  return subroutine(array.length, Math.floor(array.length/2), target);
+  return subroutine(0, array.length);
 
 };
 
-console.log(binarySearch([1,2,3,4,5], 4));
+console.log(binarySearch([1,2,3,4,5], 1));

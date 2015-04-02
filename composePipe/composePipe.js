@@ -31,17 +31,17 @@
  *  pipe(add2, multiplyBy3, multiplyBy3)(5) // 63
  */
 
+ //var args = Array.prototype.slice.call(arguments);
+
+ //USE REDUCE
+
 'use strict';
 
 var compose = function(){
-  var funcs = [];
-  for(var key in arguments){
-    funcs[key] = arguments[key];
-  }
+  var funcs = Array.prototype.slice.call(arguments);
 
-  return function(){
+  return function(arg){
     var tempFuncs = funcs.slice();
-    var arg = arguments[0];
     while(tempFuncs.length > 0){
       arg = tempFuncs.pop().call(this, arg);
     }
@@ -50,17 +50,14 @@ var compose = function(){
 };
 
 var pipe = function(){
-  var funcs = [];
-  for(var key in arguments){
-    funcs[key] = arguments[key];
-  }
+  var funcs = Array.prototype.slice.call(arguments)
 
-  return function(){
+  return function(arg){
     var tempFuncs = funcs.slice();
-    var arg = arguments[0];
     while(tempFuncs.length > 0){
       arg = tempFuncs.shift().call(this, arg);
     }
     return arg;
   }
 };
+
