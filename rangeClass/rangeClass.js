@@ -38,29 +38,16 @@
 
 
 var Range = function(start, end, step) {
-  if( !start ) {
+  if( start === undefined ) {
     return null;
   }
   this.start = start;
   this.end = end;
-  this.step = step;
-  if( !step ) {
-    this.step = 1;
-  }
-
-  /*
-  if start is null, return null
-  if end is undefined, range returns start only
-  if step is undefined,
-    if end < start, step is -1
-    else, step is 1
-
-  */
-
+  this.step = ( step === undefined ) ? 1 : step;
 };
 
 Range.prototype.size = function () {
-  if( !this.start ) {
+  if( this.start === undefined ) {
     return null;
   } else if( !this.end ) {
     return 1;
@@ -81,9 +68,29 @@ Range.prototype.size = function () {
   }
 
   return counter;
+
+  // solution
+  // return Math.floor( (this.end - this.start)/this.step ) + 1;
 };
 
 Range.prototype.each = function (callback) {
+  if( this.start === undefined ) {
+    return;
+  }
+  var i = this.start;
+
+  if( this.step > 0 ) {
+    while( i <= this.end ) {
+      callback(i);
+      i += this.step;
+    }
+  } else {
+    while( i >= this.end ) {
+      callback(i);
+      i += this.step;
+    }
+  }
+
 };
 
 Range.prototype.includes = function (val) {
@@ -112,4 +119,3 @@ Range.prototype.includes = function (val) {
 };
 
 var range = new Range(1);
-
