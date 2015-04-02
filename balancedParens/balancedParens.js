@@ -24,49 +24,29 @@
  *
  */
 var balancedParens = function(input){
-  var idx = 0;
-  var end = input.length;
-
-  var search = function(char) {
-    var check;
-    while (input[idx] !== char && idx !== end) {
-
-      //call itself if an open is found
-      if (input[idx] === '(') {
-        idx++;
-        check = search(')');
-        if (!check) {
-          return false;
-        }
-      } else if (input[idx] === '[') {
-        idx++;
-        check = search(']');
-        if (!check) {
-          return false;
-        }
-      } else if (input[idx] === '{') {
-        idx++;
-        check = search('}');
-        if (!check) {
-          return false;
-        }
-      } else if (
-          input[idx] !== char &&
-          ( input[idx] === ')' ||
-            input[idx] === ']' ||
-            input[idx] === '}' )) {
+  var stack = [];
+  var pairs = {
+    '[':']',
+    '{':'}',
+    '(':')'
+  };
+ 
+  for (var i = 0, len = input.length; i < len; i++) {
+    if (pairs[input[i]]) {
+      stack.push(input[i]);
+    } else if (
+        input[i] === ']' ||
+        input[i] === ')' ||
+        input[i] === '}' ) {
+      if (pairs[stack.pop()] !== input[i]) {
         return false;
       }
-      //return false if a close is found that is not what it is looking for
-      idx++;
-    }
-    if (idx === end && char === '' ||
-        input[idx] === char) {
-      return true;
-    } else {
-      return false;
     }
   }
 
-  return search('');
+  if (stack.length) {
+    return false;
+  } else {
+    return true;
+  }
 };

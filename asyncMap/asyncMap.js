@@ -40,4 +40,22 @@
 
 
 var asyncMap = function(tasks, callback){
+  var results = [];
+  var counter = 0;
+
+  //save the result to its index in array
+  var asyncSetResult = function(i, task){
+    task(function(data) {
+      results[i] = data;
+      counter++;
+      console.log(results);
+      if (counter === len) {
+        callback(results);
+      }
+    })
+  };
+  //loop through tasks and call them
+  for (var i = 0, len = tasks.length; i < len; i++) {
+    asyncSetResult(i, tasks[i]);
+  }
 };
