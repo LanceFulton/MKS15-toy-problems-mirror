@@ -39,5 +39,14 @@
  */
 
 
-var asyncMap = function(tasks, callback){
+var asyncMap = function(tasks, callback) {
+  var results = [];
+
+  for (var i = 0; i < tasks.length; i++) {
+    results[i] = setTimeout(function() {
+      return tasks[i](callback);
+    }, 1);
+  }
+
+  return results;
 };
