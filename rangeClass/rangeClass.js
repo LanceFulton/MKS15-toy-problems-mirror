@@ -71,12 +71,17 @@ var Range = function(start, end, step) {
     }
   }
   if (start > end) {
-    for (var i = start; i >= end; i -= step) {
+    for (var i = start; i >= end; i += step) {
       this.storage[i] = true;
     }
   }
 };
 
+/*
+this.start = start;
+this.end = end;
+this.step = step;
+*/
 Range.prototype.size = function () {
   var size = 0;
   for (var index in this.storage) {
@@ -84,6 +89,13 @@ Range.prototype.size = function () {
   }
   return size;
 };
+
+/* Without iteration:
+
+Range.prototype.size = function() {
+  return Math.floor((this.end - this.start) / this.step) + 1;
+}
+*/
 
 Range.prototype.each = function (callback) {
   for (var index in this.storage) {
@@ -101,5 +113,14 @@ Range.prototype.includes = function (val) {
   return found;
 };
 
+/*
+Range.prototype.includes = function (val) {
+  if (this.start < this.end) {
+    return (value > this.start) && (value < this.end) &&
+           (((this.start - value) % this.step) === 0);
+  } else {
+    return (value > this.end) && (value < this.start) &&
+       (((this.start - value) % this.step) === 0);
+  }
 var range = new Range(1);
-
+*/
