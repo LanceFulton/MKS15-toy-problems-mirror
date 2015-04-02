@@ -47,9 +47,13 @@ var asyncMap = function(tasks, callback){
   for (var i = 0; i < tasks.length; i++) {
     taskList.push( callback )
   };
-  console.log("taskList: " + taskList);
+  
+  console.log("taskList:");
+  console.log("" + taskList);
+  console.log("End of tasklist.");
+
   for (var k = 0; k <taskList.length; k++) {
-    callback(taskList[k]);
+    taskList[k](callback);
   }
 };
 
