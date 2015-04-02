@@ -40,4 +40,20 @@
 
 
 var asyncMap = function(tasks, callback){
+
+	var results = [];
+
+  var next = function(){
+		var task = tasks.shift();
+    if(task){
+    	task(function() {
+    		results.push(Array.prototype.slice.call(arguments)[0]);
+    		next();
+    	});
+    }else{
+    	callback(results);
+    }
+	}
+	next();
 };
+
