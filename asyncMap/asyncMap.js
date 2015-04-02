@@ -35,9 +35,31 @@
  *    console.log(results); // ['one', 'two']
  * });
  *
- *
+//asyncMap([function(cb){ setTimeout(function(){ cb('one');}, 200);}, function(cb){setTimeout(function(){cb('two'); }, 100);}]);
  */
 
+var asyncMap = function(tasks, callback) {
+  var data;
+  var results = [];
 
-var asyncMap = function(tasks, callback){
+  for (var i = 0; i < tasks.length; i++) {
+
+    tasks[i](function(data) {
+      results.push(data); // It is pushing data to results while it is still undefined. I thought the callback inside the tasks[i] would take care of that. I was wrong. 
+    });
+  }
+  callback(results);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
