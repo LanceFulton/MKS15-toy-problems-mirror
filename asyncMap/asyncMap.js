@@ -38,6 +38,19 @@
  *
  */
 
-
+//I need to store the tasks in another array when they are completed
+//I need to place the tasks into an array after the are run through the callback
+//I should deliberately set the array[i] to be tasks[i]
 var asyncMap = function(tasks, callback){
+  var funcArr = [];
+  for (var i = 0; i < tasks.length; i++) {
+    funcArr[i] = tasks[i](callback);
+  }
+  return funcArr;
 };
+
+
+
+
+
+
