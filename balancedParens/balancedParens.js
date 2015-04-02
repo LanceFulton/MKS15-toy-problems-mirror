@@ -32,12 +32,9 @@ var balancedParens = function(input){
       unbalancedParens.push(current);
     } else if (current === ']' || current === '}' || current === ')') {
       var lastChar = unbalancedParens.pop();
-      //String.fromCharCode('('.charCodeAt(0)+1)
-      if (current === ')') {
-        if (lastChar !== String.fromCharCode(current.charCodeAt(0)-1)) {
-          return false;
-        }
-      } else if (lastChar !== String.fromCharCode(current.charCodeAt(0)-2)) { // '}' and ']' are 2 away
+      var lastCharCode = lastChar ? lastChar.charCodeAt(0) : -1;
+      var currentCharCode = current.charCodeAt(0);
+      if (lastCharCode !== currentCharCode-1 && lastCharCode !== currentCharCode-2) {
         return false;
       }
     }
