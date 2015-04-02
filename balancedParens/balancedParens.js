@@ -30,6 +30,7 @@ var balancedParens = function(input){
     return false;
   };
 
+// cut the array in half and check both halves
   for (var i = 0 ; i < input.length / 2; i++) {
     if (input.length - 1 - i !== '(')
       return false;
@@ -37,5 +38,28 @@ var balancedParens = function(input){
   }  // ran out of time
   return true;
 };
+
+/* Solution:
+var balancedParens = function(input) {
+  var stack = [];
+  var pairs = {'{':'}','[':']','(':')'}
+
+  for (var i = 0; i < input.length; i++) {
+    var chr = input[i];
+    if (pairs[chr]) {
+      stack.push(chr);
+    }
+    else if ( chr === '}' || chr === ']' || chr === ')' ) {
+      if (pairs[stack.pop()] !==chr) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+};
+*/
+
+
+
 
 
