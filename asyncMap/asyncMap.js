@@ -40,4 +40,21 @@
 
 
 var asyncMap = function(tasks, callback){
+
+  var promisify = function(func) {
+    return new Promise(function(resolve, reject) {
+      resolve(func(callback));
+    });
+  };
+
+  var prevPromise = Promise.resolve();
+
+  for( var i = 0; i < tasks.length; i++ ) {
+    prevPromise = prevPromise.then(function() {
+      return promisify(tasks[i]);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+  }
 };
