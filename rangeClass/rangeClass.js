@@ -38,23 +38,22 @@
 
 
 var Range = function(start, end, step) {
-  this.start = start;
-  this.end = end || this.start;
-  this.step = step;
+  if (start === undefined) {
+    return null;
+  }
+  if (end === undefined) {
+    this.end = start;
+  }
 
-  if (this.step === undefined) {
-    if (this.start > this.end) {
-      this.step = -1;
-    } else {
-      this.step = 1;
-    }
+  if (step === undefined) {
+    this.step = (this.start > this.end) ? -1 : 1;
   } else if ((this.end - this.start) * this.step < 0) {
-    throw 'Error: invalid step';
+    return null;
   }
 };
 
 Range.prototype.size = function () {
-  return Math.abs((this.end - this.start)/this.step) + 1;
+  return Math.abs(Math.floor((this.end - this.start)/this.step) + 1);
 };
 
 Range.prototype.each = function (callback) {
