@@ -50,3 +50,22 @@ var asyncMap = function(tasks, callback) {
 
   return results;
 };
+
+
+var asyncMap = function(tasks, callback) {
+  var resultsArray = []; // store the results of task in results array
+  var resultsCount = 0; // count the number of tasks we performed
+// then execute the callback on the results Array;
+
+  for (var i = 0; i < tasks.length; i++) {
+    (function(ind) { // the ind is passed in from an immediate function innocation (i) from line 69
+      tasks[ind] (function (val) {
+        resultsArray[ind] = val;
+        resultsCount++;
+        if(resultsCount === tasks.length) {
+          callback(resultsArray);
+        }
+      });
+    })(i);
+  }
+};
