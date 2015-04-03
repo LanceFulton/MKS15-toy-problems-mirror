@@ -12,7 +12,30 @@
  */
 
 var longestRun = function (string) {
-  // TOD: Your code here!
+
+  var i, 
+      count = 1,
+      countArr = [],
+      run = [],
+      results = [],
+      search = string.split(''),
+      largest;
+
+  var runData = {count: null, run: run};
+
+  for (i = 0; i < search.length; i++) {
+    run.push(search[i]);
+    if (search[i] === search[i + 1]) {
+      run.push(search[i + 1]);
+      count++;
+    } else {
+      runData.count = count;
+      runData.run = run;
+      run = [];
+      results.push(runData);
+    }
+  }
+  return results;
 };
 
 // If you need a random string generator, use this!
