@@ -21,8 +21,33 @@
  * balancedParens(' var wow  = { yo: thisIsAwesome() }'); // true
  * balancedParens(' var hubble = function() { telescopes.awesome();'); // false
  *
- *
+ * '{([]())}'
  */
+
+ /*
+SOLUTION:
+var balancedParens = function(input){
+  var stack = [];
+  var pairs = {'{':'}', '[':']', '(':')'};
+
+  var len = input.length;
+  for(var i=0; i<len; i++) {
+    var chr = input[i];
+
+    if (pairs[chr]) { // Matches an open paren? (undefined if not a paren)
+      stack.push(chr);
+    } else if (chr === '}' || ']' || ')' ) {
+      if (pairs[stack.pop()])  ...
+    }
+  }
+
+
+
+
+
+}
+  */
+
 var balancedParens = function(input){
   // Count the parens pairs, like with a stack.
   var len = input.length;
