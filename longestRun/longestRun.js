@@ -13,6 +13,34 @@
 
 var longestRun = function (string) {
   // TOD: Your code here!
+  var map={};
+  var strArr=string.split('');
+  var startIndex=0, endIndex=0, currentChar=strArr[0];
+  for (var i=1; i<strArr.length; i++) {
+    if (strArr[i] === strArr[i-1]) {
+      endIndex++;
+    }
+    else {
+      
+      if (map[endIndex-startIndex+1] === undefined) {
+     
+        map[endIndex-startIndex+1]=[startIndex, endIndex];
+      }
+      startIndex=i;
+      endIndex=startIndex;
+    }
+  }
+  if (map[endIndex-startIndex+1] === undefined) {
+    map[endIndex-startIndex+1]=[startIndex,endIndex];
+  }
+  
+  var maxKey=0;
+  for (var key in map) {
+    if (key>maxKey) {
+      maxKey=key;
+    }
+  }
+  return map[maxKey];
 };
 
 // If you need a random string generator, use this!
@@ -27,3 +55,7 @@ var randomString = function (len) {
 
   return text;
 };
+
+console.log(longestRun("abbbcc"));
+console.log(longestRun("aabbc"));
+console.log(longestRun("abcd"));
