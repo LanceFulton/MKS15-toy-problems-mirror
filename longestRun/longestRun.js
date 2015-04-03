@@ -12,7 +12,33 @@
  */
 
 var longestRun = function (string) {
-  // TOD: Your code here!
+  var results = [];
+  var begin = 0;
+  var end = 0;
+  var holdingValue = '';
+  var currentStreak = 0;
+  var currentBegin = 0;
+  var currentEnd = 0;
+  var longestStreak = 0;
+
+  for (var i = 0; i < string.length - 1; i++) {
+    if (string[i] === string[i+1]) {
+      currentStreak++;
+      if (currentStreak > longestSteak) {
+        end = i+1;
+        begin = currentBegin;
+        currentStreak = longestStreak;
+      }
+    }
+    else {
+      currentStreak = 0;
+      currentBegin = i;
+      currentEnd = i;
+    }
+  }
+  results[0] = begin;
+  results[1] = end;
+  return results;
 };
 
 // If you need a random string generator, use this!
