@@ -12,7 +12,15 @@
  */
 
 var longestRun = function (string) {
-  // TOD: Your code here!
+  var storage = {};
+  var results = [];
+  //how does one compare values within a string or array. 
+
+  for (var i = 0; i < string.length; i++) {
+
+    
+  }
+
 };
 
 // If you need a random string generator, use this!
