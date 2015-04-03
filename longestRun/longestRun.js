@@ -13,6 +13,21 @@
 
 var longestRun = function (string) {
   // TOD: Your code here!
+  var lastChar = -1; // Initialize to impossible to match
+  var currentRun = [0, -1]; // [start, end]
+  var maxRun = currentRun;
+  for (var i=0; i<string.length; i++) {
+    if (string[i] === lastChar) {
+      currentRun[1]++;
+    } else {
+      currentRun = [i, i]
+    }
+    if (currentRun[1]-currentRun[0] > maxRun[1]-maxRun[0]) {
+        maxRun = currentRun;
+    }
+    lastChar = string[i];
+  }
+  return maxRun;
 };
 
 // If you need a random string generator, use this!
@@ -27,3 +42,14 @@ var randomString = function (len) {
 
   return text;
 };
+
+
+// for (var i=0; i<10; i++) {
+//   var testString = randomString(10000);
+//   console.log(testString);
+//   console.log(longestRun(testString));
+// }
+
+// console.log(longestRun("abbbcc")); // [1, 3]
+// console.log(longestRun("aabbc"));  // [0, 1]
+// console.log(longestRun("abcd"));   // [0, 0]
