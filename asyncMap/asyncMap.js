@@ -38,6 +38,35 @@
  *
  */
 
+var asyncMap = function(tasks, callback){
+  var resultsArray = [];
+  var resultsCount = 0;
+};
+
 
 var asyncMap = function(tasks, callback){
+  var taskResults = [];
+  var finalResults = [];
+  for (var i = 0 ; i < tasks.length ; i++){
+    taskResults.push( tasks[i]() );
+  }
+
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
