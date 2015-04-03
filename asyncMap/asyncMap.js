@@ -16,28 +16,43 @@
  *
  *
  * Example:
- *
- * asyncMap([
- *  function(cb){
- *    setTimeout(function(){
- *      cb('one');
- *    }, 200);
- *  },
- *  function(cb){
- *    setTimeout(function(){
- *      cb('two');
- *    }, 100);
- *  }
- * ],
- *  function(results){
- *    // the results array will equal ['one','two'] even though
- *    // the second function had a shorter timeout.
- *    console.log(results); // ['one', 'two']
- * });
+ 
+  asyncMap([
+   function(cb){
+     setTimeout(function(){
+       cb('one');
+     }, 200);
+   },
+   function(cb){
+     setTimeout(function(){
+       cb('two');
+     }, 100);
+   }
+  ],   function(results){
+     // the results array will equal ['one','two'] even though
+     // the second function had a shorter timeout.
+     console.log(results); // ['one', 'two']
+  });
  *
  *
  */
 
+//go through each item in tasks 
 
 var asyncMap = function(tasks, callback){
+  var arr = [];
+  // tasks.reduce(function()
+  for (var i = 0; i < tasks.length; i++) {
+    (function (j) {
+      tasks[j](function(val) {
+        //resultsArray[j] = val;
+        //resultsCount++;
+        //if(resultsCount === tasks.length) {
+          // callback(resultsArray)
+        // }
+        arr.push(val);
+      }
+    })(i)
+  };
+  return arr;
 };
