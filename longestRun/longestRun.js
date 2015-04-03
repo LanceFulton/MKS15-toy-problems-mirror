@@ -12,7 +12,21 @@
  */
 
 var longestRun = function (string) {
-  // TOD: Your code here!
+  var longest = [0,0,null]; //0- index, 1- length, 2- char
+  var current = [0,0,null];
+  for(var i = 0; i < string.length; i++){
+  	if(current[2] === string[i]){ 
+  		current[1]++;
+  	}else{
+      current[0] = i;
+      current[1] = 1;
+      current[2] = string[i];
+  	}
+    if(current[1] > longest[1]){
+    	longest = current.slice();
+    }
+  }
+  return [longest[0], string ? (longest[0] + longest[1] - 1) : 0];
 };
 
 // If you need a random string generator, use this!
@@ -27,3 +41,5 @@ var randomString = function (len) {
 
   return text;
 };
+
+console.log(longestRun("aaa"));
