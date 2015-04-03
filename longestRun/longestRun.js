@@ -11,34 +11,29 @@
  * inputs well.
  */
 
-var longestRun = function (string) {
+var longestRun = function(string) {
   var results = [];
   var begin = 0;
   var end = 0;
-  var holdingValue = '';
   var currentStreak = 0;
   var currentBegin = 0;
-  var currentEnd = 0;
   var longestStreak = 0;
 
   for (var i = 0; i < string.length - 1; i++) {
     if (string[i] === string[i+1]) {
       currentStreak++;
-      if (currentStreak > longestSteak) {
-        end = i+1;
+      if (currentStreak > longestStreak) {
+        end = i + 1;
         begin = currentBegin;
-        currentStreak = longestStreak;
+        longestStreak = currentStreak;
       }
     }
     else {
       currentStreak = 0;
-      currentBegin = i;
-      currentEnd = i;
+      currentBegin = i + 1;
     }
   }
-  results[0] = begin;
-  results[1] = end;
-  return results;
+  return results = [begin, end];
 };
 
 // If you need a random string generator, use this!
