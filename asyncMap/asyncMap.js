@@ -19,9 +19,9 @@
  *
  * asyncMap([
  *  function(cb){
- *    setTimeout(function(){
- *      cb('one');
- *    }, 200);
+      setTimeout(function(){
+                cb('one');
+        }, 200);
  *  },
  *  function(cb){
  *    setTimeout(function(){
@@ -40,12 +40,15 @@
 
 
 var asyncMap = function(tasks, callback){
-  var results = [];
-  var cb = function(data){
-    results.push(data);
-  };
-  for (var i = 0; i < tasks.length; i++){
-    tasks[i].apply(this, cb);
-  }
-  results.forEach(callback(result));
+  (function next(){
+    if (tasks.length > 0){
+      var queue = function(tasks){
+        var f = tasks.shift();
+        results.push(f.apply(scope, [next]))
+      }
+    } else {
+      return results;
+    }
+  });
 };
+
