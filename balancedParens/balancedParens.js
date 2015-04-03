@@ -24,16 +24,18 @@
  *
  */
 var balancedParens = function(input){
-  var parentheses = "[]{}()";
   var stack = [];
+  var parentheses = {'[':']','{':'}','(':')'};
 
   for(var i = 0; input[i]; i++) {
-    var character = input[i];
-    var bracePosition = parentheses.indexOf(character);
+    var char = input[i];
+    var bracePosition = parentheses[char];
 
-    if(bracePosition === -1) {
-      continue;
-    }
+    if(bracePosition[char]) {
+      stack.push;
+    } else if(
+      bracePosition.pop()
+      )
 
     if(bracePosition % 2 === 0) {
       stack.push(bracePosition + 1); // push next expected brace position

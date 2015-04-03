@@ -12,7 +12,25 @@
  */
 
 var longestRun = function (string) {
-  // TOD: Your code here!
+  var longest = 0;
+  var length = 1;
+  var indexSaver = {};
+  var repeatedChar = [];
+
+  for (var i = 0; i < string.length - 1; i++) {
+    if (string.charAt(i) === string.charAt(i + 1)) {
+      length++;
+      indexSaver[string[i]] = [];
+      indexSaver[string[i]].push(i);
+      if (length > longest) {
+        longest = length;
+        repeatedChar.push(string[i]);
+      }
+    } else {
+      length = 1;
+    }
+  }
+  return indexSaver[repeatedChar];
 };
 
 // If you need a random string generator, use this!

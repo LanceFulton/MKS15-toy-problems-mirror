@@ -40,4 +40,6 @@
 
 
 var asyncMap = function(tasks, callback){
+  var args = Array.prototype.slice.call(arguments)
+  //im confused
 };
