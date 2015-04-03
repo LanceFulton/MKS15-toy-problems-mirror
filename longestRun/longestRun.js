@@ -13,6 +13,42 @@
 
 var longestRun = function (string) {
   // TOD: Your code here!
+
+  //take the first character
+  //store index
+  //check next item in array
+  //if next character is the same, increment lengthCounter and repeat
+  //if next char is different
+  //check if lengthCounter is longer than longest count
+    //if it is store new longest count and store starting and ending indexes
+  //repeat with next character
+  var startIndex = 0;
+  var longestCount = 0, currentCount = 0;
+  var results = [0, 0];
+
+  var checkChar = function(char, currentIndex){
+    if(currentIndex === string.length){
+      return;
+    }
+
+    if(char === string[currentIndex]){
+      currentCount++;
+    } else {
+      if (currentCount > longestCount){
+        longestCount = currentCount;
+        results[0] = startIndex;
+        results[1] = currentIndex - 1;
+      }
+      startIndex = currentIndex;
+      char = string[currentIndex];
+      currentCount = 1;
+    }
+
+    checkChar(char, currentIndex + 1);
+  }
+
+  checkChar(string[startIndex], 0);
+  return results;
 };
 
 // If you need a random string generator, use this!
