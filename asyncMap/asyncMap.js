@@ -41,6 +41,19 @@
 var asyncMap = function(tasks, callback){
   var resultsArray = [];
   var resultsCount = 0;
+
+  for (var i = 0 ; i < tasks.length ; i++){
+    (function (i) {
+      tasks[i](function (val) {
+        resultsArray[i] = val;
+        resultsCount++;
+        if(resultsCount === tasks.length){
+          // something something
+        }
+      })
+    })(i);
+  }
+
 };
 
 
