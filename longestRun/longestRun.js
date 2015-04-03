@@ -12,7 +12,34 @@
  */
 
 var longestRun = function (string) {
-  // TOD: Your code here!
+  var runs = {};
+  var enter = 0;
+  var exit = 0;
+  var char = string[0] || '';
+  var max = -Infinity;
+
+  var newRun = function(){
+      if (!runs[exit - enter + 1]) {
+        runs[exit - enter + 1] = [enter, exit];
+      }
+      if (exit - enter + 1 > max) {
+        max = exit - enter + 1;
+      }
+  }
+
+  for (var i = 0; i<string.length; i++) {
+
+    if (string[i] !== char) {
+      char = string[i];
+      exit = i - 1;
+      newRun()
+      enter = i;
+    } else if (i === string.length - 1) {
+      exit = i;
+      newRun();
+    }
+  }
+  return runs[max];
 };
 
 // If you need a random string generator, use this!
