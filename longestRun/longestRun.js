@@ -10,9 +10,34 @@
  * Try your function with long, random strings to make sure it handles large
  * inputs well.
  */
+ // SubStr(i,len)   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr
+ // Substring(i, k) - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring
 
 var longestRun = function (string) {
-  // TOD: Your code here!
+  var retArr = [];
+
+  var checkRun = function(startCh, i) {
+    var runLength = 0;
+    for (var k = 0; k < string.length && startCh===string.charAt(i); k++) {
+        runLength++;
+    }
+
+    return runLength;
+  }
+
+
+  // Big O Log.
+  for (var i = 0; i < string.length; i++) {
+    var lastMatch = "";
+    var currCh = string.charAt(i);
+    var currLen = '';
+    if( currCh!==lastMatch ) {
+      currLen = checkRun(currCh, i);
+    }
+
+  };
+
+  return retArr; 
 };
 
 // If you need a random string generator, use this!
@@ -27,3 +52,9 @@ var randomString = function (len) {
 
   return text;
 };
+
+
+var longString = randomString(20)
+console.log( longString );
+var longRun = longestRun( longString );
+console.log( longRun );
