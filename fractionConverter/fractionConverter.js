@@ -13,5 +13,23 @@
  */
 
 var toFraction = function(number) {
-  // Your code here
+   var lengthTest;
+   var temp = number.toString();
+   var count = temp.split(".");
+   
+   if (count[1]){
+       lengthTest = count[1].length;
+   }
+   
+   var timesTen = Math.pow(10, lengthTest)||1;
+   var nume = number*timesTen;
+   
+   for (var i = 2; i< 10; i++){
+       if (nume % i === 0 && timesTen % i === 0) {
+           nume = nume / i;
+           timesTen = timesTen/i;
+       }
+   }
+   
+   return nume.toString() +"/"+timesTen.toString();
 };
