@@ -24,7 +24,9 @@ var toFraction = function(number) {
    var timesTen = Math.pow(10, lengthTest)||1;
    var nume = number*timesTen;
    
-   for (var i = 2; i< 10; i++){
+
+ 
+   for (var i = nume; i > 1; i--){
        if (nume % i === 0 && timesTen % i === 0) {
            nume = nume / i;
            timesTen = timesTen/i;
