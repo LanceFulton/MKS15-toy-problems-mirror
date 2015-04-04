@@ -62,3 +62,62 @@ var bind = function(func, arg1, arg2) {
 Function.prototype.bind = function() {
 
 };
+
+
+//___________________SOLUTION__________________________________________________________________
+
+var bind = function(func, context) {
+
+  var prefArgs = Array.prototype.slice.call(arguments, 2);
+
+  return  function () {
+
+    var args = Array.prototype.slice.call(arguments);
+    args = prevArgs.concat(args);
+
+    return func.apply(context, args);
+  };
+};
+
+
+
+
+Function.prototype.bind = function(context) {
+  var prevArgs = Array.prototype.slice(arguments, 1);
+  var func = this;
+
+  return  function () {
+
+  var args = Array.prototype.slice.call(arguments);
+  args = prevArgs.concat(args);
+
+  return func.apply(context, args);
+  };
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

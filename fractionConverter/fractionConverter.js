@@ -15,24 +15,28 @@
 var toFraction = function(number) {
   var x = 1;
   var y = 1;
+  var fraction;
 
   if (number % 1 === 0) {
     x = number;
+    fraction = x + '/' + y;
     return fraction;
   }
 
 
   var array = number.toString().split('.');
-
+  array[1] = '.' + array[1];
   console.log(array);
 
   if (parseInt(array[0]) !== 0) {
     console.log(parseInt(array[0]));
-    // x = (array[1] / array[0]);  
-    // y = array [1] / 2;
+    x = (array[0] / array[1]) + 1;  
+    y = (1/array[1]);
+  
+  } else {
+    y = (1/array[1]);
+
   }
-
-
-  var fraction = x + '/' + y;
+  fraction = x + '/' + y;
   return fraction;
 };

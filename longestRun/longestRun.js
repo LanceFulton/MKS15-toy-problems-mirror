@@ -14,13 +14,25 @@
 var longestRun = function (string) {
   var storage = {};
   var results = [];
+  var count = 0;
+  var start;
+  var end;
+  var largest = 0;
   //how does one compare values within a string or array. 
 
   for (var i = 0; i < string.length; i++) {
-
-    
+    if (string[i] === string[i+1]) {
+      count++;
+      start = i;
+      if (count > largest) {
+        largest = count;
+      }
+    } else {
+      end = i;
+      count = 0;
+    }
   }
-
+  return [start, end];
 };
 
 // If you need a random string generator, use this!
@@ -29,9 +41,36 @@ var randomString = function (len) {
   var text = "";
   var possible = "abcdefghijklmnopqrstuvwxyz";
 
-  for(var i = 0; i < len; i++) {
+  for(var i = 1; i < len; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
 
   return text;
 };
+
+//____________________________SOLUTION___________________________________________
+
+var longestRun = function(string) {
+
+  var max = [0,0];
+  var current = [0,0];
+
+  for (var i = 0 ; i < string.length; i++) {
+    if (string[i-1] === string[i]) {
+      current[1] = i;
+      if (current[1] - current[0] > max[1] - max[0]) {
+        max = current;
+      }
+    } else {
+      current = [i,i];
+    }
+  }
+  return max;
+};
+
+
+
+
+
+
+

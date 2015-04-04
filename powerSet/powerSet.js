@@ -18,7 +18,8 @@
  */
 
 
-
+//includes empty strings
+//not actually a permutations problem no repeated characters 
 
 var powerSet = function(str){
 
@@ -42,3 +43,40 @@ var powerSet = function(str){
 
 //to prevent sets of the same characters .sort() them before you compare them to what is already in the array.
 // a helper function might be a good idea.
+
+//___________________________________SOLUTION___________________________________________________________
+
+
+var powerSet = function() {
+
+var results = [];
+var letters = {};
+
+str = str || '';
+
+for (var i = 0; i < str.length; i++) {
+  letters[str[i]] = true;
+}
+
+str = Object.keys(letters).join(''); //putting it back into a string
+
+var solutions = {};
+
+var recurse = function(strSet) {
+  for (var i = 0; i < strSet.length; i++) {
+    var subSet = strSet.substr(0,1) + strSet.substr(i +1, strSet.length);
+    if (!solutions[subSet]) {
+      solutions[subSet] = true;
+      recurse(subset);
+    }
+  }
+};
+recurse(str);
+return Object.keys(solutions);
+};
+
+//function calls may be out of scope. 
+
+
+
+
