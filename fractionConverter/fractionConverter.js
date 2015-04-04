@@ -13,5 +13,24 @@
  */
 
 var toFraction = function(number) {
-  // Your code here
+  var denom = 1;
+
+  while (Math.floor(number) !== number) {
+    number *= 10;
+    denom *= 10;
+  }
+
+  //simplify the fraction
+  var lim = Math.min(number, denom);
+  while (lim > 1) {
+    if (number % lim === 0 && denom % lim === 0) {
+      number /= lim;
+      denom /= lim;
+      break;
+    } else {
+      lim--;
+    }
+  }
+
+  return number + '/' + denom;
 };
