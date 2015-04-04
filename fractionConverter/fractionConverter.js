@@ -29,6 +29,10 @@ var toFraction = function(number) {
   };
 
   var myGcd = gcd(numerator, denominator);
+  if (denominator<0 ^ myGcd<0) { // Pushes negative sign onto numerator
+    myGcd *= -1;
+  }
+
   numerator /= myGcd;
   denominator /= myGcd;
 
