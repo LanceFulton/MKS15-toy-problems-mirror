@@ -38,7 +38,7 @@
 
 //use this this to be more efficient, not needing to define start/end/step
 var Range = function(start, end, step){
-  if(!step) {
+  if(step===undefined) {
         //set step to false;
         step = -1;
         //if true, then set to true;
