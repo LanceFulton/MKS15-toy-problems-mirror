@@ -12,6 +12,33 @@
  *
  */
 
+var gcd = function(a,b) {
+  while (b>0) {
+    t = b;
+    b = a % b;
+    a = t;
+  }
+  return a;
+}
+
+var log10 = function(n) {
+  return Math.log(n)/Math.log(10);
+}
+
 var toFraction = function(number) {
-  // Your code here
-};
+
+  var denominator = 1;
+  var orderOfMag = Math.floor(log10(number) + 1)
+  while (number !== Math.floor(number)) {
+    number *= 10;
+    denominator *= 10;
+  }
+  denominator *= Math.pow(10,orderOfMag);
+  var g = gcd(number, denominator);
+  numerator = number/g;
+  denominator = denominator/g;
+
+  return "'"+numerator+"/"+denominator+"'";
+
+}
+
