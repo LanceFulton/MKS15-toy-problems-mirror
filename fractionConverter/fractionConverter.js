@@ -13,25 +13,30 @@
  */
 
 var toFraction = function(number) {
+  if (number === Math.round(number)) {
+    return number + '/' + '1';
+  }
+  var result = '';
   var decimal = number % 1;
   var whole = number - decimal;
   var decimalNumber = decimal.toString();
   decimalNumber = decimalNumber.slice(2);
   decimalNumber = Number(decimalNumber);
- // console.log(decimalNumber);
   var decimalPlace = decimalNumber.toString().length;
-  var result = '';
+  console.log(decimalNumber);
 
   var commonDenominator = function (target) {
     var numerator = target;
-    var denominator = decimalPlace * 10;
-   // console.log("denom: ", denominator);
+    var denominator = Math.pow(10, decimalPlace);
+    console.log("numer:" + numerator);
+    console.log("denom: "+ denominator);
 
-    for (var i = numerator; i > 1; i--) {
+    for (var i = numerator; i > 0; i--) {
       if (numerator % i === 0 && denominator % i === 0) {
-        var top = (numerator / i).toString();
         var bottom = (denominator / i).toString();
+        var top = ((numerator / i) + (whole * bottom)).toString();
         result = top + '/' + bottom;
+        return;
       }
     }
   };
