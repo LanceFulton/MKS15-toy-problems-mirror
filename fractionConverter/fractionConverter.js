@@ -21,24 +21,20 @@ var gcd = function(a,b) {
   return a;
 }
 
-var log10 = function(n) {
-  return Math.log(n)/Math.log(10);
-}
-
 var toFraction = function(number) {
-
+  var originalNumber = number;
   var denominator = 1;
-  var orderOfMag = Math.floor(log10(number) + 1)
+
   while (number !== Math.floor(number)) {
-    number *= 10;
     denominator *= 10;
+    number = originalNumber*denominator;
   }
-  denominator *= Math.pow(10,orderOfMag);
+
   var g = gcd(number, denominator);
   numerator = number/g;
   denominator = denominator/g;
 
-  return "'"+numerator+"/"+denominator+"'";
+  return numerator+"/"+denominator;
 
 }
 
