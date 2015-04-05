@@ -21,6 +21,10 @@ var toFraction = function(number) {
     denominator *= 10;
   }
 
+  if (numerator > Math.pow(10,10)) {
+    numerator = Math.round(numerator/100)*100;
+  }
+
   var gcd = function(a, b) {
     if (!b) {
         return a;
