@@ -125,5 +125,3 @@ var mergeSort = function (array) {
      return merge(mergeSort(leftArray), mergeSort(rightArray));
   } 
 };
-
-console.log(mergeSort([4,7,4,3,9,1,2]));
