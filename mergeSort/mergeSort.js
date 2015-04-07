@@ -95,8 +95,28 @@
  *
  */
 
+ // [4,7,4,3,9,1,2] -> [[4],[7],[4],[3],[9],[1],[2]]
+
 
 
 var mergeSort = function(array) {
-  // Your code here.
+  var sortedArray = [];
+
+  var recurse = function(reduceArr) {
+    var halfIndex = Math.floor(reduceArr.length/2);
+    var firstHalve = reduceArr.slice(0, halfIndex);
+    var secondHalve = reduceArr.splice(halfIndex, reduceArr.length-1);
+
+    if ( firstHalve.length > 1 ) {
+      recurse(firstHalve);
+    } 
+    if ( secondHalve.length > 1 ) {
+      recurse(secondHalve);
+    }
+    firstHalve
+    firstHalve.concat(secondHalve)
+
+  }
+  recurse(array);
+  return sortedArray;
 };

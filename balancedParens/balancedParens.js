@@ -57,4 +57,18 @@ var checkChars = function (char) {
     }
 }
 
-
+/*
+var balancedParens = function(input){
+  var stack = [];
+  var pairs = {'{': '}', '[': ']', '(':')'}
+  for(var i = 0; i < input.length; i++) {
+    var (pairs[chr]) {
+      stack.push(chr)
+    } else if ( chr === '}' || ']' || ')' ) {
+        if (pairs[stack.pop()] !== chr) {
+          return false;
+        }
+      }
+  }
+  return stack.length === 0;
+}
