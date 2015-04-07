@@ -33,7 +33,7 @@
  * Illustration of a recursive approach:
  *
  *   1. Split the input array in half
- *   [4, 7, 4, 3, 9, 1, 2] -> [4, 7, 4], [3, 9, 1, 2
+ *   [4, 7, 4, 3, 9, 1, 2] -> [4, 7, 4], [3, 9, 1, 2]
  *
  *   2. Both sides are sorted recursively:
  *   [4, 7, 4] -> [4, 4, 7]
@@ -99,4 +99,60 @@
 
 var mergeSort = function(array) {
   // Your code here.
+
+  //merge those arrays until you have arrays of 4 values
+  //repeat until you have only one array
+  //return sorted array
+  var reducedArray = [];
+
+  //take the array and split it arrays of single values
+  for (var i = 0; i < array.length; i++){
+    reducedArray.push(array.slice(i, i+1));
+  }
+
+  var newArray = [];
+
+  var check2Values = function(splitArray){
+    //merge 2 single value arrays together until you have
+    //arrays of 2 values
+    for (var i = 0; i < splitArray.length; i++){
+      //compare the values in 2 sub arrays
+      if(splitArray[i] < splitArray[i + 1]){
+        //merge them in sorted order
+        newArray.push(splitArray[i].concat(splitArray[i+1]));
+      } else {
+        //merge them in sorted order
+        newArray.push(splitArray[i+1].concat(splitArray[i]));
+      }
+      //increment i to skip the value that was already compared to prevent duplicate sorting
+      i++;
+    }
+    return newArray;
+  }
+
+  //start with reducedArray and break down into just 2 values to be compared, pass those into check2Values
+
+  for(var j = 0; j < reducedArray.length; j++){
+
+    check2Values(reducedArray);
+  }
+
+  //Out of time
+  //check if reducedArray[i] is greater than 1, if it is, break down until it is length 1
+  //merge 2 numbers to be compared into one array and pass to check2Values function to sort
+  //concat the sorted arrays together
+  //repeat until all values have been sorted
+  //return sorted array
+
+
+
 };
+
+
+
+
+
+
+
+
+
