@@ -99,4 +99,42 @@
 
 var mergeSort = function(array) {
   // Your code here.
+  var merged = [];
+
+  //
+  for i = 0; i < array.length; i += 2
+    if(array[i] <= array[i+1])
+      merged.push([ array[i], array[i+1] ]);
+    else if(array[i] > array[i+1])
+      merged.push([ array[i+1], array[i] ]);
+    else if( !array[i+1] )
+      merged.push( array[i] )
+
+
+  // base
+  if array.length === 1
+    if( merged.length === 0 )
+      merged.push(array[0])
+    else
+      if( merged)
+
+  mid = Math.floor(array.length / 2)
+  firstArr = array.slice(0, mid)
+  secondArr = array.slice(mid)
+
+  var recurse = function(arr1, arr2) {
+
+    for( var i = 0; i < 2; i++ )
+    if( arguments[i].length === 1 ) {
+      if( merged.length === 0 ) {
+        merged.push(arr[0])
+      } else {
+        for( var i = 0; i < merged.length; i++ ) {
+          if( merged[i] < arguments[i][0] ) {
+            merged.splice(i, 0, arr[0])
+          }
+        }
+      }
+    }
+  }
 };

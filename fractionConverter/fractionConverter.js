@@ -25,3 +25,25 @@ var toFraction = function(number) {
 
   return numerator + '/' + denominator;
 };
+
+
+// solution
+var toFraction = function(num) {
+  var denom = 1;
+  if( num < 0 ) {
+    return '-' + toFraction(-num);
+  } else {
+    while( num % 1 !== 0 ) {
+      num = num * 10;
+      denom = denom * 10;
+    }
+  }
+
+  var gcd = 1;
+  for( var i = num; i > 0; i-- ) {
+    gcd = i;
+    break;
+  }
+
+  return num/gcd + '/' + denom/gcd;
+};
