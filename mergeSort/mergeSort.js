@@ -33,7 +33,7 @@
  * Illustration of a recursive approach:
  *
  *   1. Split the input array in half
- *   [4, 7, 4, 3, 9, 1, 2] -> [4, 7, 4], [3, 9, 1, 2
+ *   [4, 7, 4, 3, 9, 1, 2] -> [4, 7, 4], [3, 9, 1, 2]
  *
  *   2. Both sides are sorted recursively:
  *   [4, 7, 4] -> [4, 4, 7]
@@ -94,9 +94,45 @@
  *   Implement natural splitting into your mergesort. How much does it improve your average-case runtime?
  *
  */
+//******************************//
+//Splits the initial array 
+//******************************//
+
+var splitter = function(array) {
+  var subArrays = [];
+  for(var i = 0; i < array.length; i++) {
+    var temp = [];
+    temp.push(array[i]);
+    subArrays.push(temp);
+  }
+  return subArrays;
+}
 
 
+//******************************//
+//Does the actual sorting 
+//******************************//
 
 var mergeSort = function(array) {
-  // Your code here.
+  var finalArr = [];
+  var splitArr = splitter(array);
+
+  function merge(array) {
+    mergedArr = [];
+    for(var i = 0; i < splitArr.length; i+=2) {
+      if (splitArr[i] <= splitArr[i+1]) {
+        mergedArr.push(splitArr[i].concat(splitArr[i + 1]));
+      } else {
+        mergedArr.push(splitArr[i + 1].concat(splitArr[i]));
+      }
+    }
+    finalArr.push(mergedArr);
+    merge(finalArr);
+  }
+  merge(splitArr);
+  return finalArr;
 };
+
+
+
+
