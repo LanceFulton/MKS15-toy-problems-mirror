@@ -127,7 +127,7 @@ var mergeSort = function(array) {
 };
 
 
-var _ = require('underscore');
-for (var i=0; i<100; i++) {
-  console.log(mergeSort(_.shuffle([0,1,2,3,4,5,6,7,8])));
-}
+// var _ = require('underscore');
+// for (var i=0; i<100; i++) {
+//   console.log(mergeSort(_.shuffle([0,1,2,3,4,5,6,7,8])));
+// }
