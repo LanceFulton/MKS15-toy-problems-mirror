@@ -98,5 +98,44 @@
 
 
 var mergeSort = function(array) {
-  // Your code here.
+  var initArray = [];
+
+  for (var i = 0; i < array.length; i++) {
+    initArray.push([array[i]]);
+  }
+  
+  for (var j = 0; j < initArray.length; j++) {
+    if (initArray[j][0] > initArray[j+1][0])
+      initArray[j][0] = initArray[j+1][0];
+      initArray[j][0] = initArray[j][0].concat(initArray[j+1][0]);
+
+  }
+
+
 };
+
+
+
+
+
+  //first bad idea
+
+  // var masterArray = [];
+  // var tempArray = [];
+  // var midpoint;
+  // if (array.length > 1) {
+  //   midPoint = Math.floor(array.length/2);
+  //   tempArray.push(array.splice(midPoint));
+  //   masterArray.push(array, tempArray);
+  // }
+
+  // for (var i = 0; i < masterArray.length; i++) {
+
+  // }
+
+
+
+
+
+
+
