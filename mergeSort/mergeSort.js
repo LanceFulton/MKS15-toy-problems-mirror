@@ -98,5 +98,34 @@
 
 
 var mergeSort = function(array) {
-  // Your code here.
+  var items = array.length;
+
+  var splitArr = [];
+  for (var i = 0; i < items; i++) {
+    splitArr.push(array.splice(0,1));
+  }
+
+  var mergeJoin = function(arr1, arr2) {
+    var join = [];
+
+    while (arr1[0] !== undefined || arr2[0] !== undefined) {
+      if (arr1[0] === undefined) {
+        join.push(arr2.shift());
+      } else if (arr2[0] === undefined) {
+        join.push(arr1.shift());
+      } else if (arr2[0] < arr1[0]) {
+        join.push(arr2.shift());
+      } else {
+        join.push(arr1.shift());
+      }
+    }
+
+    return join;
+  };
+
+  while (splitArr.length !== 1) {
+    splitArr.push(mergeJoin(splitArr.shift(), splitArr.shift()));
+  }
+
+  return splitArr[0];
 };
