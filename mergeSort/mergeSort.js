@@ -33,7 +33,7 @@
  * Illustration of a recursive approach:
  *
  *   1. Split the input array in half
- *   [4, 7, 4, 3, 9, 1, 2] -> [4, 7, 4], [3, 9, 1, 2
+ *   [4, 7, 4, 3, 9, 1, 2] -> [4, 7, 4], [3, 9, 1, 2]
  *
  *   2. Both sides are sorted recursively:
  *   [4, 7, 4] -> [4, 4, 7]
@@ -98,5 +98,25 @@
 
 
 var mergeSort = function(array) {
-  // Your code here.
+  results = [];
+
+  while(array.length) {
+    results.push(a.splice(0,1));
+  }
+
+  for (var i = 0; i < results.length; i++) {
+    var former = results[i];
+    var latter = results[i+1];
+    if (former < latter) {
+      former.concat(latter);
+      console.log(results);
+    } else {
+      latter.concat(former);
+    }
+  }
+
+//   array.sort(function(a,b) {
+//     return a - b;
+//   });
+
 };
