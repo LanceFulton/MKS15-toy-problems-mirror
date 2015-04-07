@@ -39,7 +39,7 @@
  */
 
 
-var asyncMap = function(tasks, callback){
+var asyncMap = function(tasks, callback) {
   results = [];
   callbacksReturned = 0;
 
@@ -58,4 +58,7 @@ var asyncMap = function(tasks, callback){
     tasks[i](cb2(i));
   }
 
+
 };
+
+
