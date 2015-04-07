@@ -58,3 +58,21 @@ var asyncMap = function(tasks, callback){
     });
   }
 };
+
+// solution?
+var asyncMap = function(tasks, callback) {
+  var resultsArray = [];
+  var resultsCount = 0;
+
+  for( var i = 0; i < tasks.length; i++ ) {
+    (function(i) {
+      tasks[i](function(val) {
+        resultsArray[i];
+        resultsCount++;
+        if( resultsCount === tasks.length ) {
+          callback(resultsArray);
+        }
+      });
+    })(i);
+  }
+};
