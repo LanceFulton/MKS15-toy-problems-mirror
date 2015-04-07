@@ -59,3 +59,42 @@ var pipe = function(args){
     }
   };
 };
+
+//reduce and reduceRight
+
+//________________________________SOLUTION__________________________________________________
+
+var compose = function() {
+  var args = Array.prototype.slice.call(arguments);
+
+  return function(val) {
+    return args.reduceRight(function(memo, fn){
+      return fn(memo);
+    }, val);
+  };
+};
+
+
+var pipe = function() {
+  var args = Array.prototype.slice.call(arguments);
+
+  return function(val) {
+    return args.reduce(function(memo, fn){
+      return fn(memo);
+    }, val);
+  };
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+

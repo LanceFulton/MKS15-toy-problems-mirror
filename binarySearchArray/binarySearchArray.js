@@ -34,3 +34,24 @@ var binarySearch = function(array, target) {
       return j;
   }
 };
+
+
+//___________________________SOLUTION_______________________________
+
+var binarySearch = function(array,target) {
+
+  var sub = function(low, high) {
+
+    if (high == low) {return null;} //doesn't account for an array with 1 element. 
+    var mid = Math.floor((high-low) /2) + low;
+    if (array[mid] === target) {
+      return mid;
+    } else if (array[mid] > target) {
+      return sub(low, mid);
+    } else {
+      return sub(mid, high);
+    }
+  };
+
+  return sub(0, array.length-1);
+};

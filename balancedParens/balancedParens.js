@@ -29,10 +29,52 @@ var balancedParens = function(input){
   var storage = {};
 
   for (var i = 0; i < input.length; i++) {
-      
+
 
   }
 
 };
+
+
+//___________________SOLUTION___________________________
+
+var balancedParens = function(input) {
+
+  var stack = [];
+
+  var pairs = { '{' : '}', '[' : ']', '(': ')'};
+
+  for (var i = 0; i < input.length; i++) {
+    var chr = input[i];
+
+    if (pairs[chr]) {
+      stack.push(chr);
+
+    } else if (chr === '}' || chr === ']' || chr === ')' ) {
+      if (pairs[stack.pop()] !== chr) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0; //will return true or false
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

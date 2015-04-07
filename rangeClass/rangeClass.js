@@ -39,8 +39,8 @@
 
 var Range = function(start, end, step) {
   step = step || 1;
-  if (!end) {return start;}
-  if (!start) {return null;}
+  if (!end) {return start;} // if end is < start step should be -1
+  if (!start) {return null;} // !start and !end doesn't work because it doesn't account for zero. Zero will come back false.
 };
 
 Range.prototype.size = function (start, end) {
@@ -70,4 +70,65 @@ Range.prototype.includes = function (val) {
 };
 
 var range = new Range(1);
+
+
+
+//________________________SOLUTION_______________________________________
+
+var Range = function(start, end, step) {
+  if (start === undefined) {
+    return null;
+  }
+  if (end === undefined) {
+    end = start;
+  }
+  if (step === undefined) {
+    step = ( end > start ) ? 1 : -1; 
+  }
+
+  this.start = start;
+  this.end = end;
+  this.step = step;
+
+};
+
+Range.prototype.size = function(start, end) {
+  return Math.floor( (this.end = this.start)/this.step ) + 1; //inclusive if start and end were both 1 you need to add one.
+
+};
+
+Range.prototype.each = function(callback) {
+  if ( this.start < this.end ) {
+    for (var i = this.start; i <= this.end; i += this.step) {
+      callback(i);
+    }
+
+  } else {
+    //for (var i = )// same thing as before only iterating the opposite way
+    //for (var i = this.start)
+
+  }
+
+
+};
+
+
+Range.prototype.includes = function(val) {
+
+  if (this.start < this.end) {
+    return (value > this.start) && (value< this.end ) && (((this.start - value ) %this.step) === 0);
+  }else {
+    return (value > this.end) && (value < this.start) && (((this.start - value)% this.step) === 0);
+  }
+
+};
+
+var range = new Range(1);
+
+
+
+
+
+
+
 

@@ -11,20 +11,47 @@ $(function(){
   // --------------STEP 2--------------
   // Next, change spans to random colors, once per second
 
-  var wordsArray = $('p').text()
+  //First child last child to get the two different p tags?
+
+  var wordsArray = $('p').text();
   console.log('wordsArray', wordsArray);
 
   var wordArray = wordsArray.split(" ");
-  console.log('wordArray', wordArray)
+  console.log('wordArray', wordArray);
 
 
   for (var i = 0; i < wordArray.length; i++) {
     if (wordArray[i] !== null) {
-      $('p').append('<span class = "colors">' + wordArray[i] + " " + '</span>')
+      $('p').append('<span class = "colors">' + wordArray[i] + " " + '</span>');
       //I would like to get rid of the empty spans cause by spaces
-    };
+    }
   }
   var randomColor = Math.floor(Math.random()*16777215).toString(16);
 
-  $('.colors').style('color', randomColor) //syntax
+  $('.colors').style('color', randomColor);//syntax
 });
+
+
+//________________________________Solution____________________________________
+
+$('p').each(function(index, element) {
+  var $el = $(element);
+  var words= $el.text().split(' ');
+  $el.html('');
+  for (var i = 0; i < words.length; i++) {
+    var newSpan = $('<span>').text(words[i] + " ");
+    $el.append(newSpan);
+  }
+});
+
+setInterval(function() {
+  $.each($('span'), function() {
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+    $(that).css('color', 'rgb(' + red + ' ' + green + ' ' + blue + ')');
+  });
+}, 1000);
+
+
+

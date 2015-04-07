@@ -63,6 +63,34 @@ Tree.prototype.DFSelect = function(filter) {
 
 };
 
+Tree.prototype.DFSelect = function(filter) {
+  var results = [];
+  var depth = 0;
+
+
+  var recurse = function(tree, filter, depth) {
+
+    if (tree.chlidren) {
+      for (var i = 0; i < tree.children.length; i++) {
+        if (tree.children[i].children) {
+          recurse(tree.children[i], filter, depth++);
+        }
+      }
+    }
+  };
+  recurse(this, filter, depth);
+  return results;
+};
+
+
+
+
+
+
+
+
+
+
 
 
 /**
