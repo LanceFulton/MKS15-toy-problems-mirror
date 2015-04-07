@@ -97,6 +97,33 @@
 
 
 
-var mergeSort = function(array) {
+var mergeSort = function (array) {
   // Your code here.
+  function merge(array1, array2) {
+    var result = [];
+    var arr1=array1.slice();
+    var arr2=array2.slice();
+
+    while (arr1.length >0 || arr2.length >0) {
+      if (arr1[0] <= arr2[0] || arr2.length ===0){
+        result.push(arr1.shift());
+      } else if (arr1[0] > arr2[0] || arr1.length ===0) {
+        result.push(arr2.shift());
+      }
+    }
+    return result;
+  }
+  // base case: 0 or 1 element, no need sorting, just return
+  if (array.length <2) {
+    return array;
+  } else {
+     // otherwise, divide array into two halves, recursivly sort and merge the array
+     var midIndex= Math.floor(array.length/2);
+     var leftArray=array.slice(0,midIndex);
+     var rightArray=array.slice(midIndex);
+
+     return merge(mergeSort(leftArray), mergeSort(rightArray));
+  } 
 };
+
+console.log(mergeSort([4,7,4,3,9,1,2]));
