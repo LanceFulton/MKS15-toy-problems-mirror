@@ -12,6 +12,28 @@
  *
  */
 
+
+
 var toFraction = function(number) {
-  // Your code here
+  var denominator = 1;
+
+  if (num < 0) {
+    return '-' + toFraction(-num)
+  } else {
+    while(num % 1 !== 0){
+      num = num*10;
+      denominator = denominator*10;
+    }
+  }
+
+  var gcd = 1;
+  for (var i = number ; i >0 ; i++){
+    if (number%1 === 0 && denominator%i ===0){
+      gcd = i;
+      break;
+    }
+  }
+
+  return num/gcd + '/' + denom/gcd;
+
 };

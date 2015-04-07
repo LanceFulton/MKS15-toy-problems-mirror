@@ -12,7 +12,34 @@
  */
 
 var longestRun = function (string) {
-  // TOD: Your code here!
+
+  // iterate through string
+    // start run at current character
+      // store start index
+      // end run if next letter is different
+      // store end index
+      // calculate run length
+      // compare length to record length
+        // if new length is greater, set record length equal to new length
+
+  // iterate through string
+
+  var max = [0,0];
+  var current = [0,0];
+
+  for (var i = 0 ; i < string.length ; i++){
+
+    if (string[i-1] === string[i]){
+      current[1] = i;
+      if (current[1] - current[0] > max[1] - max[0]){
+        max = current;
+      }
+    } else {
+      current = [i, i];
+    }
+
+  }
+  return max;
 };
 
 // If you need a random string generator, use this!
