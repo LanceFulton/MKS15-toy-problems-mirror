@@ -98,5 +98,55 @@
 
 
 var mergeSort = function(array) {
-  // Your code here.
+  
+/* Initial step: Input array is split into "sorted" sublists
+ *   [4,7,4,3,9,1,2] -> [[4],[7],[4],[3],[9],[1],[2]]
+ *
+ *   Merge step: Adjacent sublists are merged into sorted sublists
+ *   [[4],[7],[4],[3],[9],[1],[2]] -> [[4,7],[3,4],[1,9],[2]]
+ *
+ *   Repeat merge step:
+ *   [[4,7],[3,4],[1,9],[2]] -> [[3,4,4,7], [1,2,9]]
+ *
+ *   Repeat merge step:
+ *   [[3,4,4,7], [1,2,9]] -> [[1,2,3,4,4,7,9]]
+ *
+ *   Done! Return the sorted array:
+ *   [1,2,3,4,4,7,9]
+ */
+  var t1 = [];
+  for (var i = 0; i < array.length; i++) {
+   t1.push( [ array[i] ] );
+  };
+  console.log(t1);
+
+  var recurseSort = function(subArray1, subArray2, i) {
+    
+
+  };
+
+  var t2 = [];
+  for (var i = 0; i < array.length; i+=2) {
+    if(t1[i]<t1[i+1]) {
+      t2.push( [t1[i], t1[i+1]] );
+    } else {
+      t2.push( [t1[i+1], t1[i]] );
+    }
+  }
+  console.log(t2);
+
+  var t3 = [];
+  for (var i = 0; i < array.length; i+=4) {
+    if(t2[i]<t2[i+1]) {
+      t3.push( [t2[i], t2[i+1], t2[i+2], t2[i+3]] );
+    } else {
+      t3.push( [t2[i+3], t2[i+2], t2[i+1], t2[i]] );
+    }
+  }
+  console.log(t3.join());
+
 };
+
+console.log("FINAL OUTPUT:  " + mergeSort([4,7,4,3,9,1,2]) );
+
+

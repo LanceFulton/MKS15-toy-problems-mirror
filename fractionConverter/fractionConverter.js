@@ -10,6 +10,32 @@
  * 
  * Example: toFraction(2.5) === '5/2'
  *
+
+Solution:
+1) Turn our decimal into a 1 denominator fraction.
+2) multiply out fraction by 10/10 until we eliminate all decimals
+3) divide 
+
+
+
+toFraction = function(num) {
+  var denom = 1;
+  while(num % 1 !== 0) { // Keep processing until all decimal places are processed (0.333333336)
+    num = num * 10; 
+    denom = denom*10;
+  }  // --> ex. 15/100 (next reduce)
+
+  // Reduce -- What is the largest divisor for both numbers?
+  // 100 vs 15 (Start w/ 15, 14, 13...  5!)
+  var gcd = 1;
+  for(var i = num; i>0; i--) {
+    if(num%i === 0 && denom%i === 0) {
+      gcd=i;
+      brealk;
+    }
+  }
+  return num/gcd + '/' + denom/gcd;
+}
  */
 
 var toFraction = function(number) {
