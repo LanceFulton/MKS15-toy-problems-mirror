@@ -96,7 +96,41 @@
  */
 
 
-
+// Recursive approach
 var mergeSort = function(array) {
-  // Your code here.
+  // In place sort like Array.prototype.sort
+  console.log(array);
+  var mergeSortRecursive = function(low, high) {
+    if (low >= high) {
+      return;
+    }
+    var med = Math.ceil((low+high)/2);
+    var leftPart = mergeSortRecursive(low, med-1);
+    var rightPart = mergeSortRecursive(med, high);
+
+    for (var fromLeft=0, fromRight = 0; fromLeft<= med-1-low && fromRight<=high-med; ) {
+      // Nothing to do for 'low' values in leftPart and 'high' values in rightPart
+      console.log('walking: ', low+fromLeft, med+fromRight, array[low+fromLeft], array[med+fromRight]);
+      if (array[low+fromLeft] > array[med+fromRight]) {
+        var temp = array[low+fromLeft];
+        array[low+fromLeft] = array[med+fromRight];
+        array[med+fromRight] = temp;
+        fromRight++;
+      } else fromLeft++;
+    }
+    // if (fromLeft>med-low) {
+    //   for (var i=fromLeft; i<med-low; i++) {
+    //     if (array[i]
+    //   }
+    // }
+    console.log(low, high, array);
+  }
+  mergeSortRecursive(0, array.length-1);
+  return array;
 };
+
+
+var _ = require('underscore');
+for (var i=0; i<1; i++) {
+  console.log(mergeSort(_.shuffle([0,1,2,3,4,5,6,7,8])));
+}
