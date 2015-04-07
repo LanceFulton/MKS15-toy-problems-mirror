@@ -43,11 +43,19 @@
 //I should deliberately set the array[i] to be tasks[i]
 var asyncMap = function(tasks, callback){
   var funcArr = [];
+  resultsCount = 0;
   for (var i = 0; i < tasks.length; i++) {
-    funcArr[i] = tasks[i](callback);
+    (function (i) {
+      tasks[i](function (val){
+        funcArr[i] = val;
+        resultsCount++;
+        if(resultsCount === tasks.length){
+          callback(funcArr);
+        }
+      });
+    })(i);
   }
-  return funcArr;
-};
+}
 
 
 
