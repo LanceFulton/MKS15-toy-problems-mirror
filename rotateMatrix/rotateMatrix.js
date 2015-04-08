@@ -43,7 +43,21 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
-  // Your code here.
+var rotateMatrix = function(matrix) {
+  //loop through each ring starting at [0,0] going to [1,1] etc recursively
+  var sub = function(start, end){
+    //loop through the starter array
+    for(var i = matrix[start]; i <= matrix[end]; i++){
+      //flop the 4 slots
+      //matrix[start][i], matrix[i][start], matrix[start][start], matrix[i][i]
+    }
+
+    sub(++start, --end);
+  }
+  sub(0, matrix[0].length);
 };
+
+// do outer ring
+// (0,0) (0,1) (0,2) (0,3) (1,3) (2,3) (3,3) (3,2) (3,1) (3,0) (2,0) (1,0)
+// do inner ring
+// (1,1) (1,2) (2,2) (2,1)
