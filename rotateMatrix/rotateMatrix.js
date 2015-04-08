@@ -43,7 +43,49 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
-  // Your code here.
+var rotateMatrix = function(matrix) {
+
+  for (var i = 0; i < matrix.length; i++) {
+
+  }
+
+  //iterate through the matrix
+  //find an algorithm to move the values to the correct place
+    //not sure how to do this. could flatten and re-sort, could move the whole thing to a results matrix
+  //return rotated matrix. 
 };
+
+/*
+
+[ [1, 2, 3,4],[ 5, 6, 7,8], [9,'a','b','c'],['d','e','f','g']];
+[['d',9,5,1],['e','a',6,2], ['f','b', 7,3], ['g', 'c', 8, 4]]
+
+00 === 03
+01 === 13
+02 === 23
+03 === 33
+
+10 === 02
+11 === 12
+12 === 22
+13 === 32
+
+20 === 01
+21 === 11
+22 === 21
+23 === 31
+
+30 === 00
+31 === 10
+32 === 20
+33 === 30
+*/
+
+
+
+
+
+
+
+
+
