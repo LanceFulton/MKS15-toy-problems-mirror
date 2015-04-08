@@ -98,35 +98,21 @@
 
 
 var mergeSort = function(array) {
-  var middle = parseInt(arr.length / 2);
-  var left   = arr.slice(0, middle);
-  var right  = arr.slice(middle, arr.length);
-  
-  if(arr.length < 2){
-    return arr;
-  }
-  return merge(mergeSort(left), mergeSort(right));
-}
- 
-function merge(left, right) {
-  var result = [];
+  //split array into left and right
 
-  while(left.length && right.length){
-    if(left[0] <= right[0]) {
-      result.push(left.shift());
-    } 
-    else {
-      result.push(right.shift());
+  var merge = function(left, right)
+  var i = 0, j = 0, result = [];
+
+  //while there is something left in both arrays to push to result...
+  while(i < left.length && j < right.length){
+    if(left[i] < right[i]){
+      result.push(left[i++])
+    } else{
+      result.push(right[i++])
     }
   }
-
-  while (left.length){
-    result.push(left.shift());
-  }
-
-  while (right.length){
-    result.push(right.shift());
-  }
-
-  return result;
+  //one array is already pushed to result
+  //so add the rest of thr other array
+  var remaining = i === left.length? right.slice(j) : left.slice(i);
+  return result.concat(remaining);
 };

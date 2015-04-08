@@ -6,7 +6,6 @@
  * Example 1x1 matrix:
  *   [ [1] ]
  *
- * Example 2x2 matrix:
  *  [ [1,2],
  *    [3,4] ]
  *
@@ -19,6 +18,7 @@
  *
  * Example rotation of a 4x4 matrix:
  *
+ * Example 2x2 matrix:
  * var matrix = [
  *  [1,2,3,4],
  *  [5,6,7,8],
@@ -46,4 +46,7 @@
 var rotateMatrix = function(matrix
 ) {
   // Your code here.
+  //transpose
+    //reverse each row
+    matrix.reverse() //im stumped
 };
