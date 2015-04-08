@@ -43,7 +43,36 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
-  // Your code here.
+var rotateMatrix = function(matrix, direction) {
+  if (!matrix.length) {
+    return null;
+  }
+  var numRows = matrix.length; // numRows and numCols before switching
+  var numCols = matrix[0].length;
+  var results = [];
+  for (var i=0; i<numCols; i++) {
+    results[i] = [];
+    for (var j=0; j<numRows; j++) {
+      if (direction === -1) { // Counterclockwise for -1
+        results[i][j] = matrix[j][numCols-1-i];
+      } else { // Clockwise for otherwise
+        results[i][j] = matrix[numRows-1-j][i];
+      }
+    }
+  }
+  return results;
 };
+
+// var matrix = [
+//  [1,2,3,4],
+//  [5,6,7,8],
+//  [9,'A','B','C'],
+//  ['D','E','F','G'],
+//  ['H','I','J','K']
+// ];
+
+// var rotatedMatrix = rotateMatrix(matrix); // Rotate 90 degrees clockwise
+// console.log(rotatedMatrix);
+
+// var counterRotatedMatrix = rotateMatrix(matrix, -1);
+// console.log(counterRotatedMatrix);
