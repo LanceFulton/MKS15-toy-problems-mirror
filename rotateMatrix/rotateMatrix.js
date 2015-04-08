@@ -43,7 +43,40 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
+var rotateMatrix = function(matrix, direction) {
+  if (direction === undefined) {
+    direction = 1;
+  } else if (direction !== 1 && direction !== -1) {
+    direction = 1; 
+  }
+
+  var row=matrix.length;
+  var column = matrix[0].length;
   // Your code here.
+  var rMatrix= new Array(column);
+  for (var i=0; i<column; i++) {
+    rMatrix[i]=new Array(row);
+  }
+
+  for (var i=0; i<column; i++) {
+    for (var j=0; j<row; j++) {
+      rMatrix[i][j]=0;
+    }
+  }
+
+
+  for (var i=0; i< column; i++) {
+    for (var j=0; j< row; j++) {
+      if (direction ===1) {
+        rMatrix[i][j]=matrix[column-1-j][i];
+      } else {
+        rMatrix[i][j]=matrix[j][row-1-i];
+      }
+      
+    }
+  }
+
+  return rMatrix;
 };
+
+console.log(rotateMatrix([ [1,2,3,4], [5,6,7,8], [9,'A','B','C'],['D','E','F','G']], 1));
