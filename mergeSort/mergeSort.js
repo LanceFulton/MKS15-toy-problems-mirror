@@ -100,7 +100,6 @@
 
 
 var mergeSort = function(array) {
-  var sortedArray = [];
 
   var recurse = function(reduceArr) {
     var halfIndex = Math.floor(reduceArr.length/2);
@@ -120,3 +119,15 @@ var mergeSort = function(array) {
   recurse(array);
   return sortedArray;
 };
+
+  var i = 0, j = 0, result = [];
+    while(i < firstHalve.length && j < secondHalve.length) {
+      if (secondHalve[i] < firstHalve[j]) {
+        result.push(secondHalve[i++]);
+      } else {
+        result.push(firstHalve)[j++];
+      }
+    }
+    var remaining = i === firstHalve.length ? secondHalve.slice(j) : firstHalve.slice(i);
+    return result.concat(remaining);
+  }
