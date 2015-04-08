@@ -120,3 +120,35 @@ var mergeSort = function(array) {
 //   });
 
 };
+
+
+var mergeSort = function(array) {
+
+  // Arrays that are [] or [x] are already sorted, so we can just return them.
+  if (array.length <= 1) {
+    return array;
+  }
+
+  // Split the array into two halves
+  var half = Math.floor(array.length / 2);
+  left = array.slice(0, half);
+  right = array.slice(half);
+
+  // Continue to split both sides until sorted, then merge.
+  var sortedLeft = mergeSort(left);
+  var sortedRight = mergeSort(right);
+
+  var merge = function (left, right) {
+    var i = 0, j = 0, result = [];
+    // while there is somthing left in both arrays to push to result
+    while (i < left.length && j < right.length) {
+      if (left[i] <right[j]) {
+        result.push(left[i++]);
+      } else {
+        result.push(right[j++]);
+      }
+    }
+    var remaining = i === left.length ? right.slice(j) : left.slice(i);
+    return result.concat(remaining);
+  };
+};
