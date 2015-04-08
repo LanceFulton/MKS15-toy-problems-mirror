@@ -43,7 +43,25 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
+var rotateMatrix = function(matrix) {
   // Your code here.
+  var newMatrix = [];
+
+  for (var k = 0; k < matrix[0].length; k++){
+    newMatrix.push([]);
+  }
+
+  for (var i = 0; i < matrix[0].length; i++){
+    for (var j = 0; j < matrix[0].length; j++){
+      var value = matrix[i][j];
+      newMatrix[j][matrix[0].length - i] = value;
+    }
+  }
+
+  return newMatrix;
 };
+
+//Basically got it, my new array starts at index 1 and not 0 for some reason, out of time
+
+
+
