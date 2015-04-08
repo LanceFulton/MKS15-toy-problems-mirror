@@ -43,7 +43,27 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
-  // Your code here.
+var rotateMatrix = function(matrix) {
+  // Walk thru matrix vertically, collecting (new VERTICAL) elements.
+  var rotatedMatrix = [];
+
+  for(var i=0; i<matrix.length; i++) {
+    var rotatedArray = [];
+    for(var k=0; k<matrix[i].length; k++) {
+      rotatedArray.push( matrix[k][i] ); // note: swapped i/k index positions
+    }
+    rotatedMatrix.push( rotatedArray );
+    console.log( rotatedArray );
+  }
+
+  return rotatedMatrix;
 };
+
+var matrix = [
+  [1,2,3,4],
+  [5,6,7,8],
+  [9,'A','B','C'],
+  ['D','E','F','G']
+];
+
+console.log( rotateMatrix(matrix) );
