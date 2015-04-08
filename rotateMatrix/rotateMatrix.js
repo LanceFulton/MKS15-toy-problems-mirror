@@ -43,7 +43,29 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
-  // Your code here.
+var rotateMatrix = function(matrix, dir) {
+  var height = matrix.length;
+  var length = matrix[0].length;
+
+  //initialize result array
+  var result = Array.apply(null, Array(length)).map(function(arr) { return [] });
+
+  var midY = (height - 1) / 2;
+  var midX = (length - 1) / 2;
+
+  //iterate over all values and transform position
+  for (var i = 0; i < matrix.length; i++) {
+    for (var j = 0; j < matrix[i].length; j++) {
+      var distX = j - midX; //get distance relative to center of the array
+      var distY = i - midY;
+      //to rotate clockwise, y becomes -x and x becomes y
+      var temp = distX;
+      distX = -distY;
+      distY = temp;
+
+      result[midY + distY][midX + distX] = matrix[i][j]; 
+    }
+  }
+
+  return result;
 };
