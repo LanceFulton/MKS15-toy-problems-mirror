@@ -45,5 +45,14 @@
 
 var rotateMatrix = function(matrix
 ) {
-  // Your code here.
+  var n = matrix.length;
+  rotated = [];
+  for (var i = 0; i<n; i++) {
+    row = [];
+    for (var j = 0; j<n; j++) {
+      row.push(matrix[n-j-1][i]);
+    }
+    rotated.push(row);
+  }
+  return rotated
 };
