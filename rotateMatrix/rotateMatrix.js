@@ -68,8 +68,3 @@ var rotateMatrix = function(matrix, direction) {
 
   return rotated;
 };
-
-
-
-
-
