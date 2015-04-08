@@ -45,12 +45,12 @@
 
 var rotateMatrix = function(matrix) {
   newMatrix = [];
-  var j = matrix[0].length-1;
-  while(j > 0) {
+  var j = 0;
+  while(j < matrix[0].length) {
     for (var i = matrix.length-1; i >= 0; i--) {
       newMatrix.push(matrix[i][j]);
     }
-    j--;
+    j++;
   }
   return newMatrix;
 };
