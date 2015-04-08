@@ -138,3 +138,39 @@ var mergeSort = function(array) {
     }
   }
 };
+
+
+// solution
+var mergeSort = function(array) {
+  if( array.length <= 1 ) {
+    return array;
+  }
+
+  var half = Math.floor( array.length / 2 );
+  var left = array.slice(0, half);
+  var right = array.slice(half);
+
+  var sortedLeft = mergeSort(left);
+  var sortedRight = mergeSort(right);
+
+  var merge = function(left, right) {
+    var i = 0;
+    var j = 0;
+    var result = [];
+    // while there is something left in both arrays to push to result
+    while( i < left.length && j < right.length ) {
+      if( left[i] < right[j] ) {
+        result.push(left[i++]);
+      } else {
+        result.push(right[j++]);
+      }
+    }
+    // one array is now push to result, so add the rest of the other array
+    var remaining = i === left.length ? right.slice(j) : left.slice(i);
+    return result.concat(remaining);
+  }
+
+  return merge(sortedLeft, sortedRight);
+};
+
+
