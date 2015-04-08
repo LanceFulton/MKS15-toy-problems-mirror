@@ -43,7 +43,28 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
-  // Your code here.
+var rotateMatrix = function(matrix) {
+
+  if (n === 1) {
+    return matrix;
+  };
+
+  var newArray = [];
+  var n = matrix.length;
+
+  // for (var i = 0; i < n; i++) {
+  // for (var j = 0; j < n; j++) {
+
+  //   }
+  // }
+
+  var recurse = function (matrix, length) {
+
+  };
+// psuedocode instead of interative solution, try resursive solution
+// rotate border first, then work inwards until everything is rotated
+
+  recurse(matrix, n);
+  return newArray;
+
 };
