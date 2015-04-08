@@ -95,8 +95,104 @@
  *
  */
 
+// check out gif on wikipedia
+
+// split array in half
+
+// recursively sort each half
+
+// merge sorted arrays into result array
+
 
 
 var mergeSort = function(array) {
-  // Your code here.
+  if (array.length){
+    return array;
+  }
+
+  var half = Math.floor(array.length / 2);
+  left = array.slice(0,half);
+  right = array.slice(half);
+
+  var merge = function(left, right){
+    var result = [];
+    var i = 0;
+    var j = 0;
+
+    while(i < left.length && j < right.length){
+      if (left[i] < right[j]){
+        result.push(left[i++]);
+      } else {
+        result.push(right[j++]);
+      }
+    }
+
+    var remaining = i === left.length ? right.slice(j) : left.slice(i);
+    return result.concat(remaining);
+
+}
+
+
+
+
+
+var mergeSort = function(array) {
+
+  var result = [];
+  var length = array.length;
+
+  for (var i = 0 ; i < array.length ; i++){
+    var output = [];
+    output.push(array[i]);
+    result.push(output);
+  }
+
+  console.log(result);
+
+  var merge = function(x,y){
+    var output = [];
+    if (x[0] > y[0]){
+      output.push(y[0]);
+      output.push(x[0]);
+    } else {
+      output.push(x[0]);
+      output.push(y[0]);
+    }
+    return output;
+  }
+
+  merge()
+
+  // while (result.length)
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
