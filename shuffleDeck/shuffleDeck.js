@@ -31,8 +31,20 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
+var swap = function(i,j, arr) {
+  var c = arr[i];
+  arr[i] = arr[j];
+  arr[j] = c;
+
+}
+
 var shuffleDeck = function(deck) {
-  // Your code here
+  for (var i = deck.length-1; i>=0; i-- ) {
+    var cardIndex = Math.floor(Math.random() * (i+1));
+    swap(cardIndex, i, deck);
+  }
+  return deck;
+
 };
 
 // Ordered deck generator provided for your testing convenience
