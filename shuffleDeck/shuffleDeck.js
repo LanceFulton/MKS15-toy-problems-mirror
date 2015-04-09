@@ -32,7 +32,17 @@
  */
 
 var shuffleDeck = function(deck) {
+  var cardCount = deck.length;
   // Your code here
+  //Under the assumption that the deck is going to be modified into a new deck
+  //need to create an array to push shuffled cards into
+  var results = [];
+
+  while (results.length < cardCount) {
+    var selectIndex = Math.floor(Math.random() * 52);
+    results.push(deck.splice(selectIndex, 1));
+  }
+  return results;
 };
 
 // Ordered deck generator provided for your testing convenience
