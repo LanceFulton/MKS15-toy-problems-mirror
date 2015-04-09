@@ -31,10 +31,6 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
-var shuffleDeck = function(deck) {
-  // Your code here
-};
-
 // Ordered deck generator provided for your testing convenience
 // (You may alter this function, but an unaltered copy will be used for tests.)
 var orderedDeck = function() {
@@ -50,3 +46,38 @@ var orderedDeck = function() {
 
   return deck;
 };
+
+// 5 weeks into MKS:
+
+var shuffleDeck = function(deck) {
+  var stop = deck.length;
+  var shuffled = [];
+
+  while (shuffled.length < stop) {
+    var value = Math.floor(Math.random() * (deck.length - shuffled.length));
+    shuffled.push(deck.splice(value, 1).toString());
+  }
+
+  return shuffled;
+
+};
+
+// old version, which I built 2 months ago
+var shuffleDeck = function(deck) {
+
+  var shuffled = [];
+
+  while (shuffled.length < deck.length) {
+    var value = Math.floor(Math.random() * deck.length);
+    for (var i = 0; i < shuffled.length; i++) {
+      if (shuffled[i] === shuffled[value]) {
+        break;
+      }
+    }
+    shuffled.push(deck[value]);
+  }
+
+  return shuffled;
+
+};
+
