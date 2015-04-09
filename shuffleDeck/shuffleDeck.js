@@ -32,7 +32,20 @@
  */
 
 var shuffleDeck = function(deck) {
-  // Your code here
+  var unshuffled = deck.slice();
+  var shuffled = [];
+  var size = deck.length;
+  var counter = 0;
+  // not exactly linear time but it works
+  while( counter < size ) {
+    var index = Math.floor(Math.random() * size);
+    if( !shuffled[index] ) {
+      shuffled[index] = unshuffled.pop();
+      counter++;
+    }
+  }
+
+  return shuffled;
 };
 
 // Ordered deck generator provided for your testing convenience

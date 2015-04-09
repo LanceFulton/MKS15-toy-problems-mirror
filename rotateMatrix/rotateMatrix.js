@@ -44,13 +44,11 @@
  */
 
 var rotateMatrix = function(matrix, direction) {
-  // Your code here.
   var rows = matrix.length;
   var columns = matrix[0].length;
   var rotated = [];
   var direction = direction || 1;
-
-  if( direction === 1 ) {
+  if( direction === 1 ) { // rotate clockwise
     // loop through each column
     for( var i = 0; i < columns; i++ ) {
       rotated[i] = [];
@@ -59,10 +57,12 @@ var rotateMatrix = function(matrix, direction) {
         rotated[i].push( matrix[j][i] );
       }
     }
-  } else {
-    // loop through each column backwards
-    for( var i = 0, c = columns - 1; c >= 0; c-- ) {
-
+  } else if( direction === -1 ) { // otherwise rotate counterclockwise
+    for( var i = 0, c = columns - 1; c >= 0; i++, c-- ) {
+      rotated[i] = [];
+      for( var j = 0; j < rows; j++ ) {
+        rotated[i].push( matrix[j][c] );
+      }
     }
   }
 
