@@ -68,3 +68,28 @@ var rotateMatrix = function(matrix) {
   return newArray;
 
 };
+
+// Number in the j'th column of the rotated was in the m - 1 - jth Row in the original
+// m = # num of rows in the original matrix
+
+// Number in the i'th Row of the Roated was in the i'th Column in the Original
+
+var rotateMatrix = function(matrix) {
+
+// Define useful constants
+// m = number of rows in our matrix = number of nested arrays
+var m = matrix.length;
+// n = the number of column in our matrix = length of nested arrays
+var n = matrix[0].length;
+
+var rotateMatrix = [];
+for (var i = 0; i < n; i++) {
+  rotatedMatrix[i] = [];
+  for (var j = 0; j < m; j++) {
+    rotatedMatrix[i][j] = matrix[m-1-j][i];
+  }
+}
+return rotatedMatrix;
+
+
+};
