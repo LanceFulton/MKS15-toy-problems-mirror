@@ -54,3 +54,14 @@ var rotateMatrix = function(matrix) {
   }
   return newMatrix;
 };
+
+/*m = matrix.length;
+n = matrix[0].length;
+var rotatedMatrix = [];
+for(var i = 0; i < n; i++) {
+  rotatedMatrix[i];
+  for (var j = 0; j < m; j++) {
+    rotatedMatrix[i][j] = matrix[m - 1 - j][i];
+  }
+}
+return rotatedMatrix

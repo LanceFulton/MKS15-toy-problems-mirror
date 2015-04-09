@@ -30,9 +30,17 @@
  *   shuffles before a real deck is actually randomized.
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
-
+//the elements have to swap places
+//each time there is a swap the the indexes have to be tracked to make sure that it is not swapped again
 var shuffleDeck = function(deck) {
-  // Your code here
+  
+  for (var i = 0; i < deck.length; i++) {
+    randomCardInd = Math.random() * deck[i];
+    tempIndHolder = deck[randomCardInd];
+    deck[randomCardInd] = deck[i];
+    deck[i] = tempIndHolder;
+  };
+  return deck;
 };
 
 // Ordered deck generator provided for your testing convenience
