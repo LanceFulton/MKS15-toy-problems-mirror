@@ -45,14 +45,23 @@
 
 var rotateMatrix = function(matrix
 ) {
-  var n = matrix.length;
+  var m = matrix.length;
+  var n = matrix[0].length
   rotated = [];
   for (var i = 0; i<n; i++) {
     row = [];
-    for (var j = 0; j<n; j++) {
-      row.push(matrix[n-j-1][i]);
+    for (var j = 0; j<m; j++) {
+      row.push(matrix[m-j-1][i]);
     }
     rotated.push(row);
   }
   return rotated
 };
+
+var rotatedMatrixClockwise(matrix){
+  rotated = matrix;
+  for (var i = 0;i<3;i++) {
+    rotated = rotatedMatrix(matrix);
+  }
+  return rotated;
+}
