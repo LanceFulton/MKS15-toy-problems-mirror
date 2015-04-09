@@ -71,6 +71,25 @@ var rotateMatrix = function(matrix) {
 
 
 
+var rotateMatrix = function(matrix) {
+
+  var result = [];
+  var n = matrix[0].length;
+  var m = matrix.length;
+
+  // loop through index (columns)
+  for (var i = 0 ; i < n ; i++){
+    var newArray = [];
+    // loop through rows
+    for (var j = m-1 ; j >= 0 ; j--){
+      newArray.push(matrix[j][i]);
+    }
+    result.push(newArray);
+  }
+
+  return result;
+
+};
 
 
 
