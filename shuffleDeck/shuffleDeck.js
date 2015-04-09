@@ -32,7 +32,23 @@
  */
 
 var shuffleDeck = function(deck) {
-  // Your code here
+  var counter = deck.length;
+
+  // While there are elements in the deck
+  while (counter > 0) {
+      // Pick a random index
+      var index = Math.floor(Math.random() * counter);
+
+      // Decrease counter by 1
+      counter--;
+
+      // And swap the last element with it
+      var temp = deck[counter];
+      deck[counter] = deck[index];
+      deck[index] = temp;
+  }
+
+  return deck;
 };
 
 // Ordered deck generator provided for your testing convenience
