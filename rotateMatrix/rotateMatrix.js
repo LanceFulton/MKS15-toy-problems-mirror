@@ -44,6 +44,7 @@
  */
 
 var rotateMatrix = function(matrix, dir) {
+  var dir = dir || 1; //dir should be 1 or -1
   var height = matrix.length;
   var length = matrix[0].length;
 
@@ -59,8 +60,8 @@ var rotateMatrix = function(matrix, dir) {
       var distX = j - midX; //get distance relative to center of the array
       var distY = i - midY;
       //to rotate clockwise, y becomes -x and x becomes y
-      var temp = distX;
-      distX = -distY;
+      var temp = distX * dir;
+      distX = -distY * dir;
       distY = temp;
 
       result[midY + distY][midX + distX] = matrix[i][j]; 
