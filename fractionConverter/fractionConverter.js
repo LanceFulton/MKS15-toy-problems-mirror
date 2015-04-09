@@ -21,15 +21,13 @@ var toFraction = function(number) {
   }
 
   //simplify the fraction
-  var lim = Math.min(number, denom);
-  while (lim > 1) {
-    if (number % lim === 0 && denom % lim === 0) {
-      number /= lim;
-      denom /= lim;
-      break;
-    } else {
-      lim--;
-    }
+  while (number % 5 === 0 && denom % 5 === 0) {
+    number /= 5;
+    denom /= 5;
+  }
+  while (number % 2 === 0 && denom % 2 === 0) {
+    number /= 2;
+    denom /= 2;
   }
 
   return number + '/' + denom;
