@@ -50,11 +50,10 @@ var orderedDeck = function() {
 // 5 weeks into MKS:
 
 var shuffleDeck = function(deck) {
-  var stop = deck.length;
   var shuffled = [];
 
-  while (shuffled.length < stop) {
-    var value = Math.floor(Math.random() * (deck.length - shuffled.length));
+  while (deck.length > 0) {
+    var value = Math.floor(Math.random() * deck.length);
     shuffled.push(deck.splice(value, 1).toString());
   }
 
