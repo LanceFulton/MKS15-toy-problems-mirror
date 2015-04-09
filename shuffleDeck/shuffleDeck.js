@@ -33,6 +33,33 @@
 
 var shuffleDeck = function(deck) {
   // Your code here
+
+  // naive solution:  poor time complexity and space complexity
+  // var counter = deck.length;
+  // var shuffledDeck = [];
+  // var usedIndexes = {};
+
+  // while(counter > 0){
+  //   //find random index and put that card into the shuffled deck array
+  //   var randIndex = Math.floor(Math.random() * (deck.length));
+  //   if(!usedIndexes[randIndex]){
+  //     usedIndexes[randIndex] = true;
+  //     shuffledDeck.push(deck[randIndex]);
+  //     counter--;
+  //   }
+  // }
+
+  // return shuffledDeck;
+
+  //in place shuffle - O(n) time complexity and O(1) space complexity
+  for(var i = 0; i < deck.length; i++){
+    var randIndex = Math.floor(Math.random() * (deck.length));
+    var temp = deck[i];
+    deck[i] = deck[randIndex];
+    deck[randIndex] = temp;
+  }
+
+  return deck;
 };
 
 // Ordered deck generator provided for your testing convenience
