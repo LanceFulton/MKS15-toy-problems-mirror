@@ -31,8 +31,20 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
+// This is linear in time and constant in space.
+// It is clear that the last index of the deck is randomly chosen.
+// An empty deck is perfect shuffled.
+// The rest is shuffled by induction.
 var shuffleDeck = function(deck) {
-  // Your code here
+  var swap = function(x, y) {
+    var temp = deck[x];
+    deck[x] = deck[y];
+    deck[y] = temp;
+  };
+  for (var i=deck.length-1; i>=0; i--) {
+    swap(Math.floor(Math.random()*(i+1)), i); // Swap i with randomly chosen integer from 0 to i inclusive
+  }
+  return deck;
 };
 
 // Ordered deck generator provided for your testing convenience
@@ -50,3 +62,10 @@ var orderedDeck = function() {
 
   return deck;
 };
+
+// for (var i=0; i<3; i++) {
+//   var deck = orderedDeck();
+//   // ["A♥","2♥","3♥",...,"J♦","Q♦","K♦"]
+//   console.log(JSON.stringify(shuffleDeck(deck)));
+//   // ["2♠","J♣","A♦", ... ,"7♣","8♣","K♠"]
+// }
