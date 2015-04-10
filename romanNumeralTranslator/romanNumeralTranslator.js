@@ -27,6 +27,13 @@ var DIGIT_VALUES = {
 };
 
 var translateRomanNumeral = function(romanNumeral){
-// TODO: Implement me!
+  var result = 0;
 
+  var numArray = romanNumeral.split('');
+
+  for (var i = 0; i < numArray.length; i++) {
+    result += DIGIT_VALUES[romanNumeral[i]];
+  }
+  return result;
 };
+// next step would be to account for numbers like "XIV" that should equal 14 and not 16
