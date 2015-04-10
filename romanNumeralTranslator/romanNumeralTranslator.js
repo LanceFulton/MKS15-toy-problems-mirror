@@ -28,5 +28,22 @@ var DIGIT_VALUES = {
 
 var translateRomanNumeral = function(romanNumeral){
 // TODO: Implement me!
+//I need to split the input into an array of numerals.
+//I can check through the the array and compare the index to the key in the Digit Values object
+  var i = 1;
+  var total = 0;
+  var numerals = romanNumeral.split('');
+  while (i < numerals.length) {
+    for (var key in DIGIT_VALUES) {
+      if (DIGIT_VALUES.i > DIGIT_VALUES.[i - 1])
+    }   
+  }
+
 
 };
+
+
+
+
+
+
