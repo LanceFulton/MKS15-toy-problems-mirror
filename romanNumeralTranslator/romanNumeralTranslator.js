@@ -28,5 +28,51 @@ var DIGIT_VALUES = {
 
 var translateRomanNumeral = function(romanNumeral){
 // TODO: Implement me!
+  if (!romanNumeral  || romanNumeral.length ===0) {
+    return null;
+  }
+  var arr = romanNumeral.split('');
+  var sum=0;
+  var biggestNum; 
+
+  for (var i = 0; i < arr.length; i++) {
+    if (i === 0) {
+      biggestNum = DIGIT_VALUES[arr[i]];
+    }
+    switch (arr[i]) {
+      case 'V':
+      case 'X':
+      case 'L':
+      case 'C':
+      case 'D':
+      case 'M':
+        if ( DIGIT_VALUES[arr[i]] > biggestNum ) {
+          return null; // invalid
+        } else {
+          sum += DIGIT_VALUES[arr[i]];
+        }
+        break;
+
+      case 'I':
+        if (arr[i+1]!== 'I') {
+          sum -= DIGIT_VALUES[arr[i]];
+        } else if (!arr[i+1]) {
+          sum += DIGIT_VALUES[arr[i]];
+        } else {
+          sum += DIGIT_VALUES[arr[i]];
+        }
+        break;
+
+      default: // invalid roman numeral detected
+      return null;
+    }
+  }
+
+  return sum;
 
 };
+
+console.log(translateRomanNumeral("LX"));
+console.log(translateRomanNumeral("DIS"));
+console.log(translateRomanNumeral("XIV"));
+console.log(translateRomanNumeral("VIC"));
