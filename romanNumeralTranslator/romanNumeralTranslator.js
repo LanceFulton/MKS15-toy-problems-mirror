@@ -26,7 +26,19 @@ var DIGIT_VALUES = {
   M: 1000
 };
 
-var translateRomanNumeral = function(romanNumeral){
-// TODO: Implement me!
+//doesn't subtract yet, ran out of time
+
+var translateRomanNumeral = function(romanNumeral) {
+
+  var results = 0;
+
+  for (var i = 0; i < romanNumeral.length; i++) {
+    if (romanNumeral[i] !== 'I' && romanNumeral[i] !== 'V' && romanNumeral[i] !== 'X' && romanNumeral[i] !== 'L' && romanNumeral[i] !== 'C' && romanNumeral[i] !== 'D' && romanNumeral[i] !== 'M') {
+      return null;
+    }
+    results += DIGIT_VALUES[romanNumeral[i]];
+  }
+
+  return results;
 
 };
