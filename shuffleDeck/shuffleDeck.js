@@ -31,6 +31,12 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
+
+// from solution:
+Math.floor( Math.random() * (deck.length-i) ) + i;
+
+
+// my work:
 var shuffleDeck = function(deck) {
 
   var result = [];
@@ -40,13 +46,8 @@ var shuffleDeck = function(deck) {
   }
 
   while (deck.length > 0){
-    console.log('length: ', deck.length);
     var index = randomPosition()
-    console.log('index: ', index);
-
     var card = deck.splice(index, 1);
-    console.log('card: ', card);
-
     result.push(card[0]);
   }
 
