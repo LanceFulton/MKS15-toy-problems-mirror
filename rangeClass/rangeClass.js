@@ -36,10 +36,12 @@
  * evenNumbers.includes(2) should be true, evenNumbers.include(3) should be false
  */
 
+step ? step : 
+
 
 var Range = function(start, end, step) {
   var initialize = function (){
-    if(!step && start > end) {
+    if( (step === undefined) && start > end) {
       this.step = -1;
     } else if (!step) {
       this.step = 1;
@@ -47,7 +49,7 @@ var Range = function(start, end, step) {
       this.step = step;
     }
 
-    if(!start) {
+    if(start === undefined) {
       this.start = null;
     } else { 
       this.start = start,
@@ -57,7 +59,7 @@ var Range = function(start, end, step) {
 };
 
 Range.prototype.size = function () {
-  return Math.abs(Math.floor( ( this.end - this.start )/this.step ) );
+  return Math.floor( ( this.end - this.start )/this.step ) + 1;
 };
 
 Range.prototype.each = function (callback) {
