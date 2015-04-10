@@ -32,12 +32,17 @@ var getNum = function(numeral, i) {
 
 var translateRomanNumeral = function(romanNumeral){
 // TODO: Implement me!
-  total = 0;
+  var total = 0;
   var i = 0;
+  var numLen = romanNumeral.length;
 
-  while (i < romanNumeral.length) {
+  while (i < numLen) {
 
-    if ( (i < romanNumeral.length - 1) && (getNum(romanNumeral, i) < getNum(romanNumeral, i + 1)) ) {
+    if (getNum(romanNumeral, i) === undefined) {
+      return null;
+    }
+
+    if ( (i < numLen - 1) && (getNum(romanNumeral, i) < getNum(romanNumeral, i + 1)) ) {
       total += getNum(romanNumeral, i+1) - getNum(romanNumeral, i);
       i+=2;
     } else {
