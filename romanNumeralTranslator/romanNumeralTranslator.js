@@ -29,4 +29,24 @@ var DIGIT_VALUES = {
 var translateRomanNumeral = function(romanNumeral){
 // TODO: Implement me!
 
+  var number = DIGIT_VALUES[romanNumeral[romanNumeral.length - 1]];
+
+  //Begin at end of the string - 1 to implement subtractive operations if necessary
+  for(var i = romanNumeral.length - 2; i >= 0; i--){
+    if(DIGIT_VALUES[romanNumeral[i-1]] < DIGIT_VALUES[romanNumeral[i]] && DIGIT_VALUES[romanNumeral[i-2]] < DIGIT_VALUES[romanNumeral[i]]){
+      return null;
+    }
+
+    //if there is a numeral to the right of the current position
+    if(romanNumeral[i+1]){
+    //check if that numeral value is greater than the current value
+      if(DIGIT_VALUES[romanNumeral[i]] < DIGIT_VALUES[romanNumeral[i+1]]){
+        number -= DIGIT_VALUES[romanNumeral[i]];
+      } else {
+        number += DIGIT_VALUES[romanNumeral[i]];
+      }
+    }
+  }
+
+  return number;
 };
