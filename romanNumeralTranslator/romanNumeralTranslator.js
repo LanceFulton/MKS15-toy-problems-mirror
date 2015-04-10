@@ -27,6 +27,18 @@ var DIGIT_VALUES = {
 };
 
 var translateRomanNumeral = function(romanNumeral){
-// TODO: Implement me!
+  var digits = romanNumeral.split('');
+  for(var i = 0; i<digits.length; i++){
+    digits[i] = DIGIT_VALUES[digits[i]];
+  }
 
+  return digits.reduce(function(total, curr, i, digits){
+    if(digits[i+1] < curr){
+      return total - curr;
+    }
+    return total + curr;
+  });
 };
+
+console.log(translateRomanNumeral('IX'));
+
