@@ -27,6 +27,21 @@ var DIGIT_VALUES = {
 };
 
 var translateRomanNumeral = function(romanNumeral){
-// TODO: Implement me!
-
+  var digits = romanNumeral.split('');
+  for( var i = 0; i < digits.length; i++ ) {
+    if( !DIGIT_VALUES[digits[i]] ) {
+      return null;
+    } else {
+      digits[i] = DIGIT_VALUES[digits[i]];
+    }
+  }
+  var sum = 0;
+  for( var i = 0; i < digits.length; i++ ) {
+    if( !digits[i+1] || digits[i] >= digits[i+1] ) {
+      sum += digits[i];
+    } else if( digits[i] < digits[i+1] ) {
+      digits[i+1] -= digits[i];
+    }
+  }
+  return sum;
 };
