@@ -28,5 +28,17 @@ var DIGIT_VALUES = {
 
 var translateRomanNumeral = function(romanNumeral){
 // TODO: Implement me!
-
+  var result = 0
+  numerals = romanNumeral.split('')
+  for(var i = 0; i < numerals.length; i++){
+    var numVal = numerals[i]
+    var dv = DIGIT_VALUES
+    if(dv[numVal] < dv[numVal+1]){
+      result += ( dv[numVal+1] - dc[numVal] )
+    } else if(dv[numVal] > dv[numVal+1]){
+      result += ( dv[numVal + dv[numVal+1]])
+    }
+    //TODO - more edge cases to handle
+  }
+  return result;
 };
