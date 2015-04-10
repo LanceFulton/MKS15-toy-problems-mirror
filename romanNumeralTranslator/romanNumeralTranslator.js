@@ -14,6 +14,8 @@
  * translateRomanNumeral("IV") // 4
  *
  * You should return `null` on invalid input.
+ *
+ * http://www.onlineconversion.com/roman_numerals_advanced.htm
  */
 
 var DIGIT_VALUES = {
@@ -27,6 +29,29 @@ var DIGIT_VALUES = {
 };
 
 var translateRomanNumeral = function(romanNumeral){
-// TODO: Implement me!
+  var output = 0;
 
+  var convert = function(k) {
+    var val = DIGIT_VALUES[k];
+    return val;
+  }
+
+  for (var i = 0; i < romanNumeral.length; i++) {
+    var p = convert(romanNumeral.charAt(i-1));
+    var m = convert(romanNumeral.charAt(i));
+    if (i>0 && p<m) {
+      m = m - p*2; // Subtract the p from the previous loop, and substract p again from THIS loop.
+    }
+    console.log(" " + m);
+    output += m;
+  };  
+
+  return output;
 };
+
+
+
+console.log( "Test 1: " + translateRomanNumeral("LX") );
+console.log( "Test 2: " + translateRomanNumeral("IV") );
+console.log( "Test 3: " + translateRomanNumeral("MMIII") );
+console.log( "Test 3: " + translateRomanNumeral("MMMMCMXCIX") );
