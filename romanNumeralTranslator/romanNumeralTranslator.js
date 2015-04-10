@@ -26,7 +26,26 @@ var DIGIT_VALUES = {
   M: 1000
 };
 
+var getNum = function(numeral, i) {
+  return DIGIT_VALUES[numeral[i]];
+}
+
 var translateRomanNumeral = function(romanNumeral){
 // TODO: Implement me!
+  total = 0;
+  var i = 0;
+
+  while (i < romanNumeral.length) {
+
+    if ( (i < romanNumeral.length - 1) && (getNum(romanNumeral, i) < getNum(romanNumeral, i + 1)) ) {
+      total += getNum(romanNumeral, i+1) - getNum(romanNumeral, i);
+      i+=2;
+    } else {
+      total += getNum(romanNumeral, i);
+      i++;
+    }
+  }
+
+  return total;
 
 };
