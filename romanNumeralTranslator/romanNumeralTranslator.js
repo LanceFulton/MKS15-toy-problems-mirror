@@ -32,8 +32,16 @@ var translateRomanNumeral = function(romanNumeral){
   var numArray = romanNumeral.split('');
 
   for (var i = 0; i < numArray.length; i++) {
-    result += DIGIT_VALUES[romanNumeral[i]];
+    if (DIGIT_VALUES[numArray[i + 1]] > DIGIT_VALUES[numArray[i]]) {
+      result += (DIGIT_VALUES[numArray[i + 1]] - DIGIT_VALUES[numArray[i]]);
+      result -= DIGIT_VALUES[numArray[i + 1]];
+    } else {
+      result += DIGIT_VALUES[numArray[i]];
+    }
   }
   return result;
 };
-// next step would be to account for numbers like "XIV" that should equal 14 and not 16
+
+
+
+

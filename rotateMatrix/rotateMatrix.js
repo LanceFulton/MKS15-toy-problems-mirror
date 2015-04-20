@@ -81,8 +81,22 @@ var rotateMatrix = function(matrix) {
 33 === 30
 */
 
+//_____________________________SOLUTION________________________________
 
+var rotateMatrix = function(matrix, direction) {
+  direction = direction || 1;
+  var rotatedMatrix = [];
+  var m = matrix.length;
+  var n = matrix[0].length;
 
+  for (var i = 0; i < matrix.length; i++) {
+    rotatedMatrix[i] = [];
+    for (var j = 0; j < matrix[i].length; j++) {
+      rotatedMatrix[i][j] = matrix[m-1-j[i]];
+    }
+  }
+  return rotatedMatrix;
+};
 
 
 
