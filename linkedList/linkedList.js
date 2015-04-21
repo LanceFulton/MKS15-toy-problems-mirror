@@ -24,6 +24,8 @@ var LinkedList = function(){
 
 };
 
+//write methods here!
+
 LinkedList.prototype.addToTail = function(element){
   if(this.storage.length==0) { this.head = element; }
 
@@ -49,7 +51,8 @@ LinkedList.prototype.contains = function(element){
 };
 
 LinkedList.prototype.makeNode = function(node){
-  // 
+  // Uncertain what "makeNode" would do. ~Paul
+  list.addToTail(node); 
 
 };
 
@@ -63,4 +66,5 @@ console.log("Contains5: " + list.contains(5));  //yields 'true';
 console.log("Contains6: " + list.contains(6));  //yields 'false';
 list.removeHead(); //yields '4'
 console.log(list.tail);   //yields '5';
+list.makeNode(10);
 
