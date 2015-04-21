@@ -33,12 +33,17 @@ var translateRomanNumeral = function(romanNumeral) {
   var results = 0;
 
   for (var i = 0; i < romanNumeral.length; i++) {
+    // return null for invalid numerals
     if (romanNumeral[i] !== 'I' && romanNumeral[i] !== 'V' && romanNumeral[i] !== 'X' && romanNumeral[i] !== 'L' && romanNumeral[i] !== 'C' && romanNumeral[i] !== 'D' && romanNumeral[i] !== 'M') {
       return null;
     }
-    results += DIGIT_VALUES[romanNumeral[i]];
+    // subtract for 'negative' numermals
+    else if (DIGIT_VALUES[romanNumeral[i]] < DIGIT_VALUES[romanNumeral[i+1]]) {
+      results += -1 * DIGIT_VALUES[romanNumeral[i]];
+    }
+    else {
+      results += DIGIT_VALUES[romanNumeral[i]];
+    }
   }
-
   return results;
-
 };

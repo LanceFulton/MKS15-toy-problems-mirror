@@ -1,6 +1,6 @@
 /*
  * Implement a linked list using the pseudoclassical instantiation pattern.
- * 
+ *
  * Your linked list should have methods called "addToTail", "removeHead", and "contains."
  *
  */
@@ -18,22 +18,31 @@
 
 
 var LinkedList = function(){
-  //fill me in!
+  this.tail.value = null;
+  this.head.value = null;
+  this.next = null;
 };
 
 //write methods here!
 
-LinkedList.prototype.addToTail = function(
-){
+LinkedList.prototype.addToTail = function(target) {
+  if (this.head.value === null) {
+    this.head.value = target;
+  }
+  this.tail.value = target;
 };
 
-LinkedList.prototype.removeHead = function(){
+LinkedList.prototype.removeHead = function() {
+
+  var temp = this.head.value;
+  this.head.value = null;
+  return temp;
+
 };
 
-LinkedList.prototype.contains = function(
-){
+LinkedList.prototype.contains = function(value) {
 };
 
-LinkedList.prototype.makeNode = function(
-){
+LinkedList.prototype.makeNode = function() {
+
 };
