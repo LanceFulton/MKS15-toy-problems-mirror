@@ -27,6 +27,7 @@ var DIGIT_VALUES = {
 };
 
 var translateRomanNumeral = function(romanNumeral){
+
   var digits = romanNumeral.split('');
   for(var i = 0; i<digits.length; i++){
     digits[i] = DIGIT_VALUES[digits[i]];
