@@ -26,8 +26,6 @@ var DIGIT_VALUES = {
   M: 1000
 };
 
-//doesn't subtract yet, ran out of time
-
 var translateRomanNumeral = function(romanNumeral) {
 
   var results = 0;
@@ -42,6 +40,7 @@ var translateRomanNumeral = function(romanNumeral) {
       results += -1 * DIGIT_VALUES[romanNumeral[i]];
     }
     else {
+    // add for 'positive' numermals
       results += DIGIT_VALUES[romanNumeral[i]];
     }
   }
