@@ -35,12 +35,12 @@ var translateRomanNumeral = function(romanNumeral) {
     if (romanNumeral[i] !== 'I' && romanNumeral[i] !== 'V' && romanNumeral[i] !== 'X' && romanNumeral[i] !== 'L' && romanNumeral[i] !== 'C' && romanNumeral[i] !== 'D' && romanNumeral[i] !== 'M') {
       return null;
     }
-    // subtract for 'negative' numermals
+    // subtract for 'negative' numerals
     else if (DIGIT_VALUES[romanNumeral[i]] < DIGIT_VALUES[romanNumeral[i+1]]) {
       results += -1 * DIGIT_VALUES[romanNumeral[i]];
     }
     else {
-    // add for 'positive' numermals
+    // add for 'positive' numerals
       results += DIGIT_VALUES[romanNumeral[i]];
     }
   }
