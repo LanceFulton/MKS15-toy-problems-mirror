@@ -6,9 +6,7 @@
  */
 
 // EXAMPLE USAGE:
-// var list = new LinkedList();
-// list.tail.value;   //yields 'null'
-// list.addToTail(4);
+
 // list.addToTail(5);
 // list.head.value;   //yields '4';
 // list.contains(5);  //yields 'true';
@@ -17,23 +15,48 @@
 // list.tail.value;   //yields '5';
 
 
+var Node = function(value) {
+  this.pointsTo = null;
+  this.value = value
+}
+
 var LinkedList = function(){
-  //fill me in!
+  this.tail = new Node(null);
+  this.head = this.tail;
 };
 
 //write methods here!
 
-LinkedList.prototype.addToTail = function(
-){
+LinkedList.prototype.addToTail = function(value){
+
+  if (this.tail.value === null) {
+    this.tail.value = value;
+  } else { 
+    this.tail.pointsTo = new Node(value);
+    this.tail = this.tail.pointsTo;
+  }
+
 };
 
 LinkedList.prototype.removeHead = function(){
+  var old_head = this.head;
+  var value = this.head.value;
+  this.head = this.head.pointsTo;
+  delete old_head;
+  return value;
 };
 
-LinkedList.prototype.contains = function(
-){
+LinkedList.prototype.contains = function(value){
+  var node = this.head;
+  while (node.pointsTo !== null) {
+    if (node.value === value) {
+      return true;
+    }
+    node = node.pointsTo;
+  }
+  return node.valule === value;
 };
 
-LinkedList.prototype.makeNode = function(
-){
+LinkedList.prototype.makeNode = function(value){
+  return new Node(value);
 };
