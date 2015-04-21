@@ -19,12 +19,19 @@
 
 var LinkedList = function(){
   //fill me in!
+  //Needs to point forward to the next node if it is not the head.
+  var list = {};
+  list.head = null;
+  list.tail = null;
 };
 
 //write methods here!
 
-LinkedList.prototype.addToTail = function(
-){
+LinkedList.prototype.addToTail = function(value){
+    this.tail = {
+        this.value = value,
+        this.
+    }
 };
 
 LinkedList.prototype.removeHead = function(){
