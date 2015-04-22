@@ -27,6 +27,60 @@ var DIGIT_VALUES = {
 };
 
 var translateRomanNumeral = function(romanNumeral){
-// TODO: Implement me!
+  
+  // translate each digit to greek numeral
+    // iterate through string
+    // use DIGIT_VALUES to push value to values array
+
+  var values = [];
+  var sum = 0;
+
+  for (var i = 0 ; i < romanNumeral.length ; i++){
+    var digit = DIGIT_VALUES[ romanNumeral.charAt(i) ];
+    var newValue = {};
+    newValue.digit = digit;
+    values.push(newValue);
+  }
+
+  console.log('values: ', values);
+
+  // prepare for summing
+    // for each number, compare it to the number to its right
+    // record if it is lesser or greater than the right number
+
+  for (var i = 0 ; i < values.length ; i++){
+    if (values[i]['digit'] > values[i+1]['digit']){
+      values[i]['relation'] = 'greater';
+    } else if (values[i]['digit'] < values[i+1]['digit']){
+      values[i]['relation'] = 'less than';
+    } else {
+      values[i]['relation'] = 'equal';
+    }
+  }
+
+  console.log('values: ', values)
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
