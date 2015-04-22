@@ -26,7 +26,7 @@ treeMaker.methods.addChild = function(value){
 };
 
 treeMaker.methods.contains = function(value){
-  if (this.value===value) {
+  if (this.value === value) {
     return true;
   }
   for (var i = 0; i < this.children.length; i++) {
