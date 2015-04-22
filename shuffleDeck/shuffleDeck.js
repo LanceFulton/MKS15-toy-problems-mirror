@@ -54,3 +54,25 @@ var orderedDeck = function() {
 
   return deck;
 };
+
+
+//________________________SOLUTION_______________________________
+
+var shuffleDeck = function(deck) {
+  var index;
+
+  for (var i = 0; i < deck.length; i++) {
+    index = Math.floor(Math.random()*(deck.length-i))+i;
+    temp = deck[index];
+    deck[index] = deck[i];
+    deck[i] = temp;
+  }
+  //return deck probably
+};
+
+
+
+
+
+
+
