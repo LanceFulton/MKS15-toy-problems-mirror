@@ -47,6 +47,22 @@ var orderedDeck = function() {
   return deck;
 };
 
+// shuffle in place:
+// http://bost.ocks.org/mike/shuffle/compare.html
+
+function shuffle(array) {
+  var stop = array.length;
+
+  while (stop > 0) {
+    var value = Math.floor(Math.random() * stop);
+    array.push(array.splice(value, 1).toString());
+    stop--;
+  }
+
+  return array;
+
+}
+
 // 5 weeks into MKS:
 
 var shuffleDeck = function(deck) {
@@ -61,7 +77,8 @@ var shuffleDeck = function(deck) {
 
 };
 
-// old version, which I built 2 months ago
+// old version, which I built 2 months ago:
+
 var shuffleDeck = function(deck) {
 
   var shuffled = [];
