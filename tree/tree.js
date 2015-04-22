@@ -26,7 +26,7 @@ treeMaker.methods.addChild = function(value){
 treeMaker.methods.contains = function(val){
   var childFinder = function(array, val){
     for (var i = 0;  i < array.length; i ++){
-      if (array[i] === val){
+      if (array[i].value === val){
         return true;
       }
       if (array[i].children.length > 1){
