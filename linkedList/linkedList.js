@@ -28,13 +28,15 @@ var LinkedList = function(){
 //write methods here!
 
 LinkedList.prototype.addToTail = function(value){
-    this.tail = {
-        this.value = value,
-        this.
-    }
+  this.
+  this.tail = {
+    this.value = value,
+    this.next = 
+  }
 };
 
 LinkedList.prototype.removeHead = function(){
+  delete this.head
 };
 
 LinkedList.prototype.contains = function(
