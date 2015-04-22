@@ -19,45 +19,47 @@
 
 var LinkedList = function(){
   this.storage = {};
-  this.head;
-  this.tail;
-  this.idx;
+  this.storage[this.head];
+  this.storage[this.tail];
 };
 
 //write methods here!
 
 LinkedList.prototype.addToTail = function(val){
-  this.node = {};
-  this.idx += 1;
-  this.node['value'] = val;
-  this.node['idx'] = this.idx;
-  this.node['next'];
-
-  if (!this.head) {
-    this.head = this.node;
-    this.tail = this.node;
-  } else {
-    this.tail['next'] = this.idx;
-    this.storage['idx'] = this.node;
+  var node = {}
+  if (!this.storage[this.head]) {
+    this.storage[this.head] = node;
+  } else if (!!this.tail) {
+    this.storage[this.tail.next] = node;
   }
+  this.storage[this.tail] = node;
+  return this.tail;
 };
 
 LinkedList.prototype.removeHead = function(){
-  if (!this.head){
+  if (!this.storage[this.head]){
     return null;
   } else { // account for edge case that involves a head, but no tail. return head, make new head undefined.
-    var nextIdx = this.head['next'];
-    var nextHead = this.storage[nextIdx];
+    var nextHead = this.storage[this.head.next];
     var removedHead = this.storage[this.head];
     delete this.storage[this.head]
-    this.head = nextHead;
+    this.storage[this.head] = nextHead;
     return removedHead.value;
   }
 
 };
 
-LinkedList.prototype.contains = function(){
-
+LinkedList.prototype.contains = function(target){
+  var nodeFinder = function(node){
+    if (node.value === target) {
+      return true;
+    } else if (node.next === null) {
+      return false;
+    } else {
+      return nodeFinder(node.next)
+    }
+  }
+  return nodeFinder(this.storage[this.head])
 };
 
 // LinkedList.prototype.makeNode = function(){
