@@ -20,7 +20,7 @@ var treeMaker = function(value){
 treeMaker.methods = {};
 
 treeMaker.methods.addChild = function(value){
-  var tree = new treeMaker(value);
+  var tree = treeMaker(value);
   this.children.push(tree);
 };
 
