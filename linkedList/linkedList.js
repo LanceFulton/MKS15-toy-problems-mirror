@@ -40,14 +40,9 @@ LinkedList.prototype.removeHead = function(){
 };
 
 LinkedList.prototype.contains = function(val){
-  var containsRecurse = function(node) {
-    if (!node) {
-      return false;
-    } else {
-      return node.value === val || containsRecurse(node.next);
-    }
-  };
-  return containsRecurse(this.head);
+  return (function recurse(node) {
+    return !!node && (node.value === val || recurse(node.next));
+  })(this.head);
 };
 
 LinkedList.prototype.makeNode = function(val){
