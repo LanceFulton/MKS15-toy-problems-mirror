@@ -63,3 +63,14 @@ var orderedDeck = function() {
 
   return deck;
 };
+
+// solution
+// var shuffle = function(deck) {
+//   var index, temp;
+//   for( var i = 0; i < deck.length; i++ ) {
+//     index = Math.floor(Math.random() * (deck.length - i)) + i;
+//     temp = deck[index];
+//     deck[index] = deck[i];
+//     deck[i] = temp;
+//   }
+// }
