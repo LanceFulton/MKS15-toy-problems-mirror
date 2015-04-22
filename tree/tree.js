@@ -10,15 +10,37 @@ Your tree should have methods named "addChild" and "contains".
 
 var treeMaker = function(value){
   //tree code goes here!
+  var tree = Object.create(treeMaker.methods);
+  tree.children = [];
+  return tree;
 };
 
 //methods go here!
 treeMaker.methods = {};
 
-treeMaker.methods.addChild = function(
-){
+treeMaker.methods.addChild = function(value){
+  var node = {
+    children : [],
+    value : value
+  }
+
+  this.children.push(node);
 };
 
-treeMaker.methods.contains = function(
-){
+treeMaker.methods.contains = function(value){
+  var isFound = false;
+
+  var walkTree = function(node){
+    if(isFound === true || node.value === value){
+      isFound = true;
+      return;
+    } else if (node.children.length > 0) {
+      for (var i = 0; i < node.children.length; i++){
+        walkTree(node.children[i]);
+      }
+    }
+  }
+
+  walkTree(this);
+  return isFound;
 };
