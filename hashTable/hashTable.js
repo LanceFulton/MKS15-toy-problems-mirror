@@ -5,21 +5,34 @@
 
 var makeHashTable = function(){
   var result = {};
-  var storage = [];
+  var bucket = [];
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-){
-    // TODO: implement `insert()`
+
+  result.insert = function(value){
+    var hash = getIndexBelowMaxForKey('string', storageLimit);
+    if (!result.hash) {
+      result.hash = value;
+    } else {
+      bucket.push({hash: value});
+      result.hash = bucket;
+    }
   };
 
-  result.retrieve = function(/*...*/ 
-){
-    // TODO: implement `retrieve()`
+  result.retrieve = function(hash){
+    if (result.hash && Array.isArray(result.hash)) {
+      for (var i = 0; i < result.hash.length; i++) {
+        return result.hash[i];
+      }
+    } else {
+      return result.hash;
+    }
   };
 
-  result.remove = function(/*...*/ 
-){
-    // TODO: implement `remove()`
+  result.remove = function(hash) {
+    //use retrieve function to find the value
+    //if result.hash is the value; delete it
+    //if there is a bucket with more than one value, not sure which one to delete. 
+    
   };
 
   return result;
