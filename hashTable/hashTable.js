@@ -5,21 +5,48 @@
 
 var makeHashTable = function(){
   var result = {};
-  var storage = [];
+  result.storage = [];
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-){
-    // TODO: implement `insert()`
+
+  result.insert = function(str, value){
+    var hashVal = getIndexBelowMaxForKey(str, storageLimit);
+    if (this.storage[hashVal] === undefined) {
+      this.storage[hashVal] = [];
+    }
+    this.storage[hashVal].push([str, value]);
   };
 
-  result.retrieve = function(/*...*/ 
-){
-    // TODO: implement `retrieve()`
+  result.retrieve = function(str){
+    var hashVal = getIndexBelowMaxForKey(str, storageLimit);
+    var location = this.storage[hashVal];
+
+    if (!location) {
+      return null;
+    } else {
+      for (var i = 0; i < location.length; i++) {
+        if (location[i] !== null && location[i][0] === str) {
+          return location[i][1];
+        }
+      }
+    }
+    return null;
   };
 
-  result.remove = function(/*...*/ 
-){
-    // TODO: implement `remove()`
+  result.remove = function(str){
+    var hashVal = getIndexBelowMaxForKey(str, storageLimit);
+    var location = this.storage[hashVal];
+
+    if (!location) {
+      return null;
+    } else {
+      for (var i = 0; i < location.length; i++) {
+        if (location[i] !== null && location[i][0] === str) {
+          location[i] = null;
+          return;
+        }
+      }
+    }
+    return null;
   };
 
   return result;
