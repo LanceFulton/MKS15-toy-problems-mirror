@@ -7,19 +7,44 @@ var makeHashTable = function(){
   var result = {};
   var storage = [];
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-){
+
+  result.insert = function(key, value){
     // TODO: implement `insert()`
+    var hashedKey = getIndexBelowMaxForKey(key, storageLimit);
+    if(!storage[hashedKey]){
+      storage[hashedKey] = [];
+    }
+    storage[hashedKey].push(key);
+    storage[hashedKey].push(value);
   };
 
-  result.retrieve = function(/*...*/ 
-){
+  result.retrieve = function(key){
     // TODO: implement `retrieve()`
+    var hashedKey = getIndexBelowMaxForKey(key, storageLimit);
+    if(!storage[hashedKey]){
+      return null;
+    }
+    if(storage[hashedKey].length > 1){
+      for(var i = 0; i < storage[hashedKey].length; i++){
+        if(storage[hashedKey][i] === key){
+          return storage[hashedKey][i + 1];
+        }
+      }
+    }
   };
 
-  result.remove = function(/*...*/ 
-){
+  result.remove = function(key){
     // TODO: implement `remove()`
+    var hashedKey = getIndexBelowMaxForKey(key, storageLimit);
+    if(storage[hashedKey].length === 1){
+      storage[hashedKey].pop();
+    } else {
+      for(var i = 0; i < storage[hashedKey].length; i++){
+        if(storage[hashedKey][i] === key){
+          storage[hashedKey].splice(i, 2);
+        }
+      }
+    }
   };
 
   return result;
