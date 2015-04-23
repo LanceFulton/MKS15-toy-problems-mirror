@@ -7,20 +7,31 @@ var makeHashTable = function(){
   var result = {};
   var storage = [];
   var storageLimit = 1000;
-  result.insert = function(value){
+  result.insert = function(key, value){
     // TODO: implement `insert()`
-    value = value.toString();
-    storage[getIndexBelowMaxForKey(value, storageLimit)] = value;
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    if( !storage[index] ) {
+      storage[index] = [];
+    }
+    storage[index][key] = value;
   };
 
-  result.retrieve = function(/*...*/
-){
+  result.retrieve = function(key){
     // TODO: implement `retrieve()`
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    var bucket = storage[index];
+    if( Array.isArray(bucket) ) {
+      if( bucket[key] ) {
+        return bucket[key];
+      }
+    }
+    return null;
   };
 
-  result.remove = function(/*...*/
-){
+  result.remove = function(key){
     // TODO: implement `remove()`
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    delete storage[index][key];
   };
 
   return result;
