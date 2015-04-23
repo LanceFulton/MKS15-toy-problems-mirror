@@ -5,11 +5,11 @@
 
 var makeHashTable = function(){
   var result = {};
-  var storage = [];
+  var storage = []; //like a bucket
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-){
+  result.insert = function(str, max){
     // TODO: implement `insert()`
+    var i = getIndexBelowMaxForKey(str, storageLimit);
   };
 
   result.retrieve = function(/*...*/ 
