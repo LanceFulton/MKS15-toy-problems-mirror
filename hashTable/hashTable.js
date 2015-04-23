@@ -7,21 +7,41 @@ var makeHashTable = function(){
   var result = {};
   var storage = [];
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-){
-    // TODO: implement `insert()`
+  result.insert = function(value){
+    var hashedKey = getIndexBelowMaxForKey(value, storageLimit);
+    if(storage[hashedKey]!=="undefined") {
+      storage[hashedKey] = [value];
+    } else {
+      var tempArray = storage[hashedKey]; // Collect the existing arrayed entry
+      tempArray.push([value]); // automatically updated in storage.
+    }
+    
+    //console.log("insert -> storage: ", storage, " key: ", hashedKey, " value: ", value);
   };
 
-  result.retrieve = function(/*...*/ 
-){
-    // TODO: implement `retrieve()`
+  result.retrieve = function(key){
+    var retVal;
+    var hashedKey = getIndexBelowMaxForKey(value, storageLimit);
+    if(storage[hashedKey]!=="undefined") {
+
+    }
+    return retVal;
   };
 
-  result.remove = function(/*...*/ 
-){
-    // TODO: implement `remove()`
+  result.remove = function(value){
+    console.log("REMOVE.");
+    var result = false;
+    var hashedKey = getIndexBelowMaxForKey(value, storageLimit);
+    if(storage[hashedKey]!=="undefined") {
+      var hashedArray = storage[hashedKey];
+      var retIndex = hashedArray.indexOf(value);
+      if(retIndex>=0) {
+        delete hashedArray[retIndex];
+      }
+    }
+    
   };
-
+console.log("RESULT :", result);
   return result;
 };
 
@@ -37,3 +57,12 @@ var getIndexBelowMaxForKey = function(str, max){
   }
   return hash % max;
 };
+
+
+var myHash = makeHashTable();
+myHash.insert("10");
+myHash.insert("20");
+myHash.insert("21");
+myHash.insert("22");
+console.log("REMOVED: " + myHash.remove("21"));
+
