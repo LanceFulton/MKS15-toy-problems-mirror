@@ -7,17 +7,18 @@ var makeHashTable = function(){
   var result = {};
   var storage = [];
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-){
+  result.insert = function(value){
     // TODO: implement `insert()`
+    value = value.toString();
+    storage[getIndexBelowMaxForKey(value, storageLimit)] = value;
   };
 
-  result.retrieve = function(/*...*/ 
+  result.retrieve = function(/*...*/
 ){
     // TODO: implement `retrieve()`
   };
 
-  result.remove = function(/*...*/ 
+  result.remove = function(/*...*/
 ){
     // TODO: implement `remove()`
   };
