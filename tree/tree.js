@@ -10,10 +10,12 @@ Your tree should have methods named "addChild" and "contains".
 
 var treeMaker = function(value){
   //tree code goes here!
+
   var newTree = {};
   newTree.value = value;
   newTree.children = [];
   return newTree;
+
 };
 
 //methods go here!
@@ -38,4 +40,5 @@ treeMaker.methods.contains = function(target){
   }
   childFinder(this);
   return result;
+
 };
