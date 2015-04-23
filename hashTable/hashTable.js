@@ -7,19 +7,51 @@ var makeHashTable = function(){
   var result = {};
   var storage = [];
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-){
-    // TODO: implement `insert()`
+  result.insert = function(key, value){
+    var idx = getIndexBelowMaxForKey(key, storageLimit);
+    //Search through the bucket at the index value, or make a bucket
+    if (!storage[idx]) {
+      storage[idx] = [];
+    }
+    var bucket = storage[idx];
+    for (var i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === 'key') {
+        bucket[i][1] = value;
+        return;
+      }
+    }
+    bucket.push([key, value]);
+    return;
   };
 
-  result.retrieve = function(/*...*/ 
-){
-    // TODO: implement `retrieve()`
+  result.retrieve = function(key){
+    var idx = getIndexBelowMaxForKey(key, storageLimit);
+    var bucket = storage[idx];
+    //search through the hash table at hashed index for the key
+    if (bucket) {
+      for (var i = 0; i < bucket.length; i++) {
+        if (bucket[i][0] === key) {
+          return bucket[i][1];
+        }
+      }
+    }
+    //return null if not found
+    return null;
   };
 
-  result.remove = function(/*...*/ 
-){
-    // TODO: implement `remove()`
+  result.remove = function(key){
+    var idx = getIndexBelowMaxForKey(key, storageLimit);
+    var bucket = storage[idx];
+
+    if (bucket) {
+      for (var i = 0; i < bucket.length; i++) {
+        if (bucket[i][0] === key) {
+          var res = bucket.splice(i, 1);
+          return res[1];
+        }
+      }
+    }
+    return null;
   };
 
   return result;
