@@ -24,12 +24,13 @@ treeMaker.methods.addChild = function(value){
 };
 
 treeMaker.methods.contains = function(value){
+  if (this.value === value){
+    return true;
+  }
   for (var i = 0 ; i < this.children.length ; i++){
-    if (this.children[i].value === value){
-      return true;
-    } else {
-      this.children[i].contains(value)
-    }
+      if ( this.children[i].contains(value) ){
+        return true;
+      }
   }
   return false;
 };
