@@ -7,22 +7,45 @@ var makeHashTable = function(){
   var result = {};
   var storage = [];
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-){
-    // TODO: implement `insert()`
+
+  result.insert = function(key, value){
+
+    var index = getIndexBelowMaxForKey(value, storageLimit);
+    var data = [key, value];
+
+    if (storage[index] === undefined) {
+      storage[index] = [];
+    }
+
+    storage[index].push(data);
+    return index;
+
   };
 
-  result.retrieve = function(/*...*/ 
-){
-    // TODO: implement `retrieve()`
+  result.retrieve = function(key, index){
+    if (storage[index]) {
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          return storage[index][i][1];
+        }
+      }
+    }
+    return null;
   };
 
-  result.remove = function(/*...*/ 
-){
-    // TODO: implement `remove()`
+  result.remove = function(key, index){
+    if (storage[index]) {
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          return storage[index].splice(i,1);
+        }
+      }
+    }
+    return null;
   };
 
   return result;
+
 };
 
 // This is a "hashing function". You don't need to worry about it, just use it
