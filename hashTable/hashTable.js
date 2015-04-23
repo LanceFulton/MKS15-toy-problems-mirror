@@ -7,19 +7,43 @@ var makeHashTable = function(){
   var result = {};
   var storage = [];
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-){
-    // TODO: implement `insert()`
+  result.insert = function(key, val){
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    if (!storage[index]) {
+      storage[index] = [];
+    }
+    if (!storage[index].some(function(keyValPair) {
+        if (keyValPair[0]===key) {
+          keyValPair[1]=val;
+          return true;
+        }
+      })) {
+      storage[index].push([key, val]);
+    }
   };
 
-  result.retrieve = function(/*...*/ 
-){
-    // TODO: implement `retrieve()`
+  result.retrieve = function(key){
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    if (storage[index]) {
+      for (var i=0; i<storage[index].length; i++) {
+        if (storage[index][i][0]===key) {
+          return storage[index][i][1];
+        }
+      }
+    }
+    return null;
   };
 
-  result.remove = function(/*...*/ 
-){
-    // TODO: implement `remove()`
+  result.remove = function(key){
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    if (storage[index]) {
+      for (var i=0; i<storage[index].length; i++) {
+        if (storage[index][i][0]===key) {
+          return storage[index].splice(i, 1)[1];
+        }
+      }
+    }
+    return null;
   };
 
   return result;
@@ -37,3 +61,15 @@ var getIndexBelowMaxForKey = function(str, max){
   }
   return hash % max;
 };
+
+// var hashTable = makeHashTable();
+
+// hashTable.insert('Steven', 'Seagal');
+// console.log(hashTable.retrieve('Steven')); // Seagal
+
+// hashTable.insert('Steven', 'Spielberg');
+// console.log(hashTable.retrieve('Steven')); // Spielberg
+
+// hashTable.insert('Steven', 'Tyler');
+// hashTable.remove('Steven');
+// console.log(hashTable.retrieve('Steven')); // null
