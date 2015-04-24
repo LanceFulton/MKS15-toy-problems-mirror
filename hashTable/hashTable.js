@@ -39,7 +39,7 @@ var makeHashTable = function(){
     if (storage[index]) {
       for (var i=0; i<storage[index].length; i++) {
         if (storage[index][i][0]===key) {
-          return storage[index].splice(i, 1)[1];
+          return storage[index].splice(i, 1)[0][1];
         }
       }
     }
