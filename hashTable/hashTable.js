@@ -8,7 +8,7 @@ var makeHashTable = function(){
   var storage = [];
   var storageLimit = 1000;
 
-  result.insert = function(key, value){
+  result.insert = function(key, value) {
 
     var index = getIndexBelowMaxForKey(value, storageLimit);
     var data = [key, value];
@@ -22,7 +22,10 @@ var makeHashTable = function(){
 
   };
 
-  result.retrieve = function(key, index){
+  result.retrieve = function(key) {
+
+    var index = getIndexBelowMaxForKey(value, storageLimit);
+
     if (storage[index]) {
       for (var i = 0; i < storage[index].length; i++) {
         if (storage[index][i][0] === key) {
@@ -33,7 +36,10 @@ var makeHashTable = function(){
     return null;
   };
 
-  result.remove = function(key, index){
+  result.remove = function(key) {
+
+    var index = getIndexBelowMaxForKey(value, storageLimit);
+
     if (storage[index]) {
       for (var i = 0; i < storage[index].length; i++) {
         if (storage[index][i][0] === key) {

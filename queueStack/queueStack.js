@@ -7,40 +7,55 @@
   * Stack Class
   */
 var Stack = function() {
+  this.storage = {};
+  this._size = 0;
+};
 
-  // add an item to the top of the stack
-  this.push = function(){
-  };
+Stack.prototype.push = function(value) {
+  this.storage[this._size] = value;
+  this._size++;
+  return value + " added";
+};
 
   // remove an item from the top of the stack
-  this.pop = function(){
-  };
+Stack.prototype.pop = function() {
+  if (this._size) {
+    this._size--;
+    var temp = this.storage[this._size];
+    delete this.storage[this._size];
+    return temp;
+  }
+  return null;
+};
 
   // return the number of items in the stack
-  this.size = function(){
-  };
+Stack.prototype.size = function() {
+  return this._size;
 };
+
 
 /**
   * Queue Class
   */
+
 var Queue = function() {
   // Use two `stack` instances to implement your `queue` Class
   var inbox = new Stack();
   var outbox = new Stack();
 
   // called to add an item to the `queue`
-  this.enqueue = function(){
-    // TODO: implement `enqueue`
-  };
+Queue.prototype.enqueue = function(value) {
+  inbox.push(value);
+};
 
   // called to remove an item from the `queue`
-  this.dequeue = function(){
-    // TODO: implement `dequeue`
-  };
+Queue.prototype.dequeue = function() {
+  outbox.push(inbox.)
+  //need to either modify stack.pop, or have stack methods bounce back and forth, like a slinky?
+};
 
   // should return the number of items in the queue
-  this.size = function(){
-    // TODO: implement `size`
+Queue.prototype.size = function(){
+    return inbox.size();
   };
 };
