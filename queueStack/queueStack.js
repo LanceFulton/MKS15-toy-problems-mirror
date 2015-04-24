@@ -6,41 +6,59 @@
 /**
   * Stack Class
   */
+
 var Stack = function() {
+  this.storage = [];
+  this.top = 0;
+}
 
-  // add an item to the top of the stack
-  this.push = function(){
-  };
+Stack.prototype.push = function(value) {
+  this.storage.push(value);
+  this.top++;
+}
 
-  // remove an item from the top of the stack
-  this.pop = function(){
-  };
+Stack.prototype.pop = function() {
+  if (this.top === 0) {
+    return null;
+  } else {
+    this.top--;
+    return this.storage[this.top];
+  }
+}
 
-  // return the number of items in the stack
-  this.size = function(){
-  };
-};
+Stack.prototype.size = function() {
+  return this.top;
+}
 
-/**
-  * Queue Class
-  */
-var Queue = function() {
-  // Use two `stack` instances to implement your `queue` Class
-  var inbox = new Stack();
-  var outbox = new Stack();
+//   // remove an item from the top of the stack
+//   this.pop = function(){
+//   };
 
-  // called to add an item to the `queue`
-  this.enqueue = function(){
-    // TODO: implement `enqueue`
-  };
+//   // return the number of items in the stack
+//   this.size = function(){
+//   };
+// };
 
-  // called to remove an item from the `queue`
-  this.dequeue = function(){
-    // TODO: implement `dequeue`
-  };
+// /**
+//   * Queue Class
+//   */
+// var Queue = function() {
+//   // Use two `stack` instances to implement your `queue` Class
+//   var inbox = new Stack();
+//   var outbox = new Stack();
 
-  // should return the number of items in the queue
-  this.size = function(){
-    // TODO: implement `size`
-  };
-};
+//   // called to add an item to the `queue`
+//   this.enqueue = function(){
+//     // TODO: implement `enqueue`
+//   };
+
+//   // called to remove an item from the `queue`
+//   this.dequeue = function(){
+//     // TODO: implement `dequeue`
+//   };
+
+//   // should return the number of items in the queue
+//   this.size = function(){
+//     // TODO: implement `size`
+//   };
+// };
