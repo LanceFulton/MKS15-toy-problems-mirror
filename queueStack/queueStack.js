@@ -48,7 +48,7 @@ var Queue = function() {
   // called to remove an item from the `queue`
   this.dequeue = function(){
     if(outbox.size() === 0){
-      for(var i = 0; i < inbox.size(); i++){
+      while(inbox.size() > 0){
         outbox.push(inbox.pop());
       }
     }
