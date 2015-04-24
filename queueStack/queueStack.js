@@ -6,20 +6,27 @@
 /**
   * Stack Class
   */
+
 var Stack = function() {
+  this.storage = {};
+  this.count = 0;
+}
 
-  // add an item to the top of the stack
-  this.push = function(){
-  };
+Stack.prototype.push = function (value) {
+  this.storage[this.count] = value;
+  this.count++;
+}
 
-  // remove an item from the top of the stack
-  this.pop = function(){
-  };
+Stack.prototype.pop = function() {
+  var result = this.storage[this.count - 1];
+  delete this.storage[this.count - 1];
+  this.count--;
+  return result;
+}
 
-  // return the number of items in the stack
-  this.size = function(){
-  };
-};
+Stack.prototype.size = function() {
+  return this.count;
+}
 
 /**
   * Queue Class

@@ -5,21 +5,30 @@
 
 var makeHashTable = function(){
   var result = {};
-  var storage = []; //like a bucket
+  var storage = []; 
   var storageLimit = 1000;
+
   result.insert = function(str, max){
     // TODO: implement `insert()`
-    var i = getIndexBelowMaxForKey(str, storageLimit);
+    var i = getIndexBelowMaxForKey(str, this.storageLimit);
+    var bucket = []; //Bucket used to avoid collisions
+    if (!storage[i]) {
+      storage[i] = 
+    }
   };
 
-  result.retrieve = function(/*...*/ 
-){
+  result.retrieve = function(str){
     // TODO: implement `retrieve()`
+    var i = getIndexBelowMaxForKey(str, this.storageLimit);
+    var bucket = this.storage[i];
+    
+
   };
 
-  result.remove = function(/*...*/ 
-){
+  result.remove = function(str){
     // TODO: implement `remove()`
+    var i = getIndexBelowMaxForKey(str, this.storageLimit);
+
   };
 
   return result;
