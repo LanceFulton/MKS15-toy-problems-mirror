@@ -7,17 +7,22 @@
   * Stack Class
   */
 var Stack = function() {
-
+  this.storage = [];
   // add an item to the top of the stack
-  this.push = function(){
+  Stack.push = function(item){
+    this.storage[this.storage.length] = item;
   };
 
   // remove an item from the top of the stack
-  this.pop = function(){
+  Stack.pop = function(item){
+    var temp = this.storage[this.storage.length - 1];
+    delete this.storage[this.storage.length - 1];
+    return temp;
   };
 
   // return the number of items in the stack
-  this.size = function(){
+  Stack.size = function(){
+    return this.storage.length;
   };
 };
 
@@ -26,12 +31,15 @@ var Stack = function() {
   */
 var Queue = function() {
   // Use two `stack` instances to implement your `queue` Class
+
+  //So, I'm guessing the goal is to not use shift or unshift because they are expensive. 
+
   var inbox = new Stack();
   var outbox = new Stack();
 
   // called to add an item to the `queue`
-  this.enqueue = function(){
-    // TODO: implement `enqueue`
+  this.enqueue = function(item){
+    
   };
 
   // called to remove an item from the `queue`
@@ -41,6 +49,6 @@ var Queue = function() {
 
   // should return the number of items in the queue
   this.size = function(){
-    // TODO: implement `size`
+    return inbox.size + outbox.size;
   };
 };
