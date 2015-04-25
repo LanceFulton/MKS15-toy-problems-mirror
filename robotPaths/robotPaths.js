@@ -12,6 +12,7 @@
 // A Board class will be useful
 
 var makeBoard = function(n) {
+  //make a board of size n
   var board = [];
   for (var i = 0; i < n; i++) {
     board.push([]);
@@ -29,5 +30,25 @@ var makeBoard = function(n) {
 };
 
 var robotPaths = function(n, board, i, j) {
+  if (i === n - 1 && j === n - 1) {
+    return 1;
+  }
+  var total = 0;
+  board.togglePiece(i, j);
+  //check up, right, left, down
+  if (i > 0 && !board.hasBeenVisited(i - 1, j)) {
+    total += robotPaths(n, board, i - 1, j);
+  }
+  if (i < n - 1 && !board.hasBeenVisited(i + 1, j)) {
+    total += robotPaths(n, board, i + 1, j);
+  }
+  if (j > 0 && !board.hasBeenVisited(i, j - 1)) {
+    total += robotPaths(n, board, i, j - 1);
+  }
+  if (j < n - 1 && !board.hasBeenVisited(i, j + 1)) {
+    total += robotPaths(n, board, i, j + 1);
+  }
+  board.togglePiece(i, j);
+  return total;
 }
 
