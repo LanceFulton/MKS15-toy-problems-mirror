@@ -29,5 +29,24 @@ var makeBoard = function(n) {
 };
 
 var robotPaths = function(n, board, i, j) {
+  if (i === undefined ){
+    i = 0;
+  }
+  if (j === undefined) {
+    j = 0;
+  }
+  function backtrack(i,j, n) {
+    if (i === n && j ===n) {
+      return 1; 
+    }
+    if (i > n || j > n) {
+      return 0;
+    }
+    return backtrack(i+1, j, n) + backtrack(i, j+1, n);
+  }
+  return backtrack(i,j,n);
+ 
 }
+
+
 
