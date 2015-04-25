@@ -11,7 +11,7 @@ Your tree should have methods named "addChild" and "contains".
 var treeMaker = function(value){
   //tree code goes here!
   var tree = Object.create(treeMaker.methods);
-  tree.children = [];
+  tree.root = null;
   return tree;
 };
 
@@ -24,7 +24,11 @@ treeMaker.methods.addChild = function(value){
     value : value
   }
 
-  this.children.push(node);
+  if (this.root === null){
+    this.root = node;
+  } else {
+    this.root.children.push(node);
+  }
 };
 
 treeMaker.methods.contains = function(value){
@@ -41,6 +45,6 @@ treeMaker.methods.contains = function(value){
     }
   }
 
-  walkTree(this);
+  walkTree(this.root);
   return isFound;
 };
