@@ -18,9 +18,10 @@
 
 
 var LinkedList = function(){
-  this.tail.value = null;
-  this.head.value = null;
-  this.next = null;
+  var list = {};
+
+  this.tail = null;
+  this.head = null;
 };
 
 //write methods here!
