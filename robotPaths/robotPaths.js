@@ -29,5 +29,23 @@ var makeBoard = function(n) {
 };
 
 var robotPaths = function(n, board, i, j) {
+  //Setting a var to count how many paths have been found.
+  var pathCount = 0;
+  //creating a new board.
+  board = makeBoard(n);
+  //Need to make a recursive function to check all possibilities
+  var recurse = function (row) {
+    //j represents the columns
+    for (var j = 0; j < n - 1; j++) {
+      //toggles the current board space
+      board.togglePiece(i, row);
+      i++;
+    }
+  }
+  recurse(i);
+  return pathCount;
 }
+
+//Always starts at board[0][0];
+//Alway ends at board[n][n];
 
