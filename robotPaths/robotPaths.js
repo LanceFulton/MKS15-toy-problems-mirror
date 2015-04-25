@@ -29,18 +29,40 @@ var makeBoard = function(n) {
 };
 
 var robotPaths = function(n, board, i, j) {
-  var checkMoves = function(iCurrent, jCurrent) {
+  var paths = 0;
+
+  var checkMoves = function(board, i, j) {
     var moves = {};
-    board[iCurrent-1][jCurrent] === false ? moves.up = true : moves.up = false;
-    board[iCurrent][jCurrent+1] === false ? moves.right = true : moves.right = false;
-    board[iCurrent+1][jCurrent] === false ? moves.down = true : moves.down = false;
-    board[iCurrent][jCurrent-1] === false ? moves.left = true : moves.left = false;
+    board[i-1][j] === false ? moves.up = true : moves.up = false;
+    board[i][j+1] === false ? moves.right = true : moves.right = false;
+    board[i+1][j] === false ? moves.down = true : moves.down = false;
+    board[i][j-1] === false ? moves.left = true : moves.left = false;
     return moves;
   }
 
-  var move = function() {
+  var move = function(n, board, i, j) {
+    if( board.hasBeenVisited(n, n) ) {
+      paths++;
+    } else {
+      var canMove = checkMoves(i, j);
+      for( var direction in canMove ) {
+        if( direction === 'up' && canMove[direction] === true ) {
+          board.togglePiece(i - 1, j);
+          move(board, i - 1, j);
+        } else if( direction === 'right' && canMove[direction] === true ) {
+          board.togglePiece(i, j + 1);
+          move(board, i, j + 1);
+        } else if( direction === 'down' && canMove[direction] === true ) {
+          board.togglePiece(i + 1, j);
+          move(board, i + 1, j);
+        } else if( direction === 'left' && canMove[direction] === true ) {
+          board.togglePiece(i, j - 1);
+          move(board, i, j - 1);
+        }
+      }
+    }
+  };
 
-  }
+  move(n, board, i, j);
+  return paths;
 };
-
-check moves u,r,d,l
