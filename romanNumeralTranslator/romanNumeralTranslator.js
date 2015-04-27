@@ -29,7 +29,7 @@ var DIGIT_VALUES = {
 var translateRomanNumeral = function(romanNumeral){
   var result = 0;
 
-  var numArray = romanNumeral.split('');
+  var numArray = romanNumeral.split(''); //not needed
 
   for (var i = 0; i < numArray.length; i++) {
     if (DIGIT_VALUES[numArray[i + 1]] > DIGIT_VALUES[numArray[i]]) {
@@ -41,6 +41,30 @@ var translateRomanNumeral = function(romanNumeral){
   }
   return result;
 };
+
+
+//____________________________SOLUTION______________________________
+
+var translateRomanNumeral = function(romanNumeral) {
+  var total = 0;
+  for (var i = 0; i < romanNumeral.length; i++) {
+    var currentValue = DIGIT_VALUES[romanNumeral.charAt(i)];
+    var nextValue = DIGIT_VALUES[romanNumeral.charAt(i+1)];
+ 
+    if (nextValue && currentValue < nextValue){
+      total -= currentValue;
+    } else {
+      total += currentValue;
+    }
+  }
+  return total;
+};
+
+
+
+
+
+
 
 
 
