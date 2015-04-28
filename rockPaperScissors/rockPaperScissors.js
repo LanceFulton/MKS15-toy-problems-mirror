@@ -21,23 +21,24 @@ var rockPaperScissors = function (rounds) {
   // TODO: your solution here
   var result = [];
   var moves = ['rock', 'paper', 'scissors'];
-  var counter = 0;
 
   var recurse = function(round){
-    //iterate through each move
-    //recurse after each move to capture each successive move
-    //debugger;
+
     if(round.length < rounds){
+
       for (var i = 0; i < moves.length; i++){
         round.push(moves[i]);
         recurse(round);
       }
+
     }
+
     var finishedRound = round.slice();
 
     if(finishedRound.length === rounds){
       result.push(finishedRound);
     }
+
     round.pop();
   }
 
