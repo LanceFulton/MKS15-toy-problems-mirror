@@ -17,24 +17,25 @@
 *
 */
 
+var plays = ['rock', 'paper', 'scissors'];
+
 var rockPaperScissors = function (rounds) {
-  var words = ['rock', 'paper', 'scissors'];
-  var results = [];
-  for (var i = 0; i<Math.pow(3, rounds); i++) {
+  var numberOfPlays = Math.pow(3, rounds);
+  var resultsArray = [];
 
-    var oneGame = [];
-    var stringBase3 = i.toString(3);
-
-    while (stringBase3.length<rounds) {
-      stringBase3 = '0' + stringBase3;
+  for (var i = 0; i<numberOfPlays; i++){
+    var aPlay = [];
+    var numString = i.toString(3);
+    var zeros = rounds - numString.length;
+    var handString = Array(zeros).join('0') + numString;
+    for (var j = handString.length-1; j > handString.length - 1 - rounds; j--) {
+      aPlay.push(plays[handString[j] || 0]);
     }
-
-    for (var j = 0; j<rounds; j++){
-
-      oneGame.push(words[stringBase3[j]]);
-
-    }
-    results.push(oneGame);
+    resultsArray.push(aPlay);
   }
-  return results;
+
+  return resultsArray;
+
 }
+ 
+rockPaperScissors(3)
