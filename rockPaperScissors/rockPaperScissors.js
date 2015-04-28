@@ -25,9 +25,7 @@ var rockPaperScissors = function (rounds) {
 
   for (var i = 0; i<numberOfPlays; i++){
     var aPlay = [];
-    var numString = i.toString(3);
-    var zeros = rounds - numString.length;
-    var handString = Array(zeros).join('0') + numString;
+    var handString = i.toString(3);
     for (var j = handString.length-1; j > handString.length - 1 - rounds; j--) {
       aPlay.push(plays[handString[j] || 0]);
     }
@@ -38,4 +36,3 @@ var rockPaperScissors = function (rounds) {
 
 }
  
-rockPaperScissors(3)
