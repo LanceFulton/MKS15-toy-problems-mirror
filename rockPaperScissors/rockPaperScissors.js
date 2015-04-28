@@ -16,17 +16,23 @@
 * rockPaperScissors(5); // => [['rock', 'rock', 'rock', 'rock', 'rock'], etc...]
 *
 */
-var elements = [["rock", "paper", "scissors"], ["rock", "paper", "scissors"], ["rock", "paper", "scissors"]];
-var rockPaperScissors = function (arr) {
-  var possibleThrows = [];
-  var remainingThrows = rockPaperScissors(arr.slice(1));
-    for (var i = 0; i < remainingThrows; i++){ 
-      for (var j = 0; j < arr[0].length -1; j++) { 
-      	possibleThrows.push(arr[0][j] + remainingThrows[i]); 
-      }
-    }
-  return possibleThrows;
-}
 
-console.log(rockPaperScissors(elements));
+var rockPaperScissors = function (rounds) {
+  var elements = ["rock", "paper", "scissors"];
+  var results = [];
+  var findSequences = function(rounds, result) {
+    if (rounds === 0) {
+      results.push(result);
+      return;
+    }
+    for (var i = 0; i < elements.length; i++){
+      var sequence = elements[i];
+      findSequences(rounds-1, result.concat(sequence));
+
+    }
+  }
+
+    findSequences(rounds, []);
+    return results;
+};
 
