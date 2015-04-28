@@ -19,34 +19,29 @@
 
 var rockPaperScissors = function (rounds) {
   console.log("rockin!");
+  var choices=['rock', 'paper', 'scissors'];
   var retArray = [];
 
-
   // Every sequence for X rounds
-  var getOneRoundPossibilities = function(rounds) {
-    console.log( "getEveryPoss");
-    var optionsArray = ["rock", "paper", "scissors"];
-    var possibilitiesArray = [];
+  var recurse = function(rounds, selection, itemIndex) {
+    var selection = [];
 
-    for (var i = 0; i < optionsArray.length; i++) {
-        for (var j = 0; j < optionsArray.length; j++) {
-            for (var k = 0; k < optionsArray.length; k++) {
-                possibilitiesArray.push( [optionsArray[i], optionsArray[j], optionsArray[k]]);
-            };
-        };
-    };
-    return possibilitiesArray;
+    // Base case
+    if(rounds>=selection.length) {
+      return selection;
+    }
+
+    // Populate the fields
+    for(var i=0; i<choices.length; i++) {
+      selection.push(choices[i]);
+      recurse( rounds, selection, itemIndex );
+    }
   };
 
   // Main
-  var oneRoundPossibilities = getOneRoundPossibilities();
-  console.log("REQUESTED ROUNDS: " + rounds);
-  for (var r = 1; r <= rounds; r++) {
-    console.log("* ROUND " + r + " *");
-    retArray.push( oneRoundPossibilities );
-  };
-
+  recurse( rounds, [], 0 );
+  
   return retArray;
 };
 
-console.log( rockPaperScissors(5) );
+console.log( rockPaperScissors(3) );
