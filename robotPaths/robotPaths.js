@@ -11,6 +11,26 @@
 
 // A Board class will be useful
 
+var robotPaths = function (n, board, i, j) {
+  if (!board) {
+    board = makeBoard(n);
+    i = 0;
+    i = j;
+  }
+}
+
+if (!(i >= 0 && i < n && j >= 0 && j < n) || board.hasBeenVisited (i, j)) {
+  board.hasBeenVisited (i, j) {
+    return 0;
+  }
+}
+
+// and more stuff...
+
+
+
+// My first attempt:
+
 var makeBoard = function(n) {
   var board = [];
   for (var i = 0; i < n; i++) {
@@ -29,5 +49,30 @@ var makeBoard = function(n) {
 };
 
 var robotPaths = function(n, board, i, j) {
+
+  var position = board[i][j];
+
+  var updatePosition = function(){
+    position = board[i][j];
+  };
+
+  var moveRight = function {
+    i = i+1;
+    if (!board.hasBeenVisited){
+      board.togglePiece(i,j);
+      updatePosition();
+      makePath();
+    } else {
+      i = i-1;
+    }
+  };
+
+  var makePath = function() {
+    moveRight();
+    moveDown();
+    moveLeft();
+    moveUp();
+  };
+
 }
 
