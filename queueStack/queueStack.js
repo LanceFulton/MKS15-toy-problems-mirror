@@ -51,36 +51,77 @@ Queue.prototype.enqueue = function(value) {
 
   // called to remove an item from the `queue`
 Queue.prototype.dequeue = function() {
-  while(inbox._size > 1) {
-    var value = inbox.pop();
+
+  if (inbox._size) {
+
+    var outboxCounter = inbox._size - 1;
+
+    while(inbox._size > 1) {
+      var value = inbox.pop();
+      outbox.push(value);
+    }
+
+    var result = inbox.pop();
+
+    while(outboxCounter > 0) {
+      value = outbox.pop();
+      inbox.push(value);
+      outboxCounter--;
+    }
+
     outbox.push(value);
+
+    return result;
+
   }
 
-  var result = inbox.pop();
+  return null;
 
-  while(outbox._size > 0) {
-    value = outbox.pop();
-    inbox.push(value);
-  }
-
-  return result;
 };
 
   // should return the number of items in the queue
-Queue.prototype.size = function(){
+Queue.prototype.size = function() {
     return inbox.size();
+};
+
+/* MKS Solution:
+
+var Stack = function()
+  var storage = [];
+  var length = 0;
+  this.push = function(value){
+    storage[length++] = value;
+  };
+  this.pop = function(){
+    if(length){
+      var value = storage[--length];
+      delete storage[length];
+      return value;
+    }
+  };
+  this.size = function(){
+    return length;
   };
 };
 
-var myQueue = new Queue();
+var Queue = function(){
+  var inbox = new Stack();
+  var outbox = new Stack();
+  this.enqueue = function(item){
+    inbox.push(item);
+  };
+  this.dequeue = function(){
+    if(outbox.size() === 0){
+      while(inbox.size() !== 0){
+        outbox.push(inbox.pop());
+      }
+    }
+    return outbox.pop();
+  };
+  this.size = function(){
+    return inbox.size() + outbox.size();
+  };
+};
 
-console.log(myQueue.enqueue("A"));
-console.log(myQueue.enqueue("B"));
-console.log(myQueue.enqueue("C"));
-console.log(myQueue.dequeue());
-console.log(myQueue.dequeue());
-console.log(myQueue.size());
-console.log(myQueue.dequeue());
-console.log(myQueue.dequeue());
-console.log(myQueue.size());
+*/
 
