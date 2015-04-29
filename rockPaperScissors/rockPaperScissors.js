@@ -17,48 +17,37 @@
 *
 */
 
-var rockPaperScissors = function () {
-  //Store all results 
+//We want to input an array of any size
+
+var rockPaperScissors = function (input) {
+  //We need a results array to store all of our arrays
+  //input for now will be [rock, paper, scissors];
   var results = [];
-  //I'm setting the array of options here so I can keep a reference of it that is unaltered. 
-  var items = ['rock', 'paper', 'scissors'];
+  var currentIndex = 0;
 
-
-  //Creating a recursive function to go through each possibility for each index 
-  function nextPlay(array){
-    //Our base case will terminate our loop when we run out of indicies in our array argument.
-    if (array.length < 1){
-      return results;
+  //Ideally this could be solved using recursion
+  //Start with first value in array.
+  //iterate through all items after the first to produce all combination
+  //move to next value on first index
+  //Recursive funtion will start with input[0]
+  //At end of function it will call input[currentIndex++]
+  var recurse = function(index) {
+    //where we can store our current array to be pushed into results later
+    if (currentIndex < input.length) {
+      var tempArray = [];
+      for (var i = 0; i < input.length; i++) {
+        for (var j = 0; j < input.length; j++) {
+          tempArray.push(index);
+          tempArray.push(input[i]);
+          tempArray.push(input[j]);
+          results.push(tempArray);
+          tempArray = [];
+        }
+      }
+      currentIndex++;
+      recurse(input[currentIndex]);
     }
-
-  	//setting a variable of our current play selections, which will be later 
-  	var currentPlay = [];
-  	//set zero index to equal current play arg
-  	currentPlay.push(array[0]);
-  	//starting at index 1, add one item.
-  	for(var i = 1; i < 3; i++){
-  	  //The conditional here is critical. If we are on the second index, we want to iterate through all of the third index options
-  	  if (i = 1){
-  		  //We want to push this onto the array before we iterate through our options.
-  		  currentPlay.push(items[i]);
-  		  for(var j = 0; j < 3; j++){
-	  		  currentPlay.push(items[j]);
-	  		  results.push(currentPlay);
-	  	  }
-	  	  //If we are done with the second index, we will then place our new items into the second index, and add our i value to the third index.
-  	  } else if (i = 2){
-  		  for(var j = 0; j < 3; j++){
-	  		  currentPlay.push(items[j]);
-	  		  results.push(currentPlay);
-	  	  }
-        currentPlay.push(items[i]);
-  	  }
-    }
-    //Shifting off the first index of our argument will help us move closer to our base case. 
-    array.shift();
-    //Recurse through the function again
-    nextPlay(array);
   }
-  //start the recursive function
-  nextPlay(items);
+  recurse(input[currentIndex]);
+  return results;
 };
