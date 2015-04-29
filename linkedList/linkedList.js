@@ -27,14 +27,14 @@ var LinkedList = function(){
 //write methods here!
 
 LinkedList.prototype.addToTail = function(value){
-  var newTail = makeNode(value);
+  var newTail = this.makeNode(value);
 
   if (!this.head) {
-    this.head = newNode;
+    this.head = newTail;
   }
 
   if (this.tail) {
-    this.tail.next = newNode;
+    this.tail.next = newTail;
   }
 
   this.tail = newTail;
