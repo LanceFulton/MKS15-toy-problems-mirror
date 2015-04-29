@@ -18,26 +18,26 @@
 */
 
 var rockPaperScissors = function (numRounds) {
-  if (numRounds === undefined)
+  if (numRounds === undefined) {
     numRounds = 3;
-  
-  var results = [[]];
-  var lengthenResults = [];
-  var moveThrows = ['rock','paper','scissors'];
-  
-  // lengthen all strings until numRounds = 0
-  while (numRounds > 0){
-    // for each string in results
-    results.forEach(function(hist){
-      moveThrows.forEach(function(move){
-        lengthenResults.push(hist.concat(move));
-      });
-    });
-    results = lengthenResults;
-    lengthenResults = [];
-    numRounds--;
-      // push a string onto lengthenResults with one extra throw
   }
-  
+
+  var plays = ['rock', 'paper', 'scissors'];
+  var results = [];
+  var current = [];
+
+  var addPlays = function() {
+    if (current.length === numRounds) {
+      results.push(current.slice());
+      return;
+    }
+    for (var i = 0; i < 3; i++) {
+      current.push(plays[i]);
+      addPlays();
+      current.pop();
+    }
+  }
+
+  addPlays();
   return results;
 };
