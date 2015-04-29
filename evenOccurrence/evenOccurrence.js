@@ -11,5 +11,30 @@
 */
 
 var evenOccurrence = function(arr) {
-  // Your code here.
+  var storage = {};
+  var evens = [];
+  // store the number of occurences of each number
+  for (var i = 0 ; i < arr.length ; i++){
+    if (storage[arr[i]] === undefined){
+      storage[arr[i]] = {};
+      storage[arr[i]].value = arr[i];
+      storage[arr[i]].quantity = 1;
+    } else {
+      storage[arr[i]].quantity++;
+    }
+  }
+  // record which numbers have an even quantity
+  for (var key in storage){
+    if (storage[key].quantity % 2 === 0){
+      evens.push(storage[key].value)
+    }
+  }
+  // loop through even array and return the first number with even quantity
+  for (var i = 0 ; i < evens.length ; i++){
+    for (var key in storage){
+      if (evens[i] === storage[key].value){
+        return evens[i];
+      }
+    }
+  }
 };
