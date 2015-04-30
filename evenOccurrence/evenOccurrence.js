@@ -23,18 +23,11 @@ var evenOccurrence = function(arr) {
       storage[arr[i]].quantity++;
     }
   }
-  // record which numbers have an even quantity
-  for (var key in storage){
-    if (storage[key].quantity % 2 === 0){
-      evens.push(storage[key].value)
+  // loop through array and find the first which has an even quantity
+  for (var i = 0 ; i < arr.length ; i++){
+    if (storage[arr[i]].quantity % 2 === 0){
+      return arr[i];
     }
   }
-  // loop through even array and return the first number with even quantity
-  for (var i = 0 ; i < evens.length ; i++){
-    for (var key in storage){
-      if (evens[i] === storage[key].value){
-        return evens[i];
-      }
-    }
-  }
+  return null;
 };
