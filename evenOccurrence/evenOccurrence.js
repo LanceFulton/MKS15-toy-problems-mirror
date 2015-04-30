@@ -16,16 +16,14 @@ var evenOccurrence = function(arr) {
   // store the number of occurences of each number
   for (var i = 0 ; i < arr.length ; i++){
     if (storage[arr[i]] === undefined){
-      storage[arr[i]] = {};
-      storage[arr[i]].value = arr[i];
-      storage[arr[i]].quantity = 1;
+      storage[arr[i]] = 1;
     } else {
-      storage[arr[i]].quantity++;
+      storage[arr[i]]++;
     }
   }
   // loop through array and find the first which has an even quantity
   for (var i = 0 ; i < arr.length ; i++){
-    if (storage[arr[i]].quantity % 2 === 0){
+    if (storage[arr[i]] % 2 === 0){
       return arr[i];
     }
   }
