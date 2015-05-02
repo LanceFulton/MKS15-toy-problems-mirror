@@ -46,8 +46,51 @@ var testingTransform = function(array) {
   return transform;
 };
 
-var insertionSort = function(array
-) {
-  // Your code goes here. Feel free to add helper functions if needed.
-  return array;
+var insertionSort = function(array) {
+  
+  var insert = function(collection, newValue){
+    var shifting = false;
+    for (var i = 0 ; i < collection.length ; i++){
+      if (shifting === false){
+        if (newValue.value < collection[i].value){
+          var temp = collection[i];
+          collection[i] = newValue;
+          shifting = true;
+        }
+      } else {
+        var newTemp = collection[i];
+        collection[i] = temp;
+        temp = newTemp;
+      }
+    }
+    collection.push(temp);
+    return collection;
+  };
+
+  var subArray = [];
+  for (var i = 0 ; i < array.length ; i++){
+    if (subArray.length === 0){
+      subArray.push(array[i]);
+    } else {
+      insert(subArray, array[i]);
+    }
+  }
+  return subArray;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
