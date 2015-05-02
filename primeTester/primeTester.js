@@ -9,14 +9,12 @@ var primeTester = function(n) {
     // n isn't a number or n is less than 1 or n is not an integer
     return false;
   }
-  var isPrime = true;
   for (var i = n-1 ; i > 1 ; i--){
     if ( (n/i)%1 === 0 ){
-      var isPrime=false;
-      return isPrime;
+      return false;
     }
   }
-  return isPrime;
+  return true;
 };
 
 /* Extra credit: Write a function that generates a list of all prime numbers
