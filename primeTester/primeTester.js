@@ -9,8 +9,8 @@ var primeTester = function(n) {
     // n isn't a number or n is less than 1 or n is not an integer
     return false;
   }
-  for (var i = n-1 ; i > 1 ; i--){
-    if ( (n/i)%1 === 0 ){
+  for (var i = n-1 ; i >= (n/2) ; i--){
+    if (n%i === 0){
       return false;
     }
   }
