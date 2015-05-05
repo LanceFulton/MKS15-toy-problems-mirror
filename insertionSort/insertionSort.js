@@ -48,37 +48,54 @@ var testingTransform = function(array) {
 
 var insertionSort = function(array) {
   
-  var insert = function(collection, newValue){
-    var shifting = false;
-    for (var i = 0 ; i < collection.length ; i++){
-      if (shifting === false){
-        if (newValue.value < collection[i].value){
-          var temp = collection[i];
-          collection[i] = newValue;
-          shifting = true;
-        }
-      } else {
-        var newTemp = collection[i];
-        collection[i] = temp;
-        temp = newTemp;
-      }
-    }
-    collection.push(temp);
-    return collection;
-  };
+  for (var ix = 1 ; ix < array.length ; i++){
+    var val = array[i];
+    var hole = i;
 
-  var subArray = [];
-  for (var i = 0 ; i < array.length ; i++){
-    if (subArray.length === 0){
-      subArray.push(array[i]);
-    } else {
-      insert(subArray, array[i]);
+    while (hole && val < array[hole - 1]){
+      array[hole] = array[hole - 1];
+      hole -=1;
     }
+
+    array[hole] = val;
   }
-  return subArray;
+
+  return array;
+
 };
 
 
+// var insertionSort = function(array) {
+  
+//   var insert = function(collection, newValue){
+//     var shifting = false;
+//     for (var i = 0 ; i < collection.length ; i++){
+//       if (shifting === false){
+//         if (newValue.value < collection[i].value){
+//           var temp = collection[i];
+//           collection[i] = newValue;
+//           shifting = true;
+//         }
+//       } else {
+//         var newTemp = collection[i];
+//         collection[i] = temp;
+//         temp = newTemp;
+//       }
+//     }
+//     collection.push(temp);
+//     return collection;
+//   };
+
+//   var subArray = [];
+//   for (var i = 0 ; i < array.length ; i++){
+//     if (subArray.length === 0){
+//       subArray.push(array[i]);
+//     } else {
+//       insert(subArray, array[i]);
+//     }
+//   }
+//   return subArray;
+// };
 
 
 
