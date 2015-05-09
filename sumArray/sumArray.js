@@ -12,7 +12,7 @@
 // Solved in O(n) time with O(1) memory
 var sumArray = function(array) {
 
-  var maxSoFar = 0;
+  var maxSoFar = Number.NEGATIVE_INFINITY;
   var totalHere = 0;
 
   for (var i = 0 ; i < array.length ; i++){

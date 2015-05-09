@@ -54,5 +54,15 @@ var numbersToPlace = {
 };
 
 Number.prototype.toEnglish = function () {
-  // return my value as english words
+  var length = this.toString().length;
+
+  var findForOneDigit = function(input){
+    console.log('input: ', input);
+    return numbersToWords[input];
+  }
+
+  if (length === 1){
+    findForOneDigit(this);
+  }
+
 };
