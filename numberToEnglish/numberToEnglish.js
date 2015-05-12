@@ -54,15 +54,22 @@ var numbersToPlace = {
 };
 
 Number.prototype.toEnglish = function () {
-  var length = this.toString().length;
+  n = this.valueOf();
+  if (numToWords[n]){
 
-  var findForOneDigit = function(input){
-    console.log('input: ', input);
-    return numbersToWords[input];
+  }
+  else if (n < 100){
+    numInPlace = Math.floor(n/10);
+    numLeft = n%10;
+    output = numToWords[numInPlace * 10] + '-' + (numLeft).toEnglish();
+  } else {
+    if (n < 1000){
+      place = 1000;
+      while (place * 1000 <= n){
+        place *= 1000;
+      }
+    }
   }
 
-  if (length === 1){
-    findForOneDigit(this);
-  }
 
 };

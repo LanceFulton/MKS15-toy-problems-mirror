@@ -42,5 +42,40 @@ var phoneDigitsToLetters = {
 
 
 var telephoneWords = function(digitString) {
-  // TODO: return every combination that can be spelled on a phone with these digits
+
+  var length = digitString.length;
+  var placesLeft = length;
+  var results = [];
+  var currentResult = '';
+  var leftHere = {};
+
+  var recurse = function(input, currentResult){
+    if (input.length === 0){
+      results.push(currentResult);
+    }
+    var possibles = phoneDigitsToLetters[input[0]];
+    for (var i = 0 ; i < possibles.length ; i++){
+      currentResult.concat(possibles[i]);
+      recurse(input.splice(0, possibles.length-1))
+    }
+  }
+
+  recurse(digitString, '');
+  return results;
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
