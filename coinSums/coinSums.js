@@ -24,8 +24,88 @@ makeChange(1) === 1
 makeChange(2) === 2
 */
 
+var coins = [1, 2, 5, 10, 20, 50, 100, 200];
+
 var makeChange = function(total){
+  var counter = 0;
+
+  var recurse = function(index, remainder){
+    var coin = coins[index];
+    if (index === 0){
+      remainder % coin === 0 && counter++;  //if first statment is true, iterate counter
+    }
+    while (remainder >= 0){
+      recurse(index-1, remainder);
+      remainder -= coin;
+    }
+  };
+
+  recurse(coins.length-1, total);
+
+  return counter;
 
 };
 
 
+
+
+
+
+
+
+
+/*
+
+var possibleNumOfThisPiece = function(total, pieceValue){
+  var result = 0;
+  while (total > pieceValue){
+    result++;
+    total -= pieceValue;
+  }
+  return result;
+}
+
+var makeChange = function(total){
+  var ways = 0;
+
+  var recurse = function(remainingTotal, currentPiece){
+
+    if (remainingTotal === 0){
+      ways++;
+    }
+
+    var maxOfThisPiece = possibleNumOfThisPiece(remainingTotal, currentPiece);
+
+    for (var i = 0 ; i <= maxOfThisPiece ; i++){
+      remainingTotal -= (pieces[currentPiece]);
+      recurse (remainingTotal, currentPiece--);
+    }
+
+    return;
+  }
+
+  recurse(total, pieces.length-1);
+  return ways;
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
