@@ -12,22 +12,53 @@ var makeHashTable = function(){
   var storage = [];
   var storageLimit = 4;
   var size = 0;
-  result.insert = function(/*...*/ 
-){
-    // TODO: implement `insert`
+
+  result.insert = function(key, value){
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    var bucket = [];
+    if (storage[index]){
+      bucket = storage[index];
+    }
+    var found = false;
+    for (var i = 0 ; j < bucket.length ; i++){
+      if (bucket[i][0] === key){
+        bucket[i] = [key, value];
+        found = true;
+        break;
+      }
+    }
+    if (!found){
+      bucket.push([key, value]);
+    }
+    size++;
+    if ( size >= (storage.length*storageLimit*.75) ){
+      storageLimit *= 2;
+    }
   };
 
-  result.retrieve = function(/*...*/ 
-){
-    // TODO: implement `retrieve`
+  result.retrieve = function(key){
+    var index = getIndexBelowMaxForKey(key);
+    var bucket = storage[index];
+    for (var i = 0 ; i < bucket.length ; i++){
+      if (bucket[i][0] === key){
+        return bucket[i][1];
+      }
+    }
   };
 
-  result.remove = function(/*...*/ 
-){
-    // TODO: implement `remove`
+  result.remove = function(key){
+    var index = getIndexBelowMaxForKey(key);
+    var bucket = storage[index];
+    for (var i = 0 ; i < bucket.length ; i++){
+      if (bucket[i][0] === key){
+        bucket.splice[i,1];
+      }
+    }
+    size--;
+    if ( size <= (storage.length*storageLimit*.25) ){
+      storageLimit *= .5;
+    }
   };
-
-  }
 
   return result;
 };
