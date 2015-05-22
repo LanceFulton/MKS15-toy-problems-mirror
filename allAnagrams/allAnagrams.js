@@ -13,5 +13,16 @@
   */
 
 var allAnagrams = function(string) {
-  // Your code here.
+  var anagrams = {};
+
+  var generator = function(text, options){
+    if (text.length === string.length){
+      anagrams[text] = true;
+    }
+    for (var i = 0 ; i < options.length ; i++){
+      generator(text + options[i], options.slice(i+1));
+    }
+  };
+  generator('', string);
+  return Object.keys(anagrams);
 };
