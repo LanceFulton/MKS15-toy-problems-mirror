@@ -9,7 +9,12 @@
  **/
 
 $(function () {
-  // TODO: your code here!
+  var $tbody = $('tbody');
+  var $rows = $tbody.children();
+
+  var getCellValue = function(row#1, colIx){
+    var td = rowE1.children
+  }
 
 });
 
