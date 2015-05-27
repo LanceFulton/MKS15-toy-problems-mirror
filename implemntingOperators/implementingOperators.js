@@ -11,11 +11,27 @@
 
 
 var multiply = function(x, y) {
-  // TODO: should return the product of x * y
+  var result = 0;
+  for (var i = 0 ; i < y ; i++){
+    result = result + x;
+  }
+  return result;
 };
 
 var divide = function(x, y) {
-  // TODO: should return the dividend of x / y
+  var dividend = x;
+  var times = 0;
+  if (x >= y){
+    while (dividend > y){
+      dividend = dividend - y;
+      times++;
+    }
+    // var remainder = x - y*times;
+    console.log('remainder ', remainder);
+    return times + remainder;
+  } else {
+
+  }
 };
 
 var modulo = function(x, y) {
